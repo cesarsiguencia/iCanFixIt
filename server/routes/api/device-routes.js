@@ -4,11 +4,13 @@ const { getAllDevices, getDevicesById, createDevice, deletedDevice} = require('.
 
 router.route('/')
     .get(getAllDevices)
-    
+    .post(createDevice)
 
 router.route('/:id')
-    .post(createDevice)
     .get(getDevicesById)
     .delete(deletedDevice)
+
+// router.route('/:ownerId')
+//     .post(createDevice)
 
 module.exports = router;

@@ -40,6 +40,10 @@ const deviceSchema = new Schema({
         ref: 'Client',
         require: true
     },
+    // owner:{
+    //     type: String,
+    //     require: true
+    // },
     owner_review: {
         type: String,
         maxlength: 500

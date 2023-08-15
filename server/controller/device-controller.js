@@ -29,21 +29,37 @@ const deviceController = {
         });
     },
 
-    createDevice({ params, body }, res) {
-        Device.create(body)
-        .then(({_id}) => {
-          return Client.findOneAndUpdate(
-            { _id: params.id },
-            { $push: { devices: _id}},
-            { 
-              new: true,
-              runValidators: true
-            }
-          )
-        })
-        .then(newDevice => res.json(newDevice))
-        .catch(err => res.status(400).json(err));
-    },
+    // createDevice({ params, body }, res) {
+    //     Device.create(body)
+    //     .then(({_id}) => {
+    //       return Client.findOneAndUpdate(
+    //         { _id: params.ownerId },
+    //         { $push: { devices: _id}},
+    //         { 
+    //           new: true,
+    //           runValidators: true
+    //         }
+    //       )
+    //     })
+    //     .then(newDevice => res.json(newDevice))
+    //     .catch(err => res.status(400).json(err));
+    // },
+
+    createDevice({ body }, res) {
+      Device.create(body)
+      .then((selectedDevice) => {
+        return Client.findOneAndUpdate(
+          { _id: selectedDevice.owner },
+          { $push: { devices: selectedDevice._id}},
+          { 
+            new: true,
+            runValidators: true
+          }
+        )
+      })
+      .then(newDevice => res.json(newDevice))
+      .catch(err => res.status(400).json(err));
+  },
 
     deletedDevice({ params }, res) {
         Device.findOneAndDelete({ _id: params.id })
