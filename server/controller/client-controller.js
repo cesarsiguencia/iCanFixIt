@@ -3,7 +3,10 @@ const { Client } = require('../models');
 const clientController = {
     getAllClients(req, res) {
         Client.find({})
-
+        // .populate({
+        //   path: 'devices',
+        //   select: '-__v'
+        // })
         .select('-__v')
         .sort({ _id: -1 })
           .then(allClients => res.json(allClients))
@@ -15,15 +18,17 @@ const clientController = {
     
     getClientById({ params }, res) {
         Client.findOne({ _id: params.id })
-        .populate({
-            path: 'devices',
-            select: '-__v'
-          })
+        // .populate({
+        //     path: 'devices',
+        //     select: '-__v'
+        //   })
           .then(clientData => {
+            
             if (!clientData) {
               res.status(404).json({ message: 'No client available' });
               return;
             }
+            console.log(clientData._id)
             res.json(clientData);
         })
           .catch(err => {

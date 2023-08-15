@@ -35,13 +35,11 @@ const deviceSchema = new Schema({
         enum: ['Service Requested', 'In Progress', 'Completed'],
         default: 'Service Requested'
     },
-    // owner: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         require: true,
-    //         ref: 'Client'
-    //     }
-    // ],
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: 'Client',
+        require: true
+    },
     owner_review: {
         type: String,
         maxlength: 500

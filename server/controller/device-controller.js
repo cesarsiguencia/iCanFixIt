@@ -1,4 +1,4 @@
-const { Device } = require('../models');
+const { Client, Device } = require('../models');
 
 const deviceController = {
     getAllDevices(req, res) {
@@ -6,6 +6,7 @@ const deviceController = {
         .select('-__v')
         .sort({ _id: -1 })
           .then(allDevices => res.json(allDevices))
+          
           .catch(err => {
             console.log(err);
             res.status(400).json(err);
@@ -19,6 +20,7 @@ const deviceController = {
               res.status(404).json({ message: 'No device available' });
               return;
             }
+            console.log(deviceData.owner)
             res.json(deviceData);
         })
           .catch(err => {
@@ -27,8 +29,18 @@ const deviceController = {
         });
     },
 
-    createDevice({ body }, res) {
+    createDevice({ params, body }, res) {
         Device.create(body)
+        .then(({_id}) => {
+          return Client.findOneAndUpdate(
+            { _id: params.id },
+            { $push: { devices: _id}},
+            { 
+              new: true,
+              runValidators: true
+            }
+          )
+        })
         .then(newDevice => res.json(newDevice))
         .catch(err => res.status(400).json(err));
     },
