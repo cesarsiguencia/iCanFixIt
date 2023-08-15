@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const dateFormat = require('../utils/dateFormat');
 
 const deviceSchema = new Schema({
     device_name: {
@@ -34,13 +35,13 @@ const deviceSchema = new Schema({
         enum: ['Service Requested', 'In Progress', 'Completed'],
         default: 'Service Requested'
     },
-    owner: [
-        {
-            type: Schema.Types.ObjectId,
-            require: true,
-            ref: 'Client'
-        }
-    ],
+    // owner: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         require: true,
+    //         ref: 'Client'
+    //     }
+    // ],
     owner_review: {
         type: String,
         maxlength: 500

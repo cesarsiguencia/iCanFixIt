@@ -1,0 +1,51 @@
+const { Device } = require('../models');
+
+const deviceController = {
+    getAllDevices(req, res) {
+        Device.find({})
+        .select('-__v')
+        .sort({ _id: -1 })
+          .then(allDevices => res.json(allDevices))
+          .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    },
+    
+    getDevicesById({ params }, res) {
+        Device.findOne({ _id: params.id })
+          .then(deviceData => {
+            if (!deviceData) {
+              res.status(404).json({ message: 'No device available' });
+              return;
+            }
+            res.json(deviceData);
+        })
+          .catch(err => {
+            console.log(err);
+            res.status(400).json(err);  
+        });
+    },
+
+    createDevice({ body }, res) {
+        Device.create(body)
+        .then(newDevice => res.json(newDevice))
+        .catch(err => res.status(400).json(err));
+    },
+
+    deletedDevice({ params }, res) {
+        Device.findOneAndDelete({ _id: params.id })
+        .then(deletedDevice => {
+            if (!deletedDevice) {
+            res.status(404).json({ message: 'No device available!' });
+            return;
+            }
+            res.json(deletedDevice);
+        })
+        .catch(err => res.status(400).json(err));
+    }
+
+};
+
+
+module.exports = deviceController;
