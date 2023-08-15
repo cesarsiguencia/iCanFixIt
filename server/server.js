@@ -6,7 +6,7 @@ const app = express.app
 
 const PORT = process.env.PORT || 4100;
 
-const routes = require('./routes')
+// const routes = require('./routes')
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
