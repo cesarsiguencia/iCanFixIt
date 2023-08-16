@@ -61,17 +61,34 @@ const deviceController = {
       .catch(err => res.status(400).json(err));
   },
 
-    deletedDevice({ params }, res) {
-        Device.findOneAndDelete({ _id: params.id })
-        .then(deletedDevice => {
-            if (!deletedDevice) {
-            res.status(404).json({ message: 'No device available!' });
-            return;
-            }
-            res.json(deletedDevice);
-        })
-        .catch(err => res.status(400).json(err));
+  uploadPhotos({ params, body }, res) {
+    Device.findOneAndUpdate(
+      { _id: params.id }, 
+      body, 
+      { 
+        new: true, 
+        runValidators: true 
+      }
+    )
+    .then(updatedDevice => {
+      console.log(updatedDevice.device_photos)
+      res.json(updatedDevice)
     }
+      )
+    .catch(err => res.status(400).json(err));
+  },
+
+  deletedDevice({ params }, res) {
+      Device.findOneAndDelete({ _id: params.id })
+      .then(deletedDevice => {
+          if (!deletedDevice) {
+          res.status(404).json({ message: 'No device available!' });
+          return;
+          }
+          res.json(deletedDevice);
+      })
+      .catch(err => res.status(400).json(err));
+  }
 
 };
 

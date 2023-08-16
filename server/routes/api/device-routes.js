@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const { getAllDevices, getDevicesById, createDevice, deletedDevice} = require('../../controller/device-controller')
+const { getAllDevices, getDevicesById, createDevice, uploadPhotos, deletedDevice} = require('../../controller/device-controller')
 
 router.route('/')
     .get(getAllDevices)
@@ -9,6 +9,7 @@ router.route('/')
 router.route('/:id')
     .get(getDevicesById)
     .delete(deletedDevice)
+    .put(uploadPhotos)
 
 // router.route('/:ownerId')
 //     .post(createDevice)

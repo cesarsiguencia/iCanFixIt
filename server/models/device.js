@@ -13,9 +13,9 @@ const deviceSchema = new Schema({
         require: true,
         validate: {
             validator: function(year) {
-                return year.toString().length === 4 && year.toString().padStart(1, '1' || '2')
+               return year.toString().length === 4 && year > 1900 && year < 2100
             },
-            message: year => `${year.value} has to be 4 digits`
+            message: year => `${year.value} has to be 4 digits`,
         }
     },
     createdAt: {
@@ -52,10 +52,20 @@ const deviceSchema = new Schema({
         type: Number,
         enum: [1, 2, 3, 4, 5],
     },
-    my_notes:{
+    my_notes: {
         type: String,
         maxlength: 500
+    },
+    device_photos: {
+        type: Array,
+        validate: {
+            validator: function(val){
+                return val.length < 6;
+            },
+            message:`Do no upload more than 5 pictures`
+        }
     }
+    
 })
 
 const Device = model('Device', deviceSchema)
