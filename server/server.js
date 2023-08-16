@@ -8,10 +8,16 @@ const PORT = process.env.PORT || 4101;
 
 // const routes = require('./routes')
 
+app.get('/testing', (req, res) => {
+    res.json({message: 'Working server'})
+})
+
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 // app.use(express.static('public'))
 app.use(require('./routes'))
+
+
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/i-can-fix-it', {
     useNewUrlParser: true,
