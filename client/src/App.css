@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -15,13 +16,28 @@
 
 .App-header {
   background-color: #282c34;
+  /* opacity: 0.5; */
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(15px + 2vmin);
   color: white;
+  height: 100vh;
+  width: 150px;
+}
+
+.nav-links{
+  text-decoration-line: none
+}
+
+.nav-links-font{
+  color: white;
+}
+
+.nav-submit{
+  background-color: aqua;
 }
 
 .App-link {
@@ -36,3 +52,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* .burger,.menu,.background {
+position: fixed;
+} */
+
+/* .nav-links{
+  margin: 10px 0;
+} */
+
