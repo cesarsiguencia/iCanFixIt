@@ -6,7 +6,7 @@ const Header = () => {
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
 
             <Link className='nav-links' to='/icanfixit'>
-                <p class='nav-links-font'>
+                <p className='nav-links-font'>
                     iCanFixIt
                 </p>
             </Link>
@@ -16,7 +16,7 @@ const Header = () => {
           class="burger"
           onclick="toggleMenu()"></button> */}
             {/* <div class="background"></div> */}
-            <div class="menu">
+            <div className="menu">
                 <nav>
                     <Link className='nav-links' to="/icanfixit/about">
                         <p className='nav-links-font'

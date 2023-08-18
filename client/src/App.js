@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 
-// import TestingDom from './components/testing'
+import TestingDom from './components/testing'
 
 //PAGES
 import HomePg from './pages/home'
@@ -22,6 +22,9 @@ function App() {
         <HeaderComp></HeaderComp>
 
         <div className="App-body">
+
+
+        
           <Routes>
             <Route path='/icanfixit' element={<HomePg></HomePg>}>
 
