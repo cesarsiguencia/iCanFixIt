@@ -1,7 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 
-import TestingDom from './components/testing'
+
+
 
 //PAGES
 import HomePg from './pages/home'
@@ -9,28 +10,38 @@ import AboutPg from './pages/about'
 import FormPg from './pages/form'
 import ReviewPg from './pages/review'
 import GalleryPg from './pages/gallery'
+import ImageUploadPg from './pages/form-images'
 
 //COMPONENTS
 import HeaderComp from './components/header'
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { useState } from 'react';
 
 function App() {
+
+  // const [ clientId, setClientId ] = useState()
   return (
     <Router>
-      <div className="App">
+      <div className="App"
+      
+
+      >
         <HeaderComp></HeaderComp>
 
-        <div className="App-body">
+        <div className="App-body" 
+                
+        >
 
 
-        
           <Routes>
             <Route path='/icanfixit' element={<HomePg></HomePg>}>
 
             </Route>
 
-            <Route path='/icanfixit/form' element={<FormPg></FormPg>}>
+
+
+            <Route path='/icanfixit/form' element={<FormPg ></FormPg>}>
 
             </Route>
 
@@ -45,6 +56,12 @@ function App() {
             <Route path='/icanfixit/gallery' element={<GalleryPg></GalleryPg>}>
 
             </Route>
+
+            <Route  path='/icanfixit/client' element={<ImageUploadPg></ImageUploadPg>}>
+
+            </Route>
+
+
 
           </Routes>
 
