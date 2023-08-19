@@ -1,6 +1,6 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 
-const ClientForm = ({uploading, setUploading, setClientForm, setClientId, setClientName}) =>{
+const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setClientName }) => {
 
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
@@ -23,38 +23,23 @@ const ClientForm = ({uploading, setUploading, setClientForm, setClientId, setCli
             address_zipcode: zipcode
         }
 
-        const response = await fetch("/api/clients",{
+        const response = await fetch("/api/clients", {
             method: 'post',
             body: JSON.stringify(client),
-            headers: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
-        
-        if(response.ok){
-            console.log(response)
+
+        if (response.ok) {
             var data = await response.json()
-            console.log(data._id)
             alert('success')
             setClientId(data._id)
             setClientName(firstName)
             setClientForm(false)
-
-            
-
-
-
         } else {
             console.log(response.statusText)
         }
-
         setUploading(false)
-
     }
-
-    useEffect(() => {
-        fetch("/api/clients")
-          .then((res) => res.json())
-          .then((clientInfo) => console.log(clientInfo[0]));
-      }, []);
 
     return (
         <div >
@@ -70,7 +55,7 @@ const ClientForm = ({uploading, setUploading, setClientForm, setClientId, setCli
                     </input>
                 </div>
 
-                <div className="form-components"> 
+                <div className="form-components">
                     <label>
                         Last Name:
                     </label>
@@ -117,21 +102,14 @@ const ClientForm = ({uploading, setUploading, setClientForm, setClientId, setCli
                     </input>
                 </div>
 
-                {!uploading &&   <button className="form-components" type='submit'>
+                {!uploading && <button className="form-components" type='submit'>
                     Submit Your Info
                 </button>}
 
-                {uploading &&     <button disabled className="form-components">
+                {uploading && <button disabled className="form-components">
                     Adding client...
                 </button>}
-
-
-
             </form>
-
-            <div>
-
-            </div>
         </div>
     )
 

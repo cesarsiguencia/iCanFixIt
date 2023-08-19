@@ -26,7 +26,6 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
 
         if(response.ok){
             var data = await response.json()
-            console.log(data)
             alert('success')
             setDevice(deviceName)
             setDeviceForm(false)
@@ -37,7 +36,6 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
         }
         setUploading(false)
     }
- 
 
     return(
         <div>
@@ -89,11 +87,7 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
                     Adding Your Device...
                 </button>}
 
-
-
-            </form>
-
-            
+            </form>  
         </div>
     )
 }

@@ -6,7 +6,7 @@ import ClientForm from '../components/forms/client-form'
 import DeviceForm from '../components/forms/device-form'
 import Success from '../components/notices/service-submitted'
 
-const Form = (props) => {
+const Form = () => {
 
     const [clientForm, setClientForm] = useState(true)
     const [deviceForm, setDeviceForm] = useState(true)
@@ -15,9 +15,6 @@ const Form = (props) => {
     const [clientName, setClientName] = useState()
     const [uploading, setUploading] = useState(false)
     const [device, setDevice] = useState()
-
-    console.log(clientId, 'clientId when state is changed')
-    console.log(clientForm)
 
     return (
         <div>

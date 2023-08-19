@@ -5,8 +5,6 @@ const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientVa
     const [validateEmail, setValidateEmail] = useState()
     const [validateZipcode, setValidateZipcode] = useState()
 
-    
-
     const handleValidateClient = async(e) =>{
         e.preventDefault()
         setUploading(true)
@@ -22,10 +20,7 @@ const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientVa
 
         if(res.ok){
             var returnedClient = await res.json()
-            console.log(returnedClient, 'the returned client')
             var clientId = returnedClient._id
-            console.log(clientId)
-
             alert('You have been verified!')
             setClientValidatedDevices(clientId)
             setUploading(false)
@@ -39,11 +34,11 @@ const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientVa
 
     }
 
-    useEffect(() => {
-        fetch("/api/clients")
-          .then((res) => res.json())
-          .then((clientInfo) => console.log(clientInfo[0]));
-      }, []);
+    // useEffect(() => {
+    //     fetch("/api/clients")
+    //       .then((res) => res.json())
+    //       .then((clientInfo) => console.log(clientInfo[0]));
+    //   }, []);
 
     return(
         <div>

@@ -29,23 +29,6 @@ const WriteReview = ({ uploading, setUploading, clientValidatedDevices }) => {
     const [loadingDevices, setLoadingDevices] = useState()
     const [arrayLength, setArrayLength] = useState()
 
-
-
-    // useEffect(()=>{
-    //     fetch(`/api/clients/${clientValidatedDevices}`)
-    //     .then(res => res.json())
-    //     .then(clientInfo => {
-    //         console.log(clientInfo)
-    //         clientDevices = clientInfo.devices
-    //         console.log(clientDevices)
-    //         setLoadingDevices(true)
-    //     })
-    // })
-
-    let devicesStored
-    
-
-
     useEffect(() => {
         setUploading(false)
         const fetchDevices = async () => {
@@ -54,30 +37,19 @@ const WriteReview = ({ uploading, setUploading, clientValidatedDevices }) => {
 
             if (res.ok) {
                 var data = await res.json()
-                // clientDevices = await data.devices
-                // console.log(clientDevices)
-                // console.log(loadingDevices, 'should be false')
-                if(data.devices.length == 0){
+                if (data.devices.length == 0) {
                     setArrayLength(false)
                 } else {
                     setArrayLength(true)
                 }
                 setLoadingDevices(data.devices)
-                console.log(data.devices)
             } else {
                 console.log(res.statusText)
             }
-
-
-
         }
-
         setUploading(true)
         fetchDevices()
     }, [])
-
-
-
 
     return (
         <div>
@@ -95,22 +67,24 @@ const WriteReview = ({ uploading, setUploading, clientValidatedDevices }) => {
                         ) : (
                             <div>
                                 <p>Devices finished loading</p>
-
-                        
-
-
-                                <p>Write A Review For Me!</p>
-
-                                {loadingDevices.map((device) => {
-                                    return (
-                                        <div key={device._id}>
-                                            <p>{device.device_name}</p>
-                                            <p>{device.device_year}</p>
-                                        </div>
-                                    )
-                                })}
+                                <p>Write A Review For Me! I appreciate it!</p>
 
                                 <form onSubmit={handleReviewSubmit}>
+                                    <div>
+                                        <label>Select One Of Your Devices</label>
+
+                                        <select defaultValue={"Your Devices"}>
+                                            <option disabled value='Your Devices'>Your Devices</option>
+                                            {loadingDevices.map((device) => {
+                                                return (
+
+                                                    <option key={device._id} value={device._id}>{device.device_name}, from {device.device_year}</option>
+
+                                                )
+                                            })}
+                                        </select>
+
+                                    </div>
                                     <div className="form-components">
                                         <label>
                                             Your Rating:
@@ -141,21 +115,12 @@ const WriteReview = ({ uploading, setUploading, clientValidatedDevices }) => {
                                     </div>
                                 </form>
                             </div>
-
-
                         )
                     }
-
-
                 </div>
-
-
-
             </>}
         </div>
     )
-
-
 }
 
 export default WriteReview

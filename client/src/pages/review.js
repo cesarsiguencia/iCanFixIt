@@ -7,16 +7,12 @@ import ValidateClient from '../components/validate-owner'
 const Review = () => {
 
     const [clientValidateForm, setClientValidateForm] = useState(true)
-    // const [deviceValidateForm, setDeviceValidateForm] = useState(false)
-
     const [clientValidatedDevices, setClientValidatedDevices] = useState()
-
     const [uploading, setUploading] = useState()
     return (
         <div>
             {
                 clientValidateForm &&
-
                 <ValidateClient
                     uploading={uploading}
                     setUploading={setUploading}
@@ -25,7 +21,6 @@ const Review = () => {
                 >
                 </ValidateClient>
             }
-
             {
                 !clientValidateForm &&
                 <ReviewForm
@@ -34,7 +29,6 @@ const Review = () => {
                     clientValidatedDevices={clientValidatedDevices}
                 ></ReviewForm>
             }
-
         </div>
     )
 }
