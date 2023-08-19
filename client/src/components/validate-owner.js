@@ -23,11 +23,11 @@ const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientVa
         if(res.ok){
             var returnedClient = await res.json()
             console.log(returnedClient, 'the returned client')
-            var clientDevices = returnedClient.devices
-            console.log(clientDevices)
+            var clientId = returnedClient._id
+            console.log(clientId)
 
             alert('You have been verified!')
-            setClientValidatedDevices(clientDevices)
+            setClientValidatedDevices(clientId)
             setUploading(false)
             setClientValidateForm(false)
             

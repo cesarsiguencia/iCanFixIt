@@ -29,6 +29,8 @@ const Review = () => {
             {
                 !clientValidateForm &&
                 <ReviewForm
+                    uploading={uploading}
+                    setUploading={setUploading}
                     clientValidatedDevices={clientValidatedDevices}
                 ></ReviewForm>
             }
