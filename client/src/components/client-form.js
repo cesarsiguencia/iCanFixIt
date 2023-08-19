@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react"
 
-const ClientForm = ({uploading, setUploading, setClientForm, setClientId}) =>{
+const ClientForm = ({uploading, setUploading, setClientForm, setClientId, setClientName}) =>{
 
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
@@ -34,8 +34,10 @@ const ClientForm = ({uploading, setUploading, setClientForm, setClientId}) =>{
             var data = await response.json()
             console.log(data._id)
             alert('success')
-            setClientForm(false)
             setClientId(data._id)
+            setClientName(firstName)
+            setClientForm(false)
+
             
 
 
