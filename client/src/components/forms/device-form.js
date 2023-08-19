@@ -67,8 +67,8 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
                         Description
                     </label>
 
-                    <input type="type" required value={deviceDesc} onChange={(e) => setDeviceDesc(e.target.value)}>
-                    </input>
+                    <textarea type="type" required value={deviceDesc} onChange={(e) => setDeviceDesc(e.target.value)}>
+                    </textarea>
                 </div>
 
 

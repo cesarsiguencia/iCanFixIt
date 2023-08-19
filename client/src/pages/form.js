@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 
 // import TestingDom from '../components/testing'
 
-import ClientForm from '../components/client-form'
-import DeviceForm from '../components/device-form'
+import ClientForm from '../components/forms/client-form'
+import DeviceForm from '../components/forms/device-form'
 import Success from '../components/notices/service-submitted'
 
 const Form = (props) => {
@@ -46,7 +46,8 @@ const Form = (props) => {
                 <Success
                     clientName={clientName}
                     device={device}
-                ></Success>}
+                ></Success>
+                }
 
         </div>
     )

@@ -1,7 +1,38 @@
+import { useState } from 'react'
+import ReviewForm from '../components/forms/review-form'
+import ValidateClient from '../components/validate-owner'
+
+
+
 const Review = () => {
-    return(
+
+    const [clientValidateForm, setClientValidateForm] = useState(true)
+    // const [deviceValidateForm, setDeviceValidateForm] = useState(false)
+
+    const [clientValidatedDevices, setClientValidatedDevices] = useState()
+
+    const [uploading, setUploading] = useState()
+    return (
         <div>
-            <p>Review</p>
+            {
+                clientValidateForm &&
+
+                <ValidateClient
+                    uploading={uploading}
+                    setUploading={setUploading}
+                    setClientValidateForm={setClientValidateForm}
+                    setClientValidatedDevices={setClientValidatedDevices}
+                >
+                </ValidateClient>
+            }
+
+            {
+                !clientValidateForm &&
+                <ReviewForm
+                    clientValidatedDevices={clientValidatedDevices}
+                ></ReviewForm>
+            }
+
         </div>
     )
 }
