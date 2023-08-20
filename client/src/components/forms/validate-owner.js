@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
-const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientValidatedDevices }) =>{
+const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
 
     const [validateEmail, setValidateEmail] = useState()
     const [validateZipcode, setValidateZipcode] = useState()
@@ -22,24 +22,17 @@ const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientVa
             var returnedClient = await res.json()
             var clientId = returnedClient._id
             alert('You have been verified!')
-            setClientValidatedDevices(clientId)
+            setClientId(clientId)
             setUploading(false)
-            setClientValidateForm(false)
+            setClientForm(false)
             
-
         } else {
             console.log(res.statusText)
         }
-
-
     }
 
     return(
         <div>
-            <p>In order to write a review for your device, client information must be listed within my records, has previously used my services, and has a device/devices saved with a 'Completed' service status.</p>
-
-            <p>Please validate the personal information you provided when you submited a new request, down below:</p>
-
             <form onSubmit={handleValidateClient}>
                 <div className="form-components">
                         <label>

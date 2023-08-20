@@ -43,7 +43,7 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
 
     return (
         <div >
-            <p>First: Enter Your Info</p>
+            <p>Enter Your Info</p>
 
             <form onSubmit={handleClientSubmit}>
                 <div className="form-components">

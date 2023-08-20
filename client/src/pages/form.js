@@ -1,5 +1,5 @@
-import React, { useState} from "react"
-
+import React, { useState } from "react"
+import ValidateClient from "../components/forms/validate-owner"
 // import TestingDom from '../components/testing'
 
 import ClientForm from '../components/forms/client-form'
@@ -19,13 +19,27 @@ const Form = () => {
     return (
         <div>
             {clientForm && deviceForm &&
-                <ClientForm
-                uploading={uploading}
-                setUploading={setUploading}
-                setClientForm={setClientForm}
-                setClientId={setClientId}
-                setClientName={setClientName}
-            ></ClientForm>
+                <div>
+                    <p>Have you previously submitted a device before? Search your profile here</p>
+                    <ValidateClient
+                        uploading={uploading}
+                        setUploading={setUploading}
+                        setClientId={setClientId}
+                        setClientForm={setClientForm}
+                        
+                    ></ValidateClient>
+                    <br />
+                    <br />
+                    <p>If this is your first time, please fill out your information below</p>
+
+                    <ClientForm
+                        uploading={uploading}
+                        setUploading={setUploading}
+                        setClientForm={setClientForm}
+                        setClientId={setClientId}
+                        setClientName={setClientName}
+                    ></ClientForm>
+                </div>
             }
 
             {!clientForm && deviceForm &&
@@ -44,7 +58,7 @@ const Form = () => {
                     clientName={clientName}
                     device={device}
                 ></Success>
-                }
+            }
 
         </div>
     )

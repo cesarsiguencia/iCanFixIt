@@ -4,27 +4,35 @@ import ValidateClient from '../components/forms/validate-owner'
 
 const Review = () => {
 
-    const [clientValidateForm, setClientValidateForm] = useState(true)
-    const [clientValidatedDevices, setClientValidatedDevices] = useState()
+    const [clientValidateForm, setClientForm] = useState(true)
+    const [clientId, setClientId] = useState()
     const [uploading, setUploading] = useState()
     return (
         <div>
             {
                 clientValidateForm &&
-                <ValidateClient
-                    uploading={uploading}
-                    setUploading={setUploading}
-                    setClientValidateForm={setClientValidateForm}
-                    setClientValidatedDevices={setClientValidatedDevices}
-                >
-                </ValidateClient>
+
+                <div>
+                    <p>In order to write a review for your device, client information must be listed within my records, has previously used my services, and has a device/devices saved with a 'Completed' service status.</p>
+
+                    <p>Please validate the personal information you provided when you submited a new request, down below:</p>
+                    <ValidateClient
+                        uploading={uploading}
+                        setUploading={setUploading}
+                        setClientId={setClientId}
+                        setClientForm={setClientForm}
+
+                    >
+                    </ValidateClient>
+                </div>
+
             }
             {
                 !clientValidateForm &&
                 <ReviewForm
                     uploading={uploading}
                     setUploading={setUploading}
-                    clientValidatedDevices={clientValidatedDevices}
+                    clientId={clientId}
                 ></ReviewForm>
             }
         </div>

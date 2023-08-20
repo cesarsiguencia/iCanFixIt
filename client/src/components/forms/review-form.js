@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const WriteReview = ({ uploading, setUploading, clientValidatedDevices }) => {
+const WriteReview = ({ uploading, setUploading, clientId }) => {
     const [id, setId] = useState()
     const [rating, setRating] = useState()
     const [reviewText, setReviewText] = useState()
@@ -42,7 +42,7 @@ const WriteReview = ({ uploading, setUploading, clientValidatedDevices }) => {
         setLoadingReview(true)
         const fetchDevices = async () => {
 
-            const res = await fetch(`/api/clients/${clientValidatedDevices}`)
+            const res = await fetch(`/api/clients/${clientId}`)
 
             if (res.ok) {
                 var data = await res.json()
