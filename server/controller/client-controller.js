@@ -17,18 +17,18 @@ const clientController = {
     },
     
     getClientById({ params }, res) {
+      console.log(params.id)
         Client.findOne({ _id: params.id })
-        // .populate({
-        //     path: 'devices',
-        //     select: '-__v'
-        //   })
+        .populate({
+            path: 'devices',
+            select: '-__v'
+          })
           .then(clientData => {
             
             if (!clientData) {
               res.status(404).json({ message: 'No client available' });
               return;
             }
-            console.log(clientData._id)
             res.json(clientData);
         })
           .catch(err => {
@@ -37,9 +37,33 @@ const clientController = {
         });
     },
 
+    getClientByOther({ body }, res) {
+      console.log(body, 'line 41....')
+        Client.findOne(
+          {
+            email: body.validateEmail,
+            address_zipcode: body.validateZipcode
+          }
+        ).then(clientData => {
+          
+          if (!clientData) {
+            res.status(404).json({ message: 'No client available' });
+            return;
+          }
+          res.json(clientData);
+      })
+        .catch(err => {
+          console.log(err);
+          res.status(400).json(err);
+      });
+  },
+
     createClient({ body }, res) {
         Client.create(body)
-        .then(newClient => res.json(newClient))
+        .then(newClient => {
+          console.log(newClient)
+          res.json(newClient)
+        })
         .catch(err => res.status(400).json(err));
     },
 

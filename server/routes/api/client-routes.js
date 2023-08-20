@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const { getAllClients, getClientById, createClient, deletedClient} = require('../../controller/client-controller')
+const { getAllClients, getClientById, createClient, deletedClient, getClientByOther} = require('../../controller/client-controller')
 
 router.route('/')
     .get(getAllClients)
@@ -9,5 +9,8 @@ router.route('/')
 router.route('/:id')
     .get(getClientById)
     .delete(deletedClient)
+
+router.route('/validate')
+    .post(getClientByOther)
 
 module.exports = router;

@@ -61,7 +61,8 @@ const deviceController = {
       .catch(err => res.status(400).json(err));
   },
 
-  uploadPhotos({ params, body }, res) {
+  updateDevice({ params, body }, res) {
+    console.log(body)
     Device.findOneAndUpdate(
       { _id: params.id }, 
       body, 

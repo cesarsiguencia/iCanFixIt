@@ -1,4 +1,5 @@
 const express = require('express')
+// const cors = require('cors')
 
 const mongoose = require('mongoose')
 
@@ -8,6 +9,8 @@ const PORT = process.env.PORT || 4101;
 
 // const routes = require('./routes')
 
+
+// app.use(cors())
 app.get('/testing', (req, res) => {
     res.json({message: 'Working server'})
 })

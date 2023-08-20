@@ -27,7 +27,8 @@ const clientSchema = new Schema({
     },
     address_zipcode: {
         type: Number,
-        required: true
+        required: true,
+        length: 5
     },
     devices: [
         {
