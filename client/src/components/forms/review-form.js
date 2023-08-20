@@ -46,11 +46,17 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
 
             if (res.ok) {
                 var data = await res.json()
-                if (data.devices.length == 0) {
-                    setArrayLength(false)
-                } else {
-                    setArrayLength(true)
-                }
+
+                data.devices.forEach((deviceServiced) => {
+                    if(deviceServiced.device_status === "Completed"){
+                        setArrayLength(true)
+                    } 
+                })
+                // if (data.devices.length == 0) {
+                    
+                // } else {
+                    
+                // }
                 setLoadingDevices(data.devices)
             } else {
                 console.log(res.statusText)
@@ -90,11 +96,15 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                                         >
                                             <option disabled value='Your Devices'>Your Devices</option>
                                             {loadingDevices.map((device) => {
-                                                return (
+                                                if(device.device_status === "Completed"){
+                                                    return (
 
-                                                    <option key={device._id} value={device._id}>{device.device_name}, from {device.device_year}</option>
-
-                                                )
+                                                        <option key={device._id} value={device._id}>{device.device_name}, from {device.device_year}</option>
+    
+                                                    )
+                                                }
+                    
+                                    
                                             })}
                                         </select>
 
@@ -109,7 +119,7 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                                             value={rating}
                                             onChange={(e) => setRating(e.target.value)}
                                         >
-                                            <option disable value='Select a rating'>Select A Rating</option>
+                                            <option disabled value='Select a rating'>Select A Rating</option>
                                             <option value='5'>5</option>
                                             <option value='4'>4</option>
                                             <option value='3'>3</option>
@@ -145,15 +155,18 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                                             <p>Your List of Reviewed Devices</p>
 
                                             {loadingDevices.map((reviewedDevice) => {
-                                                listNumber = listNumber + 1
-                                                if (reviewedDevice.owner_rating && reviewedDevice.owner_review) {
+                                                
+                                                if (reviewedDevice.owner_rating && reviewedDevice.owner_review && reviewedDevice.device_status === 'Completed') {
+                                                    listNumber = listNumber + 1
                                                     return (
-                                                        <div key={listNumber}>
+                                                        <div key={reviewedDevice.createdAt}>
                                                             <p>{listNumber}.</p>
                                                             <p>{reviewedDevice.device_name}</p>
                                                             <p>{reviewedDevice.device_year}</p>
                                                             <p>{reviewedDevice.owner_rating}</p>
                                                             <p>{reviewedDevice.owner_review}</p>
+                                                            <br/>
+                                                            <br/>
                                                         </div>
                                                     ) 
                                                 }

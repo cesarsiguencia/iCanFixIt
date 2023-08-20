@@ -8,6 +8,10 @@ import Success from '../components/notices/service-submitted'
 
 const Form = () => {
 
+    const [returning, setReturning] = useState()
+    const [newClient, setNewClient] = useState()
+    const [selectStarter, setSelectStarter] = useState(true)
+
     const [clientForm, setClientForm] = useState(true)
     const [deviceForm, setDeviceForm] = useState(true)
 
@@ -18,27 +22,71 @@ const Form = () => {
 
     return (
         <div>
+
             {clientForm && deviceForm &&
                 <div>
-                    <p>Have you previously submitted a device before? Search your profile here</p>
-                    <ValidateClient
-                        uploading={uploading}
-                        setUploading={setUploading}
-                        setClientId={setClientId}
-                        setClientForm={setClientForm}
-                        
-                    ></ValidateClient>
-                    <br />
-                    <br />
-                    <p>If this is your first time, please fill out your information below</p>
 
-                    <ClientForm
-                        uploading={uploading}
-                        setUploading={setUploading}
-                        setClientForm={setClientForm}
-                        setClientId={setClientId}
-                        setClientName={setClientName}
-                    ></ClientForm>
+                    {selectStarter &&
+                        <div>
+                            <p>Are you a new or returning client?</p>
+
+                            <button onClick={() => {
+                                setReturning(false)
+                                setNewClient(true)
+                                setSelectStarter(false)
+                            }
+                            }
+
+                            >
+                                <p>New</p>
+                            </button>
+                            <br />
+                            <br />
+                            <button onClick={() => {
+                                setReturning(true)
+                                setNewClient(false)
+                                setSelectStarter(false)
+                            }}>
+                                <p>Returning</p>
+                            </button>
+                        </div>
+                    }
+
+                    <br />
+
+                    {returning && !newClient &&
+                        <div>
+                            <p>Search your profile here</p>
+                            <ValidateClient
+                                uploading={uploading}
+                                setUploading={setUploading}
+                                setClientId={setClientId}
+                                setClientForm={setClientForm}
+
+                            ></ValidateClient>
+                            <br />
+                        </div>
+
+                    }
+
+                    {!returning && newClient &&
+                        <div>
+                            <br />
+                            <p>If this is your first time, please fill out your information below</p>
+
+                            <ClientForm
+                                uploading={uploading}
+                                setUploading={setUploading}
+                                setClientForm={setClientForm}
+                                setClientId={setClientId}
+                                setClientName={setClientName}
+                            ></ClientForm>
+                        </div>
+                    }
+
+
+
+
                 </div>
             }
 
