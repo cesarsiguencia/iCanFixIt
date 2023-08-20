@@ -34,12 +34,6 @@ const GrabOwner = ( {uploading, setUploading, setClientValidateForm, setClientVa
 
     }
 
-    // useEffect(() => {
-    //     fetch("/api/clients")
-    //       .then((res) => res.json())
-    //       .then((clientInfo) => console.log(clientInfo[0]));
-    //   }, []);
-
     return(
         <div>
             <p>In order to write a review for your device, client information must be listed within my records, has previously used my services, and has a device/devices saved with a 'Completed' service status.</p>
