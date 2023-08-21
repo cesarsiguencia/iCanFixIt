@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setClientName }) => {
 
@@ -43,6 +43,7 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
 
     return (
         <div >
+
             <p>Enter Your Info</p>
 
             <form onSubmit={handleClientSubmit}>

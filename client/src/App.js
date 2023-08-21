@@ -1,8 +1,9 @@
 // import logo from './logo.svg';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 
-
-
+import {Container, Row, Col } from 'react-bootstrap'
 
 //PAGES
 import HomePg from './pages/home'
@@ -16,7 +17,7 @@ import ImageUploadPg from './pages/form-images'
 import HeaderComp from './components/header'
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { useState } from 'react';
+
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
         <HeaderComp></HeaderComp>
 
         <div className="App-body" 
+
+
                 
         >
 
