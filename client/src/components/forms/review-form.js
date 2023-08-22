@@ -3,13 +3,12 @@ import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 
-const WriteReview = ({ uploading, setUploading, clientId }) => {
+const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
     const [id, setId] = useState()
     const [rating, setRating] = useState()
     const [reviewText, setReviewText] = useState()
 
     const [loadingReview, setLoadingReview] = useState()
-    console.log(clientId)
 
     const [loadingDevices, setLoadingDevices] = useState()
     const [arrayLength, setArrayLength] = useState()
@@ -21,7 +20,6 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
             owner_rating: rating,
             owner_review: reviewText
         }
-        //CHANGEEE!!!!!! ID
         const res = await fetch(`/api/devices/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -82,11 +80,11 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                     {!arrayLength ?
                         (
                             <div>
-                                <p>You have no devices that have completed receiving service. You may write a review once you receive your device back.</p>
+                                <p>You have no devices that have completed receiving service, {clientName}. You may write a review once you receive your device back.</p>
                             </div>
                         ) : <>
                             <div>
-                                <h4>Write A Review For Me! I appreciate it!</h4>
+                                <h4>Write Or Update A Review For Me! Thank you, {clientName}!</h4>
                                 <br />
 
                                 <Form onSubmit={handleReviewSubmit}>

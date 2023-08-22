@@ -7,7 +7,9 @@ import DeviceForm from '../components/forms/device-form'
 import Success from '../components/notices/service-submitted'
 import Button from 'react-bootstrap/button'
 
-const Form = () => {
+
+
+const FormEntries = () => {
 
     const [returning, setReturning] = useState()
     const [newClient, setNewClient] = useState()
@@ -23,12 +25,12 @@ const Form = () => {
 
     return (
         <div>
-            <h4>Request a service for your device here:</h4>
             {clientForm && deviceForm &&
                 <div>
 
                     {selectStarter &&
                         <div>
+                            <h4>Request a service for your device here:</h4>
                             <p>Are you a new or returning client?</p>
 
                             <Button onClick={() => {
@@ -53,17 +55,15 @@ const Form = () => {
                         </div>
                     }
 
-                    <br />
-
                     {returning && !newClient &&
                         <div>
-                            <p>Search your profile here</p>
+                            <h4>Search your profile here</h4>
                             <ValidateClient
                                 uploading={uploading}
                                 setUploading={setUploading}
                                 setClientId={setClientId}
                                 setClientForm={setClientForm}
-
+                                setClientName={setClientName}
                             ></ValidateClient>
                             <br />
                         </div>
@@ -72,8 +72,7 @@ const Form = () => {
 
                     {!returning && newClient &&
                         <div>
-                            <br />
-                            <p>If this is your first time, please fill out your information below</p>
+                            <h4>If this is your first time, please fill out your information below:</h4>
 
                             <ClientForm
                                 uploading={uploading}
@@ -113,4 +112,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default FormEntries

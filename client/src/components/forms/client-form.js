@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Button from 'react-bootstrap/button'
+import Form from 'react-bootstrap/Form'
 
 const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setClientName }) => {
 
@@ -45,64 +46,62 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
     return (
         <div >
 
-            <p>Enter Your Info</p>
-
-            <form onSubmit={handleClientSubmit}>
-                <div className="form-components">
-                    <label>
+            <Form onSubmit={handleClientSubmit}>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         First Name:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={firstName} onChange={(e) => setFirstName(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' type="type" placeholder='Enter Your First Name' required value={firstName} onChange={(e) => setFirstName(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         Last Name:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={lastName} onChange={(e) => setLastName(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' type="type" placeholder='Last Name' required value={lastName} onChange={(e) => setLastName(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         Email:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={email} onChange={(e) => setEmail(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' type="type" placeholder='Email' required value={email} onChange={(e) => setEmail(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         Street and Building Number:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={address} onChange={(e) => setAddress(e.target.value)}>
-                    </input>
+                    <Form.Control as='input' type="type" placeholder='Enter Street Addres' required value={address} onChange={(e) => setAddress(e.target.value)}>
+                    </Form.Control>
 
-                </div>
+                </Form.Group>
 
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         State:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={state} onChange={(e) => setState(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' placeholder='State' type="type" required value={state} onChange={(e) => setState(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         Zipcode:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={zipcode} onChange={(e) => setZipcode(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' type="type" placeholder='Five digits'required value={zipcode} onChange={(e) => setZipcode(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
                 {!uploading && <Button className="form-components" type='submit'>
                     Submit Your Info
@@ -111,7 +110,7 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
                 {uploading && <Button disabled className="form-components">
                     Adding client...
                 </Button>}
-            </form>
+            </Form>
         </div>
     )
 

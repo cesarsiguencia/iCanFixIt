@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
 
-const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
+const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm, setClientName}) =>{
 
     const [validateEmail, setValidateEmail] = useState()
     const [validateZipcode, setValidateZipcode] = useState()
@@ -23,8 +23,11 @@ const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
         if(res.ok){
             var returnedClient = await res.json()
             var clientId = returnedClient._id
+            var clientName = returnedClient.first_name
             alert('You have been verified!')
             setClientId(clientId)
+            setClientName(clientName)
+           
             setUploading(false)
             setClientForm(false)
             

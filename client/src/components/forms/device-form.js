@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Button from 'react-bootstrap/button'
+import Form from 'react-bootstrap/Form'
 
 const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId}) =>{
 
@@ -40,35 +41,35 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
 
     return(
         <div>
-            <p>Enter the device info:</p>
+            <h4>Enter the device info:</h4>
 
-            <form onSubmit={handleDeviceSubmit}>
-                <div className="form-components">
-                    <label>
+            <Form onSubmit={handleDeviceSubmit}>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         Device Name:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={deviceName} onChange={(e) => setDeviceName(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' placeholder='Title of the device with Generation #' type="type" required value={deviceName} onChange={(e) => setDeviceName(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
-                <div className="form-components"> 
-                    <label>
+                <Form.Group className="form-components"> 
+                    <Form.Label>
                         Device Year:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={deviceYear} onChange={(e) => setDeviceYear(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control as='input' placeholder='4 digits' type="type" required value={deviceYear} onChange={(e) => setDeviceYear(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components">
+                    <Form.Label>
                         Description
-                    </label>
+                    </Form.Label>
 
-                    <textarea type="type" required value={deviceDesc} onChange={(e) => setDeviceDesc(e.target.value)}>
-                    </textarea>
-                </div>
+                    <Form.Control as='textarea' placeholder='Describe the issue with your device in full depth' type="type" required value={deviceDesc} onChange={(e) => setDeviceDesc(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
 
                 {/* <div className="form-components">
@@ -88,7 +89,7 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
                     Adding Your Device...
                 </Button>}
 
-            </form>  
+            </Form>  
         </div>
     )
 }
