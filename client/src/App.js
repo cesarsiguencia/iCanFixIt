@@ -30,13 +30,8 @@ function App() {
       >
         <HeaderComp></HeaderComp>
 
-        <div className="App-body" 
-
-
-                
-        >
-
-
+        <div className="App-body">
+          <Container>
           <Routes>
             <Route path='/icanfixit' element={<HomePg></HomePg>}>
 
@@ -68,6 +63,11 @@ function App() {
 
           </Routes>
 
+            
+          </Container>
+
+
+       
         </div>
       </div>
     </Router >

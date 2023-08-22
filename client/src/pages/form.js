@@ -5,6 +5,7 @@ import ValidateClient from "../components/forms/validate-owner"
 import ClientForm from '../components/forms/client-form'
 import DeviceForm from '../components/forms/device-form'
 import Success from '../components/notices/service-submitted'
+import Button from 'react-bootstrap/button'
 
 const Form = () => {
 
@@ -22,7 +23,7 @@ const Form = () => {
 
     return (
         <div>
-
+            <h4>Request a service for your device here:</h4>
             {clientForm && deviceForm &&
                 <div>
 
@@ -30,7 +31,7 @@ const Form = () => {
                         <div>
                             <p>Are you a new or returning client?</p>
 
-                            <button onClick={() => {
+                            <Button onClick={() => {
                                 setReturning(false)
                                 setNewClient(true)
                                 setSelectStarter(false)
@@ -38,17 +39,17 @@ const Form = () => {
                             }
 
                             >
-                                <p>New</p>
-                            </button>
+                                New
+                            </Button>
                             <br />
                             <br />
-                            <button onClick={() => {
+                            <Button onClick={() => {
                                 setReturning(true)
                                 setNewClient(false)
                                 setSelectStarter(false)
                             }}>
-                                <p>Returning</p>
-                            </button>
+                                Returning
+                            </Button>
                         </div>
                     }
 

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  display: flex;
+  /* display: flex; */
+  height: 100vh
 }
 
 .App-logo {
@@ -23,13 +24,13 @@
   /* opacity: 0.5; */
   /* min-height: 100vh; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   font-size: calc(15px + 2vmin);
   color: white;
-  height: 100vh;
-  width: 150px;
+
+
 }
 
 .nav-links{
@@ -85,3 +86,11 @@ form{
   width:100%
 }
 
+.container{
+  margin: 15px auto
+}
+
+.body-about-text{
+  display: grid;
+  place-items: center;
+}

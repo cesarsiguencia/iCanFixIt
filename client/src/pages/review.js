@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReviewForm from '../components/forms/review-form'
 import ValidateClient from '../components/forms/validate-owner'
 
+
 const Review = () => {
 
     const [clientValidateForm, setClientForm] = useState(true)
@@ -9,7 +10,8 @@ const Review = () => {
     const [uploading, setUploading] = useState()
     return (
         <div>
-            {
+
+                    {
                 clientValidateForm &&
 
                 <div>
@@ -35,7 +37,8 @@ const Review = () => {
                     clientId={clientId}
                 ></ReviewForm>
             }
-        </div>
+
+</div>
     )
 }
 

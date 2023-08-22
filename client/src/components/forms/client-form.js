@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Button from 'react-bootstrap/button'
 
 const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setClientName }) => {
 
@@ -103,13 +104,13 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
                     </input>
                 </div>
 
-                {!uploading && <button className="form-components" type='submit'>
+                {!uploading && <Button className="form-components" type='submit'>
                     Submit Your Info
-                </button>}
+                </Button>}
 
-                {uploading && <button disabled className="form-components">
+                {uploading && <Button disabled className="form-components">
                     Adding client...
-                </button>}
+                </Button>}
             </form>
         </div>
     )

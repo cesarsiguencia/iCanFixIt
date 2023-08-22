@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/button'
 
 const WriteReview = ({ uploading, setUploading, clientId }) => {
     const [id, setId] = useState()
@@ -139,13 +140,13 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                                         </textarea>
                                     </div>
 
-                                    {!uploading && <button className="form-components" type='submit'>
+                                    {!uploading && <Button className="form-components" type='submit'>
                                         Submit Review
-                                    </button>}
+                                    </Button>}
 
-                                    {uploading && <button disabled className="form-components">
+                                    {uploading && <Button disabled className="form-components">
                                         Uploading review...
-                                    </button>}
+                                    </Button>}
 
                                 </form>
 

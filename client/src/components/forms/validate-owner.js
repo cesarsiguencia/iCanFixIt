@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Button from 'react-bootstrap/button'
 
 const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
 
@@ -52,13 +53,13 @@ const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
                     </input>
                 </div>
 
-                {!uploading && <button className="form-components" type='submit'>
+                {!uploading && <Button className="form-components" type='submit'>
                     Validate Your Info
-                </button>}
+                </Button>}
 
-                {uploading &&  <button disabled className="form-components">
+                {uploading &&  <Button disabled className="form-components">
                     Searching Records...
-                </button>}
+                </Button>}
 
 
             </form>

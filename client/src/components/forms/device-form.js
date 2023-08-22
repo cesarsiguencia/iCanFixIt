@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Button from 'react-bootstrap/button'
 
 const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId}) =>{
 
@@ -79,13 +80,13 @@ const DeviceForm = ({uploading, setUploading, setDeviceForm, setDevice, clientId
                     </input>
                 </div> */}
 
-                {!uploading &&   <button className="form-components" type='submit'>
+                {!uploading &&   <Button className="form-components" type='submit'>
                     Submit Device Info
-                </button>}
+                </Button>}
 
-                {uploading &&     <button disabled className="form-components">
+                {uploading &&     <Button disabled className="form-components">
                     Adding Your Device...
-                </button>}
+                </Button>}
 
             </form>  
         </div>
