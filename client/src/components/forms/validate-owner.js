@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Button from 'react-bootstrap/button'
+import Form from 'react-bootstrap/Form'
 
 const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
 
@@ -34,24 +35,24 @@ const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
 
     return(
         <div>
-            <form onSubmit={handleValidateClient}>
-                <div className="form-components">
-                        <label>
+            <Form onSubmit={handleValidateClient}>
+                <Form.Group className="form-components text-align-left">
+                        <Form.Label>
                             Email:
-                        </label>
+                        </Form.Label>
 
-                        <input type="type" required value={validateEmail} onChange={(e) => setValidateEmail(e.target.value)}>
-                        </input>
-                </div>
+                        <Form.Control type="type" placeholder='Enter the email you submitted with your first request' required value={validateEmail} onChange={(e) => setValidateEmail(e.target.value)}>
+                        </Form.Control>
+                </Form.Group>
 
-                <div className="form-components">
-                    <label>
+                <Form.Group className="form-components text-align-left">
+                    <Form.Label>
                         Zipcode:
-                    </label>
+                    </Form.Label>
 
-                    <input type="type" required value={validateZipcode} onChange={(e) => setValidateZipcode(e.target.value)}>
-                    </input>
-                </div>
+                    <Form.Control type="type" placeholder='Zipcode' required value={validateZipcode} onChange={(e) => setValidateZipcode(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
 
                 {!uploading && <Button className="form-components" type='submit'>
                     Validate Your Info
@@ -62,7 +63,7 @@ const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm}) =>{
                 </Button>}
 
 
-            </form>
+            </Form>
         </div>
     )
 }

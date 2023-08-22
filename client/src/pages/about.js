@@ -102,8 +102,8 @@ const About = () => {
                                     as="li"
                                     className="d-flex justify-content-between align-items-start"
                                 >
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">Fill Out a Submit Order Form</div>
+                                    <div className="ms-2 text-align-left">
+                                        <div className="fw-bold text-align-left">Fill Out a Submit Order Form</div>
                                         Please provide your contact information along with an in depth description of the problem with your device. Please provide pictures.
                                     </div>
                                                </ListGroup.Item>
@@ -111,7 +111,7 @@ const About = () => {
                                     as="li"
                                     className="d-flex justify-content-between align-items-start"
                                 >
-                                    <div className="ms-2 me-auto">
+                                    <div className="ms-2 text-align-left">
                                         <div className="fw-bold">Message From Me Within 48 Hours</div>
                                         Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much the service would be.
                                     </div>
@@ -120,7 +120,7 @@ const About = () => {
                                     as="li"
                                     className="d-flex justify-content-between align-items-start"
                                 >
-                                    <div className="ms-2 me-auto">
+                                    <div className="ms-2 text-align-left">
                                         <div className="fw-bold">Mail Device</div>
                                         Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc. 
                                         <br/>
@@ -133,7 +133,7 @@ const About = () => {
                                     as="li"
                                     className="d-flex justify-content-between align-items-start"
                                 >
-                                    <div className="ms-2 me-auto">
+                                    <div className="ms-2 text-align-left">
                                         <div className="fw-bold">Device Serviced and Returned</div>
                                         Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.
              

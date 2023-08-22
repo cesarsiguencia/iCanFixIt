@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/button'
+import Form from 'react-bootstrap/Form'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 const WriteReview = ({ uploading, setUploading, clientId }) => {
     const [id, setId] = useState()
@@ -7,7 +9,7 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
     const [reviewText, setReviewText] = useState()
 
     const [loadingReview, setLoadingReview] = useState()
-
+    console.log(clientId)
 
     const [loadingDevices, setLoadingDevices] = useState()
     const [arrayLength, setArrayLength] = useState()
@@ -19,7 +21,7 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
             owner_rating: rating,
             owner_review: reviewText
         }
-
+        //CHANGEEE!!!!!! ID
         const res = await fetch(`/api/devices/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -49,14 +51,14 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                 var data = await res.json()
 
                 data.devices.forEach((deviceServiced) => {
-                    if(deviceServiced.device_status === "Completed"){
+                    if (deviceServiced.device_status === "Completed") {
                         setArrayLength(true)
-                    } 
+                    }
                 })
                 // if (data.devices.length == 0) {
-                    
+
                 // } else {
-                    
+
                 // }
                 setLoadingDevices(data.devices)
             } else {
@@ -84,38 +86,38 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                             </div>
                         ) : <>
                             <div>
-                                <p>Devices finished loading</p>
-                                <p>Write A Review For Me! I appreciate it!</p>
+                                <h4>Write A Review For Me! I appreciate it!</h4>
+                                <br />
 
-                                <form onSubmit={handleReviewSubmit}>
-                                    <div>
-                                        <label>Select One Of Your Devices</label>
+                                <Form onSubmit={handleReviewSubmit}>
+                                    <Form.Group className='form-components text-align-left'>
+                                        <Form.Label>Select One Of Your Devices</Form.Label>
 
-                                        <select defaultValue={'Your Devices'}
+                                        <Form.Select defaultValue={'Your Devices'}
                                             value={id}
                                             onChange={(e) => setId(e.target.value)}
                                         >
-                                            <option disabled value='Your Devices'>Your Devices</option>
+                                            <option disabled value='Your Devices'>List of Serviced Devices</option>
                                             {loadingDevices.map((device) => {
-                                                if(device.device_status === "Completed"){
+                                                if (device.device_status === "Completed") {
                                                     return (
 
                                                         <option key={device._id} value={device._id}>{device.device_name}, from {device.device_year}</option>
-    
+
                                                     )
                                                 }
-                    
-                                    
+
+
                                             })}
-                                        </select>
+                                        </Form.Select>
 
-                                    </div>
-                                    <div className="form-components">
-                                        <label>
+                                    </Form.Group>
+                                    <Form.Group className="form-components text-align-left">
+                                        <Form.Label>
                                             Your Rating:
-                                        </label>
+                                        </Form.Label>
 
-                                        <select
+                                        <Form.Select
                                             defaultValue={'Select a rating'}
                                             value={rating}
                                             onChange={(e) => setRating(e.target.value)}
@@ -126,19 +128,19 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                                             <option value='3'>3</option>
                                             <option value='2'>2</option>
                                             <option value='1'>1</option>
-                                        </select>
+                                        </Form.Select>
 
 
-                                    </div>
+                                    </Form.Group>
 
-                                    <div className="form-components">
-                                        <label>
+                                    <Form.Group className="form-components text-align-left">
+                                        <Form.Label>
                                             Review Text:
-                                        </label>
+                                        </Form.Label>
 
-                                        <textarea type="text" required value={reviewText} onChange={(e) => setReviewText(e.target.value)}>
-                                        </textarea>
-                                    </div>
+                                        <Form.Control as="textarea" rows={4} required value={reviewText} onChange={(e) => setReviewText(e.target.value)}>
+                                        </Form.Control>
+                                    </Form.Group>
 
                                     {!uploading && <Button className="form-components" type='submit'>
                                         Submit Review
@@ -148,33 +150,43 @@ const WriteReview = ({ uploading, setUploading, clientId }) => {
                                         Uploading review...
                                     </Button>}
 
-                                </form>
+                                </Form>
+                                <br/>
 
-                                <div>
-                                    {loadingDevices &&
-                                        <div>
-                                            <p>Your List of Reviewed Devices</p>
+                                {loadingDevices &&
+                                    <ListGroup as="ol" numbered className='form-components'>
+                                        <h4>Your List of Reviewed Devices</h4>
+                                        <br/>
+                                        {loadingDevices.map((reviewedDevice) => {
 
-                                            {loadingDevices.map((reviewedDevice) => {
-                                                
-                                                if (reviewedDevice.owner_rating && reviewedDevice.owner_review && reviewedDevice.device_status === 'Completed') {
-                                                    listNumber = listNumber + 1
-                                                    return (
-                                                        <div key={reviewedDevice.createdAt}>
-                                                            <p>{listNumber}.</p>
-                                                            <p>{reviewedDevice.device_name}</p>
-                                                            <p>{reviewedDevice.device_year}</p>
-                                                            <p>{reviewedDevice.owner_rating}</p>
-                                                            <p>{reviewedDevice.owner_review}</p>
-                                                            <br/>
-                                                            <br/>
+                                            if (reviewedDevice.owner_rating && reviewedDevice.owner_review && reviewedDevice.device_status === 'Completed') {
+                                                // listNumber = listNumber + 1
+                                                return (
+                                                    <ListGroup.Item key={reviewedDevice.createdAt}
+                                                        as="li"
+                                                        className="d-flex align-items-start"
+                                                    >
+                                                        <div className="ms-2 fw-bold text-align-left">
+                                                        <div className="fw-bold text-align-left">{reviewedDevice.device_name}</div>
+                              
+
+                                                            <div className=" fw-normal text-align-left">
+                                                                <br/>
+                                                                <p>Device Year: {reviewedDevice.device_year}</p>
+                                                                <p>Your Service Rating: {reviewedDevice.owner_rating}</p>
+                                                                <p>Your Service Review: {reviewedDevice.owner_review}</p>
+
+                                                            </div>
                                                         </div>
-                                                    ) 
-                                                }
-                                            })}
-                                        </div>
-                                    }
-                                </div>
+
+
+                                                    </ListGroup.Item>
+                                                )
+                                            }
+                                        })}
+                                    </ListGroup>
+                                }
+
 
 
                             </div>

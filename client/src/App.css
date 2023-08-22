@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   /* display: flex; */
-  height: 100vh
+  /* height: 100vh */
 }
 
 .App-logo {
@@ -17,6 +17,7 @@
 
 .App-body{
   width: 100%;
+  margin: 25px auto
 }
 
 .App-header {
@@ -93,4 +94,8 @@ form{
 .body-about-text{
   display: grid;
   place-items: center;
+}
+
+.text-align-left{
+  text-align: left;
 }

@@ -6,12 +6,14 @@ import ValidateClient from '../components/forms/validate-owner'
 const Review = () => {
 
     const [clientValidateForm, setClientForm] = useState(true)
-    const [clientId, setClientId] = useState()
+    const [clientId, setClientId] = useState('64dbb16e25a58a89bf9cc3bb')
     const [uploading, setUploading] = useState()
+
+    
     return (
         <div>
 
-                    {
+                    {/* {
                 clientValidateForm &&
 
                 <div>
@@ -28,9 +30,9 @@ const Review = () => {
                     </ValidateClient>
                 </div>
 
-            }
+            } */}
             {
-                !clientValidateForm &&
+                clientValidateForm &&
                 <ReviewForm
                     uploading={uploading}
                     setUploading={setUploading}
