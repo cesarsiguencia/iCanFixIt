@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReviewForm from '../components/forms/review-form'
 import ValidateClient from '../components/forms/validate-owner'
-
+import successCheck from '../device-library/utils/success.gif'
 
 const Review = () => {
 
@@ -13,8 +13,8 @@ const Review = () => {
 
     return (
         <div>
-
             {
+                        
                 clientValidateForm &&
 
                 <div>
@@ -42,7 +42,12 @@ const Review = () => {
                 ></ReviewForm>
             }
 
-        </div>
+
+            </div>
+
+
+
+    
     )
 }
 

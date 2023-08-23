@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
-
+import NoDevices from '../notices/no-completed-services'
 const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
     const [id, setId] = useState()
     const [rating, setRating] = useState()
@@ -79,9 +79,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                 <div>
                     {!arrayLength ?
                         (
-                            <div>
-                                <p>You have no devices that have completed receiving service, {clientName}. You may write a review once you receive your device back.</p>
-                            </div>
+                            <NoDevices clientName={clientName}></NoDevices>
                         ) : <>
                             <div>
                                 <h4>Write Or Update A Review For Me! Thank you, {clientName}!</h4>

@@ -3,10 +3,11 @@ import React from 'react';
 import test_photo from '../../src/device-library/test.png'
 
 import { Container, Row, Col, Card, Badge, Button } from 'react-bootstrap'
+
 const Gallery = () => {
 
     return (
-        <div>
+        <div className='cesar'>
 
             <Container>
                 <Row>

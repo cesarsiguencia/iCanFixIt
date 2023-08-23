@@ -8,7 +8,6 @@ import Success from '../components/notices/service-submitted'
 import Button from 'react-bootstrap/button'
 
 
-
 const FormEntries = () => {
 
     const [returning, setReturning] = useState()

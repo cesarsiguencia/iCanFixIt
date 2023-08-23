@@ -1,23 +1,26 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap'
-import ListGroup from 'react-bootstrap/ListGroup'
+import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap'
 import test_photo from '../device-library/test.png'
+import FillOut from '../device-library/utils/complete-form.gif'
+import Email from '../device-library/utils/email-received.gif'
+import Shipping from '../device-library/utils/shipping.gif'
+import Success from '../device-library/utils/success.gif'
+import Portrait from '../device-library/portrait.png'
+import Mobile from '../device-library/utils/mobile.gif'
 
 const About = () => {
     return (
-        <div>
+        <div className='cesar'>
             <h3>Learn About It!</h3>
 
             <Container>
-
-
                 <Row className='body-about-row'>
-                    <Col xs={5}>
-                        <Card>
-                            <Card.Img src={test_photo}>
+                    <Col xs={5} className='body-about-text'>
+                      
+                            <img className='test-photo' src={Portrait}>
 
-                            </Card.Img>
-                        </Card>
+                            </img>
+                    
                     </Col>
 
                     <Col className='body-about-text'>
@@ -75,19 +78,18 @@ const About = () => {
                         </Card>
                     </Col>
 
-                    <Col xs={5}>
+                    <Col xs={5} className='body-about-text'>
+                      
+                      <img className='test-photo' src={Mobile}>
 
-                    </Col>
+                      </img>
+              
+              </Col>
+
                 </Row>
 
                 <Row className='body-about-row'>
-                    <Col xs={5}>
-
-
-                    </Col>
-
                     <Col>
-
                         <Card className='body-about-toast'>
                             <Card.Header>
                                 <strong className="mr-auto">How It Works</strong>
@@ -97,58 +99,72 @@ const About = () => {
                                 Interested? The process is easy!
                             </Card.Body>
 
-                            <ListGroup as="ol" numbered>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 text-align-left">
-                                        <div className="fw-bold text-align-left">Fill Out a Submit Order Form</div>
-                                        Please provide your contact information along with an in depth description of the problem with your device. Please provide pictures.
-                                    </div>
-                                               </ListGroup.Item>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 text-align-left">
-                                        <div className="fw-bold">Message From Me Within 48 Hours</div>
-                                        Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much the service would be.
-                                    </div>
-                                </ListGroup.Item>
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 text-align-left">
-                                        <div className="fw-bold">Mail Device</div>
-                                        Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc. 
-                                        <br/>
-                                        <br/>
-                                        <strong>Shipping carrier rates NOT included with service. Please pay send and return fees and provide me with a packing slip.</strong>
-                                    </div>
-                                </ListGroup.Item>
+                            <ListGroup as="ol">
+                                <div className='about-how-block'>
+                                    <img className='about' src={FillOut}>
+                                    </img>
 
-                                <ListGroup.Item
-                                    as="li"
-                                    className="d-flex justify-content-between align-items-start"
-                                >
-                                    <div className="ms-2 text-align-left">
-                                        <div className="fw-bold">Device Serviced and Returned</div>
-                                        Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.
-             
+                                    <div className="about-how-text text-align-left ">
+                                        <div>
+                                            <div className="fw-bold text-align-left">1: Fill Out a Submit Order Form</div>
+                                            <p>Please provide your contact information along with an in depth description of the problem with your device. Please provide pictures.</p>
+                                        </div>
+
                                     </div>
-                                </ListGroup.Item>
+                                </div>
+
+                                <div className='about-how-block'>
+                                    <img className='about' src={Email}>
+                                    </img>
+
+                                    <div className="about-how-text text-align-left ">
+                                        <div>
+                                        <div className="fw-bold">2: Message From Me Within 48 Hours</div>
+                                            <p>    Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much the service would be.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div className='about-how-block'>
+                                    <img className='about' src={Shipping}>
+                                    </img>
+
+                                    <div className="about-how-text text-align-left ">
+                                        <div>
+                                        <div className="fw-bold">3: Mail Device</div>
+                                            <p> Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div className='about-how-block'>
+                                    <img className='about' src={Success}>
+                                    </img>
+
+                                    <div className="about-how-text text-align-left ">
+                                        <div>
+                                        <div className="fw-bold">4: Device Serviced and Returned</div>
+                                            <p>  Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </ListGroup>
 
                             <Button className="form-components">Request a Service Today</Button>
                         </Card>
-
-
-
                     </Col>
                 </Row>
             </Container>
+
+            <div>
+
+
+
+            </div>
 
 
         </div>

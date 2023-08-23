@@ -44,7 +44,7 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
     }
 
     return (
-        <div >
+        <div>
 
             <Form onSubmit={handleClientSubmit}>
                 <Form.Group className="form-components text-align-left">

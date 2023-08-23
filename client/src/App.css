@@ -94,8 +94,55 @@ form{
 .body-about-text{
   display: grid;
   place-items: center;
+
 }
 
 .text-align-left{
   text-align: left;
+}
+
+.cesar{
+  opacity: 0.5;
+  transition: ease-in-out 1s;
+  
+}
+
+.success-gif{
+  height: 300px;
+
+}
+
+.dog-running{
+  height: 500px;
+}
+
+.about{
+  width: 150px;
+  height: 150px;
+  margin: 10px 40px;
+  border-radius: 500px;
+}
+
+.center-hor{
+display: grid;
+place-items: center;
+
+}
+
+.test-photo{
+  height: 300px;
+  border-radius: 500px;
+
+}
+
+.about-how-block{
+  display: flex;
+  flex-direction: row;
+}
+
+.about-how-text{
+  display: grid;
+  place-items: center;
+  width: 75%;
+  margin: 15px auto
 }
