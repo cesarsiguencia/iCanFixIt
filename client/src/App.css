@@ -48,8 +48,8 @@
 .nav-links-font{
   color: white;
   text-decoration-line: none;
-  /* font-weight: bold; */
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 22px;
   transition: ease-in-out 0.5s
 }
 
@@ -76,7 +76,7 @@
 }
 
 .featured-button{
-  background-color: rgb(21, 167, 169);
+  background-color: #0275d8;
   border-radius: 15px;
 }
 
@@ -88,6 +88,14 @@
 .toolbar{
   height: 25px;
   margin: 0 0 0 10px;
+}
+
+.links-selected{
+  /* color: #91e5ff */
+  /* color: rgb(0, 233, 233) */
+  color: rgb(231, 231, 4)
+  /* color: rgb(21, 167, 169) */
+  /* color:  rgb(255, 255, 0); */
 }
 
 
