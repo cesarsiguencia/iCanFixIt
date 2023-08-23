@@ -23,18 +23,21 @@ import HeaderComp from './components/header'
 import FooterComp from './components/footer'
 
 
+
 const App = () => {
 
 
   const [redirectClicked, setRedirectClicked] = useState(false)
+  const [showHero, setShowHero] = useState(false)
 
   const workEaseIn = () => {
     const bodyPages = document.querySelector('.cesar')
 
     if (bodyPages) {
       bodyPages.style.opacity = 1
-
+      setShowHero(true)
     }
+    
   }
 
 
@@ -50,7 +53,8 @@ const App = () => {
         ></HeaderComp>
 
         <div className="App-body" onLoad={workEaseIn}>
-          <Container>
+          
+
             <Routes>
               <Route path='/icanfixit' element={<HomePg></HomePg>}>
               </Route>
@@ -67,7 +71,7 @@ const App = () => {
               <Route setRedirectClicked={setRedirectClicked} path='/icanfixit/about' element={<AboutPg></AboutPg>}>
               </Route>
             </Routes>
-          </Container>
+          
 
 
 

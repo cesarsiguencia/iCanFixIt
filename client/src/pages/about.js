@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import HeroComp from '../components/hero'
 import ListItem from '../components/lists/about-how'
 import FillOut from '../device-library/utils/complete-form.gif'
 import Email from '../device-library/utils/email-received.gif'
@@ -14,29 +15,36 @@ const About = ({setRedirectClicked}) => {
         {
             image: FillOut,
             title: 'Fill Out A Submit Order Form',
-            context: 'Please provide your contact information along with an in depth description of the problem with your device. Please provide pictures.'
+            context: 'Please provide your contact information, email, address, along with an in depth description of the problem with your device. I need to know the generation number of the device as well as manufacturing year.',
+            bolded: 'Please provide pictures.'
         },
         {
             image: Email,
             title: 'Message From Me Within 48 Hours',
-            context: 'Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much the service would be.'
+            context: 'Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much $$$ service would be.',
+            bolded: 'Prices are competitive and vary per device and service. PAYMENT MUST BE RECEIVED BEFORE I RECEIVE YOUR DEVICE.'
         },
         {
             image: Shipping,
             title: 'Mail Device',
-            context: 'Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc.'
+            context: 'Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc.',
+            bolded: 'Send me carrier information as soon as you receive it!'
         },
         {
             image: Success,
             title: 'Device Serviced and Returned',
-            context: 'Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.'
+            context: 'Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.',
+            bolded: 'Please feel kind to revisit this page and leave me a review. It helps a lot!'
         }
     ]
     return (
         <div className='cesar'>
-            <h3>Learn About It!</h3>
+            <HeroComp></HeroComp>
+            <br/>
+            
 
             <Container>
+            <h3>Learn About It!</h3>
                 <Row className='body-about-row'>
                     <Col xs={5} className='body-about-text'>
 
@@ -50,7 +58,6 @@ const About = ({setRedirectClicked}) => {
                         <Card className='body-about-toast'>
                             <Card.Header className='w-100 gray-color'>
                                 <strong className="mr-auto">About What I Do </strong>
-                                {/* <small>just now</small> */}
                             </Card.Header>
 
                             <Card.Body>

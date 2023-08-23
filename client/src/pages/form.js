@@ -1,12 +1,14 @@
 import React, { useState } from "react"
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 import ValidateClient from "../components/forms/validate-owner"
-// import TestingDom from '../components/testing'
+
 
 import ClientForm from '../components/forms/client-form'
 import DeviceForm from '../components/forms/device-form'
 import Success from '../components/notices/service-submitted'
 import Button from 'react-bootstrap/button'
-
+import HeroComp from '../components/hero'
 
 const FormEntries = () => {
 
@@ -23,13 +25,18 @@ const FormEntries = () => {
     const [device, setDevice] = useState()
 
     return (
-        <div>
-            {clientForm && deviceForm &&
+        <div className="cesar">
+            <HeroComp></HeroComp>
+            <br/>
+            <Container>
+                <Row>
+           
+                {clientForm && deviceForm &&
                 <div>
 
                     {selectStarter &&
                         <div>
-                            <h4>Request a service for your device here:</h4>
+                            <h3>Request a service for your device here:</h3>
                             <p>Are you a new or returning client?</p>
 
                             <Button onClick={() => {
@@ -106,6 +113,11 @@ const FormEntries = () => {
                     device={device}
                 ></Success>
             }
+                </Row>
+            
+
+            </Container>
+
 
         </div>
     )

@@ -13,7 +13,7 @@
 .App-body{
   width: 100%;
   min-height: 90vh;
-  margin: 25px auto
+  margin-bottom: 25px
 }
 
 .App-header {
@@ -282,3 +282,14 @@ footer{
   background-color: white
 }
 
+.hero{
+  height: 400px;
+  overflow: hidden;
+}
+
+.hero-img{
+  width: 100%;
+  transform: translate(0,-75px)
+
+  
+}
