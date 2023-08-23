@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Container from 'react-bootstrap/Container'
@@ -26,15 +26,33 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const App = () => {
 
-  const workEaseIn = () =>{
+  const [currentPage, setCurrentPage] = useState(pages)
+  // const [portfolioClicked, setPortfolioClicked] = useState(false)
+
+  const pages = [
+    {
+      name: "About"
+    },
+    {
+      name: "Gallery"
+    },
+    {
+      name: "Review Me"
+    },
+    {
+      name: "Request Service"
+    }
+  ]
+
+  const workEaseIn = () => {
     const bodyPages = document.querySelector('.cesar')
 
-  
+
     console.log('on')
-  
+
     if (bodyPages) {
       bodyPages.style.opacity = 1
-  
+
     }
   }
 
@@ -42,11 +60,17 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <HeaderComp></HeaderComp>
+        <HeaderComp
+          pages={pages}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          // portfolioClicked={portfolioClicked}
+
+        ></HeaderComp>
 
         <div className="App-body" onLoad={workEaseIn}>
           <Container>
-          <Routes>
+            <Routes>
               <Route path='/icanfixit' element={<HomePg></HomePg>}>
               </Route>
 
@@ -65,7 +89,7 @@ const App = () => {
           </Container>
 
 
-      
+
 
         </div>
         <FooterComp></FooterComp>

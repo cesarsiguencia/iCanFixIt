@@ -1,104 +1,79 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import { Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import toolbar from '../device-library/utils/wrench-svgrepo-com.svg'
 
 const Header = () => {
+    // const {portfolioClicked} = props
+
+    const [titleClicked, setTitleClicked] = useState()
+    const [navClicked, setNavClicked] = useState()
+  
+    // if(portfolioClicked === true){
+    //   setTitleClicked(false)
+    //   setNavClicked(true)
+    // }
+
+
+    const pages = [
+        {
+          name: "About",
+          url: "about"
+        },
+        {
+          name: 'Gallery',
+          url: "gallery"
+        },
+        {
+          name: "Review Me",
+          url: "review"
+        },
+        {
+          name: "Request Service",
+          url: "form",
+          image: toolbar
+        }
+      ]
+    
+    //   let subUrlObjectAtLoad
+    //   const urlsArray = window.location.href.split('/')
+    //   const urlOfSubPage = urlsArray[urlsArray.length - 1] 
+      
+    //   if(urlOfSubPage!== 'my-react-portfolio'){
+    //     subUrlObjectAtLoad = {
+    //       urlSub: urlOfSubPage,
+    //       urlSubLoaded: true
+    //     }
+    //   } else {
+    //     subUrlObjectAtLoad = {
+    //       urlSub: "not a urlSub",
+    //       urlSubLoaded: false
+    //     }
+    //   }
+    
+    //   let currentIndex
+    //   const loadedPage = subUrlObjectAtLoad.urlSub
+    
+    //   if(loadedPage){
+    //     pages.forEach((page) => {
+    //       if(page.url === loadedPage){
+    //         currentIndex = pages.indexOf(page)
+    //       }
+    //     })
+    //   }
+    
+    //   const [selectedPage, setSelectedPage] = useState(pages[currentIndex])
+
     return (
-        // <header className="App-header">
-        //     {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        //     <div className='header-elements'>
-        //         <Navbar>
-        //         <Container>
-        //             <Nav>
-        //                 <Link className='nav-links' to='/icanfixit'>
-        //                     <p className='nav-links-font'>
-        //                         iCanFixIt
-        //                     </p>
-        //                 </Link>
-        //             </Nav>
-
-        //         </Container>
-        //         </Navbar>
-
-
-        //     </div>
-
-
-
-        //     {/* <button
-        //   class="burger"
-        //   onclick="toggleMenu()"></button> */}
-        //     {/* <div class="background"></div> */}
-        //     <div className="header-elements menu">
-        //         <Navbar expand="lg">
-        //             <Container>
-        //                 <Nav>
-        //                     <Link className='nav-links' to="/icanfixit/about">
-        //                         <p className='nav-links-font'
-        //                         // style="animation-delay: 0.2s"
-        //                         >
-        //                             About
-        //                         </p>
-        //                     </Link>
-
-        //                     <Link className='nav-links' to="/icanfixit/gallery">
-        //                         <p className='nav-links-font'>
-        //                             Gallery
-        //                         </p>
-        //                     </Link>
-
-        //                     <Link className='nav-links' to='/icanfixit/review'>
-        //                         <p className='nav-links-font'>
-        //                             Review Me!
-        //                         </p>
-        //                     </Link>
-
-        //                     <Link className='nav-links' to='/icanfixit/form'>
-        //                         <p className='nav-links-font nav-submit'>
-        //                             Submit Order
-        //                         </p>
-        //                     </Link>
-        //                 </Nav>
-
-        //             </Container>
-
-        //         </Navbar>
-        //         {/* 
-        //         <Navbar >
-        //             <Container>
-
-        //                     <Nav className="me-auto">
-        //                         <Nav.Link href="#home">Home</Nav.Link>
-        //                         <Nav.Link href="#link">Link</Nav.Link>
-        //                         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-        //                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        //                             <NavDropdown.Item href="#action/3.2">
-        //                                 Another action
-        //                             </NavDropdown.Item>
-        //                             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        //                             <NavDropdown.Divider />
-        //                             <NavDropdown.Item href="#action/3.4">
-        //                                 Separated link
-        //                             </NavDropdown.Item>
-        //                         </NavDropdown>
-        //                     </Nav>
-
-        //             </Container>
-        //         </Navbar> */}
-        //     </div>
-        //     {/* <script type="text/javascript">
-        //         const toggleMenu = () =>
-        //         document.body.classList. toggle( "open" );
-        //       </script> */}
-        // </header>
-
         <header className='App-header'>
             <Navbar expand="lg">
                 <Container className='header-components'>
                     <Navbar.Brand>
-                        <Link  to='/icanfixit' className='nav-links-font'>
+                        <Link  to='/icanfixit' className='nav-links-font' onClick={()=>{
+                            setTitleClicked(true)
+                            setNavClicked(false)
+                        }}>
                             <div class='text-align-left'>
                             <p className='nav-links-font header-title'>iCanFixIt</p>
                             <small className='header-desc'>Repair Your Device With Me!</small>
@@ -108,25 +83,34 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle className='toggle' aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse  id="basic-navbar-nav" >
-                        <Nav className="me-auto">
-                            <Nav.Link>
-                                <Link className='nav-links-font links' to='/icanfixit/about'>About
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link className='nav-links-font links' to='/icanfixit/gallery'>Gallery
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <Link className='nav-links-font links' to='/icanfixit/review'>Review Me
-                                </Link>
-                            </Nav.Link>
-                            <Nav.Link className='featured-button'>
-                                <Link className='nav-links-font links' to='/icanfixit/form'>Request Service 
-                                </Link>
-                                <img className='toolbar' src={toolbar}>
-                                </img>
-                            </Nav.Link>
+                        <Nav className="me-auto" 
+                        onClick={()=>{
+                            setNavClicked(true)
+                            setTitleClicked(false)
+                            }}
+                        >
+                            {pages.map((page)=>{
+                                if(!page.image){
+                                    return(
+                                        <Nav.Link>
+                                        <Link className='nav-links-font links' to={`/icanfixit/${page.url}`}>{page.name}
+                                        </Link>
+                                    </Nav.Link>
+                                    )
+                                } else {
+                                    return(
+                                        <Nav.Link className='featured-button'>
+                                        <Link className='nav-links-font links' to={`/icanfixit/${page.url}`}>{page.name}
+                                        </Link>
+                                        <img className='toolbar' src={page.image}>
+                                        </img>
+                                    </Nav.Link>
+        
+                                    )
+                                }
+                         
+                            })}
+       
 
 
                         </Nav>
