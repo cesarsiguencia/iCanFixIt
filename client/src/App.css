@@ -81,14 +81,19 @@
   border-radius: 15px;
 }
 
-.me-auto > *{
+.me-auto{
+  width: 100%
+}
 
+.me-auto > *{
+  display: flex;
+  justify-content: space-between;
   margin: 0 10px;
   padding: 20px 20px 20px 20px;
 }
 
 .SOMETHING{
-  width: 100%;
+  /* width: 100%; */
 }
 
 .toolbar{

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import toolbar from '../device-library/utils/wrench-svgrepo-com.svg'
 
-const Header = ({redirectClicked}) => {
+const Header = ({ redirectClicked }) => {
     const [titleClicked, setTitleClicked] = useState()
     const [navClicked, setNavClicked] = useState()
 
-    if(redirectClicked === true){
-      setTitleClicked(false)
-      setNavClicked(true)
+    if (redirectClicked === true) {
+        setTitleClicked(false)
+        setNavClicked(true)
     }
 
     const pages = [
@@ -63,22 +63,22 @@ const Header = ({redirectClicked}) => {
 
     const [selectedPage, setSelectedPage] = useState(pages[currentIndex])
 
-    useEffect(()=>{
-        if(subUrlObjectAtLoad.urlSubLoaded === false){
-          setTitleClicked(true)
-          setNavClicked(false)
+    useEffect(() => {
+        if (subUrlObjectAtLoad.urlSubLoaded === false) {
+            setTitleClicked(true)
+            setNavClicked(false)
         } else {
-          setTitleClicked(false)
-          setNavClicked(true)
+            setTitleClicked(false)
+            setNavClicked(true)
         }
-      },[subUrlObjectAtLoad])
+    }, [subUrlObjectAtLoad])
 
     return (
         <header className='App-header'>
             <Navbar expand="lg">
                 <Container className='header-components'>
                     <div>
-             
+
                         <Link to='/icanfixit' className='nav-links-font' onClick={() => {
                             setTitleClicked(true)
                             setNavClicked(false)
@@ -89,59 +89,70 @@ const Header = ({redirectClicked}) => {
                             </div>
 
                         </Link >
-   
+
                     </div>
                     <div>
-                    <Navbar.Toggle className='toggle' aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav" className='SOMETHING' >
-                        <Nav className="me-auto"
-                            onClick={() => {
-                                setNavClicked(true)
-                                setTitleClicked(false)
-                            }}
-                        >
-                            {pages.map((page, i) => {
-                                if (!page.image) {
-                                    return (
-                                        <Nav.Link 
+                        <Navbar.Toggle className='toggle' aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav" className='SOMETHING' >
+                            <Nav className="me-auto"
+                                onClick={() => {
+                                    setNavClicked(true)
+                                    setTitleClicked(false)
+                                }}
 
-                                        onClick={() => {
-                                            setSelectedPage(page)
-                                          }}
-                                            
-                                        key={i}>
-                                            <Link className={`nav-links-font links     ${!selectedPage ? (selectedPage == "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
-                                            </Link>
-                                        </Nav.Link>
-                                    )
-                                } else {
-                                    return (
-                                        <Nav.Link 
-                                        onClick={() => {
-                                            setSelectedPage(page)
-                                          }}
-                                        
-                                        key={i} className='featured-button'>
-                                            <Link className='nav-links-font links' 
-                                            
-                                            to={`/icanfixit/${page.url}`}>{page.name}
-                                            </Link>
-                                            <img className='toolbar' src={page.image}>
-                                            </img>
-                                        </Nav.Link>
+                            >
 
-                                    )
-                                }
+                           
+                                    {pages.map((page, i) => {
+                                        if (!page.image) {
+                                            return (
 
-                            })}
+                                                <Nav.Link
+
+                                                    onClick={() => {
+                                                        setSelectedPage(page)
+                                                    }}
+
+                                                    key={i}>
+                                                    <Link className={`nav-links-font links     ${!selectedPage ? (selectedPage == "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
+                                                    </Link>
+                                                </Nav.Link>
 
 
+                                            )
+                                        }
 
-                        </Nav>
-                    </Navbar.Collapse>
+                                        else {
+                                            return (
+
+                                                <Nav.Link
+                                                    onClick={() => {
+                                                        setSelectedPage(page)
+                                                    }}
+
+                                                    key={i} className='featured-button'>
+                                                    <Link className='nav-links-font links'
+
+                                                        to={`/icanfixit/${page.url}`}>{page.name}
+                                                    </Link>
+                                                    <img className='toolbar' src={page.image}>
+                                                    </img>
+                                                </Nav.Link>
+
+
+
+                                            )
+                                        }
+
+                                    })}
+                         
+
+
+                            </Nav>
+                        </Navbar.Collapse>
                     </div>
-      
-                   
+
+
                 </Container>
             </Navbar>
 
