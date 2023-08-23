@@ -132,7 +132,7 @@ const About = () => {
                                 {steps.map((step, i) => {
           
                                     return (
-                                        <ListItem step={step} i={i}>
+                                        <ListItem step={step} key={i} i={i}>
                                         </ListItem>
                                     )
                                 })

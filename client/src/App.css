@@ -20,15 +20,26 @@
   background-color: #282c34;
   /* opacity: 0.5; */
   /* min-height: 100vh; */
-  display: flex;
+  /* display: flex;
+  justify-content: space-between; */
   /* flex-direction: column;
   align-items: center;
   justify-content: center; */
-  font-size: calc(15px + 2vmin);
-  color: white;
+  /* font-size: calc(15px + 2vmin);*/
+
+
 
 
 }
+
+.header-components{
+  display: flex;
+  justify-content: space-between;
+}
+
+.me-auto > *{
+  color: white; 
+} 
 
 .nav-links{
   text-decoration-line: none
@@ -36,6 +47,10 @@
 
 .nav-links-font{
   color: white;
+  text-decoration-line: none;
+  /* font-weight: bold; */
+  font-size: 20px;
+  transition: ease-in-out 0.5s
 }
 
 .nav-submit{
@@ -46,6 +61,36 @@
   color: #61dafb;
 }
 
+.header-title{
+  font-size: 35px;
+  font-weight: normal;
+}
+
+.header-desc{
+  font-size: 15px;
+  font-style: italic;
+}
+
+.toggle{
+  background-color: white;
+}
+
+.featured-button{
+  background-color: rgb(21, 167, 169);
+  border-radius: 15px;
+}
+
+.me-auto > *{
+  margin: 0 10px;
+  padding: 20px 20px 20px 20px
+}
+
+.toolbar{
+  height: 25px;
+  margin: 0 0 0 10px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -53,6 +98,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.links:hover{
+  font-size: 25px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
 
 
@@ -181,3 +232,30 @@ footer{
 .gray-color{
   background-color: gainsboro;
 }
+
+
+
+.list-unstyled > li{
+  margin: 10px auto;
+
+}
+
+
+.footer-icons{
+  height: 40px;
+  border-radius: 100px;
+}
+
+.footer-links{
+  text-decoration: none;
+  color: black
+}
+
+.footer-links:hover{
+  color: white
+}
+
+.footer-icons:hover{
+  background-color: white
+}
+
