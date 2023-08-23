@@ -18,6 +18,7 @@ import AboutPg from './pages/about'
 
 //COMPONENTS
 import HeaderComp from './components/header'
+import FooterComp from './components/footer'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -67,6 +68,7 @@ const App = () => {
       
 
         </div>
+        <FooterComp></FooterComp>
       </div>
     </Router >
 

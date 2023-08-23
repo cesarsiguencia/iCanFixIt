@@ -4,11 +4,6 @@
   /* height: 100vh */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -17,6 +12,7 @@
 
 .App-body{
   width: 100%;
+  min-height: 90vh;
   margin: 25px auto
 }
 
@@ -101,6 +97,10 @@ form{
   text-align: left;
 }
 
+.text-align-right{
+  text-align: right;
+}
+
 .cesar{
   opacity: 0.5;
   transition: ease-in-out 1s;
@@ -145,4 +145,39 @@ place-items: center;
   place-items: center;
   width: 75%;
   margin: 15px auto
+}
+
+footer{
+  background-color: gainsboro
+  /* position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px; */
+}
+
+.footer-flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 15px;
+  /* padding: 10px */
+
+}
+
+.flex-row > p{
+  display: block;
+  margin: 15px 0;
+  font-style: italic;
+}
+
+.no-underline{
+  display: inline;
+  text-decoration: none;
+  color: black;
+  font-weight: bold
+}
+
+
+.gray-color{
+  background-color: gainsboro;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap'
-import test_photo from '../device-library/test.png'
+import { Link } from 'react-router-dom'
 import FillOut from '../device-library/utils/complete-form.gif'
 import Email from '../device-library/utils/email-received.gif'
 import Shipping from '../device-library/utils/shipping.gif'
@@ -25,7 +25,7 @@ const About = () => {
 
                     <Col className='body-about-text'>
                         <Card className='body-about-toast'>
-                            <Card.Header className='w-100'>
+                            <Card.Header className='w-100 gray-color'>
                                 <strong className="mr-auto">About What I Do </strong>
                                 {/* <small>just now</small> */}
                             </Card.Header>
@@ -38,9 +38,12 @@ const About = () => {
 
                                 After being frustrated with the continous problem and expensive servincing, I decided to teach myself on how to swap batteries on my phone. Not long after, I began altering my other devices, such as changing broken screens, upgrading SSDs and RAM on old computers, and much more!
                             </Card.Body>
+                            <Link to='/icanfixit/review'>
                             <Button className="form-components">
                                 Write a review for me today!
                             </Button>
+                            </Link>
+                          
 
 
                         </Card>
@@ -54,26 +57,28 @@ const About = () => {
                 <Row className='body-about-row'>
                     <Col>
                         <Card className='body-about-toast'>
-                            <Card.Header>
+                            <Card.Header className='gray-color'>
                                 <strong className="mr-auto">Available Services </strong>
                             </Card.Header>
 
                             <Card.Body>
-                                View the list of all devices I have serviced previously. My services are not limited to this list.
+                                View the list of all devices I have serviced previously. My services are not limited to this list and vary per device. I primarily replace batteries and screens on mobile devices. I am also able to provide software support for computers.
                             </Card.Body>
                             <ListGroup>
                                 <ListGroup.Item>
                                     iPhone - All models</ListGroup.Item>
                                 <ListGroup.Item>iPod Classic - Select models</ListGroup.Item>
                                 <ListGroup.Item>iPad - Select models</ListGroup.Item>
-                                <ListGroup.Item>Macbook Pro - ONLY battery upgrades</ListGroup.Item>
+                                <ListGroup.Item>Macbook Pro - ONLY battery / RAM / SSD upgrades</ListGroup.Item>
 
-                                <ListGroup.Item>Apple Cinema/Thunderbolt Display - ONLY glass or power supply replacement</ListGroup.Item>
+                                <ListGroup.Item>Apple Cinema/Thunderbolt Display - 2011 or earlier models</ListGroup.Item>
                             </ListGroup>
-
+                            <Link to='/icanfixit/gallery'>
                             <Button className="form-components">
                                 Go to Gallery
                             </Button>
+                            </Link>
+                         
 
                         </Card>
                     </Col>
@@ -91,7 +96,7 @@ const About = () => {
                 <Row className='body-about-row'>
                     <Col>
                         <Card className='body-about-toast'>
-                            <Card.Header>
+                            <Card.Header className='gray-color'>
                                 <strong className="mr-auto">How It Works</strong>
                             </Card.Header>
 
@@ -153,8 +158,10 @@ const About = () => {
                                 </div>
 
                             </ListGroup>
-
+                            <Link to="/icanfixit/form">
                             <Button className="form-components">Request a Service Today</Button>
+                            </Link>
+                           
                         </Card>
                     </Col>
                 </Row>
