@@ -10,7 +10,6 @@ import Portrait from '../device-library/portrait.png'
 import Mobile from '../device-library/utils/mobile.gif'
 
 const About = ({setRedirectClicked}) => {
-
     const steps = [
         {
             image: FillOut,

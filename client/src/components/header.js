@@ -5,9 +5,6 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import toolbar from '../device-library/utils/wrench-svgrepo-com.svg'
 
 const Header = ({redirectClicked}) => {
-
-    
-
     const [titleClicked, setTitleClicked] = useState()
     const [navClicked, setNavClicked] = useState()
 
@@ -15,7 +12,6 @@ const Header = ({redirectClicked}) => {
       setTitleClicked(false)
       setNavClicked(true)
     }
-
 
     const pages = [
         {
@@ -40,7 +36,6 @@ const Header = ({redirectClicked}) => {
     let subUrlObjectAtLoad
     const urlsArray = window.location.href.split('/')
     const urlOfSubPage = urlsArray[urlsArray.length - 1]
-    console.log(urlOfSubPage)
 
     if (urlOfSubPage !== 'icanfixit') {
         subUrlObjectAtLoad = {
@@ -58,7 +53,6 @@ const Header = ({redirectClicked}) => {
     const loadedPage = subUrlObjectAtLoad.urlSub
 
     if (loadedPage) {
-        console.log(loadedPage)
         pages.forEach((page) => {
             if (page.url === loadedPage) {
                 console.log(page.url, '= to current')
@@ -83,7 +77,8 @@ const Header = ({redirectClicked}) => {
         <header className='App-header'>
             <Navbar expand="lg">
                 <Container className='header-components'>
-                    <Navbar.Brand>
+                    <div>
+             
                         <Link to='/icanfixit' className='nav-links-font' onClick={() => {
                             setTitleClicked(true)
                             setNavClicked(false)
@@ -94,9 +89,11 @@ const Header = ({redirectClicked}) => {
                             </div>
 
                         </Link >
-                    </Navbar.Brand>
+   
+                    </div>
+                    <div>
                     <Navbar.Toggle className='toggle' aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav" >
+                    <Navbar.Collapse id="basic-navbar-nav" className='SOMETHING' >
                         <Nav className="me-auto"
                             onClick={() => {
                                 setNavClicked(true)
@@ -142,6 +139,9 @@ const Header = ({redirectClicked}) => {
 
                         </Nav>
                     </Navbar.Collapse>
+                    </div>
+      
+                   
                 </Container>
             </Navbar>
 

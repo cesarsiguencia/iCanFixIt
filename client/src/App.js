@@ -23,32 +23,10 @@ import HeaderComp from './components/header'
 import FooterComp from './components/footer'
 
 
-
-
-
 const App = () => {
 
 
   const [redirectClicked, setRedirectClicked] = useState(false)
-
-  console.log(redirectClicked)
-
-  // const pages = [
-  //   {
-  //     name: "About"
-  //   },
-  //   {
-  //     name: "Gallery"
-  //   },
-  //   {
-  //     name: "Review Me"
-  //   },
-  //   {
-  //     name: "Request Service"
-  //   }
-  // ]
-
-  // const [currentPage, setCurrentPage] = useState(pages)
 
   const workEaseIn = () => {
     const bodyPages = document.querySelector('.cesar')

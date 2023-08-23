@@ -34,7 +34,8 @@
 
 .header-components{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .me-auto > *{
@@ -81,8 +82,13 @@
 }
 
 .me-auto > *{
+
   margin: 0 10px;
-  padding: 20px 20px 20px 20px
+  padding: 20px 20px 20px 20px;
+}
+
+.SOMETHING{
+  width: 100%;
 }
 
 .toolbar{

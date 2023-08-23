@@ -12,8 +12,8 @@ const Footer = () => {
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3 text-align-left">
                 <h5>Terms and Disclosures</h5>
-                <p>1 - I am not a certified repair person. I taught myself what I know. Repair results could vary.</p>
-                <p>2 - In the unlikely event I am unable to fix the device issue, service fees will be reimbursed. However, fees for purchasing replacement items will not be reimbursed.</p>
+                <p className='text-italics' style={{fontSize: 15}}>1 - I am not a certified repair person. I taught myself what I know. Repair results could vary.</p>
+                <p className='text-italics' style={{fontSize: 15}}>2 - In the unlikely event I am unable to fix the device issue, service fees will be reimbursed. However, fees for purchasing replacement items will not be reimbursed.</p>
             </div>
 
             <hr className="clearfix w-100 d-md-none pb-0"/>
