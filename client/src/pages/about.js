@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import ListItem from '../components/lists/about-how'
 import FillOut from '../device-library/utils/complete-form.gif'
 import Email from '../device-library/utils/email-received.gif'
 import Shipping from '../device-library/utils/shipping.gif'
@@ -9,6 +10,29 @@ import Portrait from '../device-library/portrait.png'
 import Mobile from '../device-library/utils/mobile.gif'
 
 const About = () => {
+    // const [steps, useSteps ] = useState()
+    const steps = [
+        {
+            image: FillOut,
+            title: 'Fill Out A Submit Order Form',
+            context: 'Please provide your contact information along with an in depth description of the problem with your device. Please provide pictures.'
+        },
+        {
+            image: Email,
+            title: 'Message From Me Within 48 Hours',
+            context: 'Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much the service would be.'
+        },
+        {
+            image: Shipping,
+            title: 'Mail Device',
+            context: 'Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc.'
+        },
+        {
+            image: Success,
+            title: 'Device Serviced and Returned',
+            context: 'Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.'
+        }
+    ]
     return (
         <div className='cesar'>
             <h3>Learn About It!</h3>
@@ -16,11 +40,11 @@ const About = () => {
             <Container>
                 <Row className='body-about-row'>
                     <Col xs={5} className='body-about-text'>
-                      
-                            <img className='test-photo' src={Portrait}>
 
-                            </img>
-                    
+                        <img className='test-photo' src={Portrait}>
+
+                        </img>
+
                     </Col>
 
                     <Col className='body-about-text'>
@@ -39,11 +63,11 @@ const About = () => {
                                 After being frustrated with the continous problem and expensive servincing, I decided to teach myself on how to swap batteries on my phone. Not long after, I began altering my other devices, such as changing broken screens, upgrading SSDs and RAM on old computers, and much more!
                             </Card.Body>
                             <Link to='/icanfixit/review'>
-                            <Button className="form-components">
-                                Write a review for me today!
-                            </Button>
+                                <Button className="form-components">
+                                    Write a review for me today!
+                                </Button>
                             </Link>
-                          
+
 
 
                         </Card>
@@ -74,22 +98,22 @@ const About = () => {
                                 <ListGroup.Item>Apple Cinema/Thunderbolt Display - 2011 or earlier models</ListGroup.Item>
                             </ListGroup>
                             <Link to='/icanfixit/gallery'>
-                            <Button className="form-components">
-                                Go to Gallery
-                            </Button>
+                                <Button className="form-components">
+                                    Go to Gallery
+                                </Button>
                             </Link>
-                         
+
 
                         </Card>
                     </Col>
 
                     <Col xs={5} className='body-about-text'>
-                      
-                      <img className='test-photo' src={Mobile}>
 
-                      </img>
-              
-              </Col>
+                        <img className='test-photo' src={Mobile}>
+
+                        </img>
+
+                    </Col>
 
                 </Row>
 
@@ -105,63 +129,21 @@ const About = () => {
                             </Card.Body>
 
                             <ListGroup as="ol">
-                                <div className='about-how-block'>
-                                    <img className='about' src={FillOut}>
-                                    </img>
+                                {steps.map((step, i) => {
+          
+                                    return (
+                                        <ListItem step={step} i={i}>
+                                        </ListItem>
+                                    )
+                                })
 
-                                    <div className="about-how-text text-align-left ">
-                                        <div>
-                                            <div className="fw-bold text-align-left">1: Fill Out a Submit Order Form</div>
-                                            <p>Please provide your contact information along with an in depth description of the problem with your device. Please provide pictures.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div className='about-how-block'>
-                                    <img className='about' src={Email}>
-                                    </img>
-
-                                    <div className="about-how-text text-align-left ">
-                                        <div>
-                                        <div className="fw-bold">2: Message From Me Within 48 Hours</div>
-                                            <p>    Wait a response from me via email within 2 days that will inform you if I am able to service your device and how much the service would be.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div className='about-how-block'>
-                                    <img className='about' src={Shipping}>
-                                    </img>
-
-                                    <div className="about-how-text text-align-left ">
-                                        <div>
-                                        <div className="fw-bold">3: Mail Device</div>
-                                            <p> Use a standard shipment carrier to send your device to me. Include all available accessories that come with the device, such as wall chargers, earphones, etc.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div className='about-how-block'>
-                                    <img className='about' src={Success}>
-                                    </img>
-
-                                    <div className="about-how-text text-align-left ">
-                                        <div>
-                                        <div className="fw-bold">4: Device Serviced and Returned</div>
-                                            <p>  Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                }
 
                             </ListGroup>
                             <Link to="/icanfixit/form">
-                            <Button className="form-components">Request a Service Today</Button>
+                                <Button className="form-components">Request a Service Today</Button>
                             </Link>
-                           
+
                         </Card>
                     </Col>
                 </Row>
