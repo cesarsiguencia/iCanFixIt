@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container'
 import './App.css';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 //PAGES
 import HomePg from './pages/home'
 import FormPg from './pages/form'
@@ -20,35 +22,36 @@ import AboutPg from './pages/about'
 import HeaderComp from './components/header'
 import FooterComp from './components/footer'
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 
 
 
 const App = () => {
 
-  const [currentPage, setCurrentPage] = useState(pages)
-  // const [portfolioClicked, setPortfolioClicked] = useState(false)
 
-  const pages = [
-    {
-      name: "About"
-    },
-    {
-      name: "Gallery"
-    },
-    {
-      name: "Review Me"
-    },
-    {
-      name: "Request Service"
-    }
-  ]
+  const [redirectClicked, setRedirectClicked] = useState(false)
+
+  console.log(redirectClicked)
+
+  // const pages = [
+  //   {
+  //     name: "About"
+  //   },
+  //   {
+  //     name: "Gallery"
+  //   },
+  //   {
+  //     name: "Review Me"
+  //   },
+  //   {
+  //     name: "Request Service"
+  //   }
+  // ]
+
+  // const [currentPage, setCurrentPage] = useState(pages)
 
   const workEaseIn = () => {
     const bodyPages = document.querySelector('.cesar')
-
-
-    console.log('on')
 
     if (bodyPages) {
       bodyPages.style.opacity = 1
@@ -61,10 +64,10 @@ const App = () => {
     <Router>
       <div className="App">
         <HeaderComp
-          pages={pages}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          // portfolioClicked={portfolioClicked}
+          // pages={pages}
+          // setCurrentPage={setCurrentPage}
+          // currentPage={currentPage}
+          redirectClicked={redirectClicked}
 
         ></HeaderComp>
 
@@ -80,10 +83,10 @@ const App = () => {
               <Route path='/icanfixit/review' element={<ReviewPg></ReviewPg>}>
               </Route>
 
-              <Route path='/icanfixit/gallery' element={<GalleryPg></GalleryPg>}>
+              <Route setRedirectClicked={setRedirectClicked} path='/icanfixit/gallery' element={<GalleryPg></GalleryPg>}>
               </Route>
 
-              <Route path='/icanfixit/about' element={<AboutPg></AboutPg>}>
+              <Route setRedirectClicked={setRedirectClicked} path='/icanfixit/about' element={<AboutPg></AboutPg>}>
               </Route>
             </Routes>
           </Container>

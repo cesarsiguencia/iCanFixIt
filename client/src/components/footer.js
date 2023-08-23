@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
     </div>
 
-    <div className="footer-copyright text-center py-3">Developed by César Siguencia, Copyright ©2023, All rights reserved
+    <div className="footer-copyright text-center py-3 text-italics ">Developed by César Siguencia, Copyright ©2023, All rights reserved
     </div>
 
 </footer>

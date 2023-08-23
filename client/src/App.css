@@ -98,6 +98,10 @@
   /* color:  rgb(255, 255, 0); */
 }
 
+.text-italics{
+  font-style: italic;
+}
+
 
 @keyframes App-logo-spin {
   from {

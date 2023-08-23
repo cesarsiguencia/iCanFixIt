@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import toolbar from '../device-library/utils/wrench-svgrepo-com.svg'
 
-const Header = () => {
-    // const {portfolioClicked} = props
+const Header = ({redirectClicked}) => {
+
+    
 
     const [titleClicked, setTitleClicked] = useState()
     const [navClicked, setNavClicked] = useState()
 
-    // if(portfolioClicked === true){
-    //   setTitleClicked(false)
-    //   setNavClicked(true)
-    // }
+    if(redirectClicked === true){
+      setTitleClicked(false)
+      setNavClicked(true)
+    }
 
 
     const pages = [
@@ -57,14 +58,26 @@ const Header = () => {
     const loadedPage = subUrlObjectAtLoad.urlSub
 
     if (loadedPage) {
+        console.log(loadedPage)
         pages.forEach((page) => {
             if (page.url === loadedPage) {
+                console.log(page.url, '= to current')
                 currentIndex = pages.indexOf(page)
             }
         })
     }
 
     const [selectedPage, setSelectedPage] = useState(pages[currentIndex])
+
+    useEffect(()=>{
+        if(subUrlObjectAtLoad.urlSubLoaded === false){
+          setTitleClicked(true)
+          setNavClicked(false)
+        } else {
+          setTitleClicked(false)
+          setNavClicked(true)
+        }
+      },[subUrlObjectAtLoad])
 
     return (
         <header className='App-header'>
