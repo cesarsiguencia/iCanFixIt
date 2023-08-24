@@ -13,15 +13,11 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
 
     const [uploadedImgNames, setUploadedImgNames] = useState([])
 
-
-    console.log(devicePhotos)
-
     const uploadingFiles = (theImage) => {
         if(devicePhotos.length === 5){
             window.alert("You've reached the maximum number of image uploads!")
             return
         }
-        console.log(theImage.files)
 
         setDevicePhotos(current => [...current, theImage.files])
 
@@ -36,14 +32,6 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
 
     }
 
-    if (devicePhotos[0]) {
-        // devicePhotos = devicePhotos.json()
-        console.log(devicePhotos, 'the full array')
-
-    }
-
-    
-
     const clearImagesSeletion = () =>{
         setDevicePhotos([])
         setUploadedImgNames([])
@@ -55,15 +43,6 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
         setUploading(true)
         e.preventDefault()
         
-
-
-        // const device = {
-        //     device_name: deviceName,
-        //     device_year: deviceYear,
-        //     device_description: deviceDesc,
-        //     device_photos: devicePhotos
-        // }
-
         const response = await fetch("/api/devices", {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
@@ -82,15 +61,11 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
             var newUrlsArray = []
             uploadedImgNames.map((newName, i)=>{
                 newName = `${data._id}/${i}.png`
-                console.log(newName)
                 newUrlsArray.push(newName)
             })
-            console.log(newUrlsArray)
 
             await submitNewImgNames(data._id, newUrlsArray)
 
-
-            console.log(newUrlsArray)
             alert('success')
             setDevice(deviceName)
             setDeviceForm(false)
