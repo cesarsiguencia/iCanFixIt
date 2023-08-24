@@ -42,6 +42,8 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
 
     }
 
+    
+
     const clearImagesSeletion = () =>{
         setDevicePhotos([])
         setUploadedImgNames([])
@@ -52,31 +54,74 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
     const handleDeviceSubmit = async (e) => {
         setUploading(true)
         e.preventDefault()
+        
 
-        const device = {
-            device_name: deviceName,
-            device_year: deviceYear,
-            device_description: deviceDesc,
-            owner: clientId
-        }
+
+        // const device = {
+        //     device_name: deviceName,
+        //     device_year: deviceYear,
+        //     device_description: deviceDesc,
+        //     device_photos: devicePhotos
+        // }
 
         const response = await fetch("/api/devices", {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(device)
+            body: JSON.stringify({
+                deviceName,
+                deviceYear,
+                deviceDesc,
+                clientId
+            })
         })
 
         if (response.ok) {
             var data = await response.json()
+            console.log(data, 'where is the device id/')
+
+            var newUrlsArray = []
+            uploadedImgNames.map((newName, i)=>{
+                newName = `${data._id}/${i}.png`
+                console.log(newName)
+                newUrlsArray.push(newName)
+            })
+            console.log(newUrlsArray)
+
+            await submitNewImgNames(data._id, newUrlsArray)
+
+
+            console.log(newUrlsArray)
             alert('success')
             setDevice(deviceName)
             setDeviceForm(false)
+
+
 
 
         } else {
             console.log(response.statusText)
         }
         setUploading(false)
+    }
+
+    const submitNewImgNames = async(id, imageNames) =>{
+        console.log(id, 'from func')
+        console.log(imageNames, 'from func')
+        const res = await fetch(`/api/devices/imageNames/${id}`,{
+            method: 'put',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({imageNames})
+        })
+
+        if(res.ok){
+            var returnedNames = await res.json()
+            alert('names uploaded')
+
+        } else {
+            console.log(res.statusText)
+            return
+        }
+        return
     }
 
     return (
