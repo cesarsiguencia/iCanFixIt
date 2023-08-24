@@ -289,7 +289,17 @@ footer{
 
 .hero-img{
   width: 100%;
+  transition: ease-in-out 1s;
   transform: translate(0,-75px)
 
   
+}
+
+.hero-img:hover{
+  transform: translate(0,-350px)
+}
+
+.small-buttons{
+  background-color:#fd7e14;
+  border: 0px;
 }

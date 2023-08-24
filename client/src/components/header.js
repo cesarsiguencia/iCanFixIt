@@ -55,7 +55,6 @@ const Header = ({ redirectClicked }) => {
     if (loadedPage) {
         pages.forEach((page) => {
             if (page.url === loadedPage) {
-                console.log(page.url, '= to current')
                 currentIndex = pages.indexOf(page)
             }
         })
