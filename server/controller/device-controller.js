@@ -48,6 +48,7 @@ const deviceController = {
     createDevice({ body }, res) {
       Device.create(body)
       .then((selectedDevice) => {
+        res.json(selectedDevice)
         return Client.findOneAndUpdate(
           { _id: selectedDevice.owner },
           { $push: { devices: selectedDevice._id}},
@@ -57,15 +58,14 @@ const deviceController = {
           }
         )
       })
-      .then(newDevice => res.json(newDevice))
       .catch(err => res.status(400).json(err));
   },
 
   updateDevice({ params, body }, res) {
-    console.log(body)
+    console.log(body, 'from the device photos')
     Device.findOneAndUpdate(
       { _id: params.id }, 
-      body, 
+      { device_photos: body.imageNames}, 
       { 
         new: true, 
         runValidators: true 

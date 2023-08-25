@@ -42,19 +42,22 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
     const handleDeviceSubmit = async (e) => {
         setUploading(true)
         e.preventDefault()
+
+        const deviceInfo = {
+            device_name: deviceName,
+            device_year: deviceYear,
+            device_description: deviceDesc,
+            owner: clientId
+        }
         
         const response = await fetch("/api/devices", {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                deviceName,
-                deviceYear,
-                deviceDesc,
-                clientId
-            })
+            body: JSON.stringify(deviceInfo)
         })
 
         if (response.ok) {
+            
             var data = await response.json()
             console.log(data, 'where is the device id/')
 
@@ -65,7 +68,7 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
             })
 
             await submitNewImgNames(data._id, newUrlsArray)
-
+            // await sendNewPhotos(newUrlsArray)
             alert('success')
             setDevice(deviceName)
             setDeviceForm(false)
@@ -82,15 +85,15 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
     const submitNewImgNames = async(id, imageNames) =>{
         console.log(id, 'from func')
         console.log(imageNames, 'from func')
-        const res = await fetch(`/api/devices/imageNames/${id}`,{
+        const res = await fetch(`/api/devices/${id}`,{
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({imageNames})
         })
 
         if(res.ok){
-            var returnedNames = await res.json()
-            alert('names uploaded')
+            var returned = await res.json()
+            alert('PHOTOS uploaded')
 
         } else {
             console.log(res.statusText)
@@ -98,6 +101,21 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDevice, clientI
         }
         return
     }
+
+    // const sendNewPhotos = async(newNames) =>{
+    //     var firstName= newNames[0]
+    //     var firstPhoto = devicePhotos[0]
+    //     const response = await fetch("/api/images",{
+    //         method: 'post',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({
+    //             firstName,
+    //             clientId,
+    //             firstPhoto
+                
+    //         })
+    //     })
+    // }
 
     return (
         <div>
