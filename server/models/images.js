@@ -11,9 +11,9 @@ const imageSchema = new Schema({
         ref: 'Device',
         require: true
     },
-    image: {
-        data: Buffer,
-        contentType: String
+    image_url: {
+        type: String,
+        require: true
     },
 })
 

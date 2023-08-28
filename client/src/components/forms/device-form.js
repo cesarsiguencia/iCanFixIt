@@ -7,43 +7,6 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDeviceName, set
     const [deviceTitle, setDeviceTitle] = useState()
     const [deviceYear, setDeviceYear] = useState()
     const [deviceDesc, setDeviceDesc] = useState()
-    // const [devicePhotos, setDevicePhotos] = useState([])
-
-    // const [showUploadDiv, setShowUploadDiv] = useState(false)
-
-    // const [uploadedVisibleNames, setVisibleImgNames] = useState([])
-
-    // const [actualUploads, setActualUploads] = useState([])
-
-    // const [newOne, setNewOne] = useState()
-
-    // const uploadingFiles = (theImage) => {
-    //     if(devicePhotos.length === 5){
-    //         window.alert("You've reached the maximum number of image uploads!")
-    //         return
-    //     }
-    //     console.log(theImage.files)
-    //     if (theImage.files[0]) {
-    //         setVisibleImgNames(current => [...current, theImage.files[0].name])
-    //     }
-
-    //     setDevicePhotos(current => [...current, theImage.files])
-        // setNewOne(theImage.files[0])
-
-
-        // if (!showUploadDiv) {
-        //     setShowUploadDiv(true)
-        // }
-
-
-    // }
-
-    // const clearImagesSeletion = () =>{
-    //     setDevicePhotos([])
-    //     setVisibleImgNames([])
-    //     setShowUploadDiv(false)
-    // }
-
 
     const handleDeviceSubmit = async (e) => {
         setUploading(true)
@@ -67,113 +30,16 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDeviceName, set
             var data = await response.json()
             console.log(data, 'where is the device id/')
 
-            // var newUrlsArray = []
-            // uploadedVisibleNames.map((newName, i)=>{
-            //     newName = `${data._id}/${i}.png`
-            //     newUrlsArray.push(newName)
-            // })
-
-            // await submitNewImgNames(data._id, newUrlsArray)
-            // await sendNewPhotos(newUrlsArray)
-            // await submitPhotos(data._id, newUrlsArray)
-            // console.log(actualUploads)
             alert('success')
             setDeviceName(deviceTitle)
             setDeviceId(data._id)
             setDeviceForm(false)
-
-
-
 
         } else {
             console.log(response.statusText)
         }
         setUploading(false)
     }
-
-    // const submitNewImgNames = async(id, imageNames) =>{
-    //     console.log(id, 'from func')
-    //     console.log(imageNames, 'from func')
-    //     const res = await fetch(`/api/devices/${id}`,{
-    //         method: 'put',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({imageNames})
-    //     })
-
-    //     if(res.ok){
-    //         var returned = await res.json()
-    //         alert('PHOTOS uploaded')
-
-    //     } else {
-    //         console.log(res.statusText)
-    //         return
-    //     }
-    //     return
-    // }
-
-    // const [urlsArray, setUrlsArray] = useState([])
-
-    // const [photosInfo setPhotosInfo] = useState([])
-
-    // const submitPhotos = async (deviceId, newNames) => {
-  
-    //     console.log(devicePhotos)
-
-
-    //         var data = new FormData()
-    //         data.append('file', newOne)
-    //         data.append('upload_preset', 'icanfixit')
-    //         const res = await fetch ('https://api.cloudinary.com/v1_1/dhrztukgj/image/upload', {
-    //             method:'post',
-    //             body: data
-
-    //         })
-
-    //         const url = await res.json()
-    //         console.log(url)
-    //         setUrlsArray(current => [...current, url])
-        // })
-
-        // urlsArray.forEach(async(returnedImage, i)=>{
-        //     var imageInfo = {
-        //         name: newNames[i],
-        //         device_tied: deviceId,
-        //         image_url: returnedImage
-        //     }
-
-        //     const res = await fetch('/api/images/upload',{
-        //         method:'post',
-        //         headers: {'Content-Type': 'application/json'},
-        //         body: JSON.stringify(imageInfo)
-        //     })
-
-        //     if(res.ok){
-        //         const data = await res.json()
-        //         console.log(data)
-            
-        //         return
-        //     } else {
-        //         console.log(res.statusText)
-        //     }
-        // })
-
-        
-    // }
-
-    // const sendNewPhotos = async(newNames) =>{
-    //     var firstName= newNames[0]
-    //     var firstPhoto = devicePhotos[0]
-    //     const response = await fetch("/api/images",{
-    //         method: 'post',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({
-    //             firstName,
-    //             clientId,
-    //             firstPhoto
-                
-    //         })
-    //     })
-    // }
 
     return (
         <div>

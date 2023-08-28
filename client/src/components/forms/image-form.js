@@ -53,20 +53,22 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
             urlsArray.push(url.secure_url)
             await submitImageInfo(deviceId, urlsArray)
             alert('success!')
+            setUploading(false)
             setImageForm(false)
         } else {
             alert(res.statusText)
             console.log(res.statusText)
         }
-
     }
 
-    const submitImageInfo = (deviceId, urlsArray) => {
-        urlsArray.map(async (singleImageUrl, i) => {
+    const submitImageInfo = async(deviceId, urlsArray) => {
+        // urlsArray.map(async (singleImageUrl, i) => {
+
+
             var imageInfo = {
-                name: `${deviceId}/${i}.png`,
+                name: `${deviceId}/0.png`,
                 device_tied: deviceId,
-                image_url: singleImageUrl
+                image_url: urlsArray[0]
             }
 
             const res = await fetch('/api/images/upload', {
@@ -77,15 +79,13 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
 
             if (res.ok) {
                 const data = await res.json()
-                setImageForm(false)
-                console.log(data)
-                setUploading(false)
                 alert('success in submitting image info')
-                return
             } else {
                 console.log(res.statusText)
             }
-        })
+            
+        // })
+        return
     }
 
     return (
