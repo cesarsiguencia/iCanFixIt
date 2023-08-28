@@ -4,8 +4,10 @@ import Row from 'react-bootstrap/Row'
 import ValidateClient from "../components/forms/validate-owner"
 
 
+
 import ClientForm from '../components/forms/client-form'
 import DeviceForm from '../components/forms/device-form'
+import ImageForm from '../components/forms/image-form'
 import Success from '../components/notices/service-submitted'
 import Button from 'react-bootstrap/button'
 import HeroComp from '../components/hero'
@@ -18,11 +20,13 @@ const FormEntries = () => {
 
     const [clientForm, setClientForm] = useState(true)
     const [deviceForm, setDeviceForm] = useState(true)
+    const [imageForm, setImageForm ] = useState(true)
 
     const [clientId, setClientId] = useState()
     const [clientName, setClientName] = useState()
     const [uploading, setUploading] = useState(false)
-    const [device, setDevice] = useState()
+    const [deviceName, setDeviceName] = useState()
+    const [deviceId, setDeviceId] = useState()
 
     return (
         <div className="cesar">
@@ -31,7 +35,7 @@ const FormEntries = () => {
             <Container>
                 <Row>
            
-                {clientForm && deviceForm &&
+                {clientForm && deviceForm && imageForm &&
                 <div>
 
                     {selectStarter &&
@@ -90,29 +94,37 @@ const FormEntries = () => {
                         </div>
                     }
 
-
-
-
                 </div>
-            }
+                }
 
-            {!clientForm && deviceForm &&
-                <DeviceForm
-                    uploading={uploading}
-                    setUploading={setUploading}
-                    setDeviceForm={setDeviceForm}
-                    setDevice={setDevice}
-                    clientId={clientId}
-                >
-                </DeviceForm>
-            }
+                {!clientForm && deviceForm && imageForm &&
+                    <DeviceForm
+                        uploading={uploading}
+                        setUploading={setUploading}
+                        setDeviceForm={setDeviceForm}
+                        setDeviceName={setDeviceName}
+                        setDeviceId={setDeviceId}
+                        clientId={clientId}
+                    >
+                    </DeviceForm>
+                }
 
-            {!clientForm && !deviceForm &&
-                <Success
-                    clientName={clientName}
-                    device={device}
-                ></Success>
-            }
+                {!clientForm && !deviceForm && imageForm &&
+                    <ImageForm
+                        deviceId={deviceId}
+                        deviceName={deviceName}
+                        setImageForm={setImageForm}
+                        uploading= {uploading}
+                        setUploading={setUploading}
+                    ></ImageForm>
+                }
+
+                {!clientForm && !deviceForm && !imageForm &&
+                    <Success
+                        clientName={clientName}
+                        deviceName={deviceName}
+                    ></Success>
+                }
                 </Row>
             
 
