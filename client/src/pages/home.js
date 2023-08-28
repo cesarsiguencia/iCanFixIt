@@ -1,72 +1,85 @@
-import React, { useState } from 'react'
-import { Container }from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import { Container } from 'react-bootstrap'
+
+import iPad from '../device-library/stock-images/IMG_2550 Medium.png'
+import iPod from '../device-library/stock-images/93164BD7-A3FB-454A-BE72-E60D81951069.png'
+import Battery from '../device-library/stock-images/IMG_0131 Medium.png'
+import Screen from '../device-library/stock-images/IMG_2637 Medium.png'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Form'
 const Home = () => {
 
-    const [ image, setImage ] = useState()
-    const [loading, setLoading] =useState()
+    // const [ image, setImage ] = useState()
+    // const [loading, setLoading] =useState()
 
-    const uploadImage = async (e) =>{
-        // const files =e.target.files 
-        const data= new FormData()
-    
-        data.append('file', image)
-        data.append('upload_preset', 'icanfixit')
-        console.log(data)
-        setLoading(true)
-         
-        const res = await fetch('https://api.cloudinary.com/v1_1/dhrztukgj/image/upload', {
-            method: 'post',
-            body: data
-        })
+    // const uploadImage = async (e) =>{
+    //     // const files =e.target.files 
+    //     const data= new FormData()
 
-        if(res.ok){
-            const url = await res.json()
-            alert('success!')
-            setImage(url.secure_url)
-        } else {
-            alert(res.statusText)
-            console.log(res.statusText)
+    //     data.append('file', image)
+    //     data.append('upload_preset', 'icanfixit')
+    //     console.log(data)
+    //     setLoading(true)
+
+    //     const res = await fetch('https://api.cloudinary.com/v1_1/dhrztukgj/image/upload', {
+    //         method: 'post',
+    //         body: data
+    //     })
+
+    //     if(res.ok){
+    //         const url = await res.json()
+    //         alert('success!')
+    //         setImage(url.secure_url)
+    //     } else {
+    //         alert(res.statusText)
+    //         console.log(res.statusText)
+    //     }
+
+
+    //     setLoading(false)
+    // }
+
+    const facts = [
+        {
+            fact: Screen
+        },
+        {
+            fact: Battery
+        },
+        {
+            fact: iPod
+        },
+        {
+            fact: iPad
         }
+    ]
 
-        
-        setLoading(false)
-    }
-    return(
+    const [currentIndex, setCurrentIndex] = useState(0)
+
+    useEffect(() => {
+        setInterval(() => {
+            if (currentIndex === facts.length - 1) {
+                return setCurrentIndex(0)
+            }
+            return setCurrentIndex(currentIndex + 1)
+        }, 12000)
+    })
+
+
+    return (
         <div>
-            <p>This is home</p>
 
-            <Container>
-                <p>dasdsadsadsa</p>
-            </Container>
-
-            <Form>
-            <Form.Group className="form-components">
-                    <Form.Label>
-                        Add Photos (5 Max)
-                    </Form.Label>
-
-                    <Form.Control type='file' id='photo' name='image' onChange={(e) => setImage(e.target.files[0])}>
-                    </Form.Control>
-                    <br />
-
-                
-                    
-                    <Button className='small-buttons' type='submit' onClick={uploadImage}>
-                    Upload Photos (No more than 5) 
-                    </Button>
-                </Form.Group>
-            </Form>
-
-            <div>
-                {loading ? (
-                    <p>loadingggg</p>
-                ) : (
-                    <img src={image}></img>
-                )}
+            <div className="carousel-container">
+                {facts.map((fact, i) => {
+                    return (
+                        <div className='carousel--div' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                            <img src={fact.fact} className='home-imgs'></img>
+                        </div>
+                    )
+                })}
             </div>
+
         </div>
     )
 }
