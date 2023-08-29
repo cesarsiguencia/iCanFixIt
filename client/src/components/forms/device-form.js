@@ -48,7 +48,7 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDeviceName, set
             <Form onSubmit={handleDeviceSubmit}>
                 <Form.Group className="form-components text-align-left">
                     <Form.Label>
-                        Device Name:
+                        Device Name (Include Generation #)
                     </Form.Label>
 
                     <Form.Control as='input' placeholder='Title of the device with Generation #' type="type" required value={deviceTitle} onChange={(e) => setDeviceTitle(e.target.value)}>

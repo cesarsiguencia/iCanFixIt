@@ -386,3 +386,23 @@ footer{
   width: 200px;
 }
 
+
+.gallery{
+  /* display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+
+  /* justify-content: space-around */ 
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.gallery > *{
+  transition: 0.5s ease-in-out;
+  margin: 15px auto
+}
+
+.gallery > *:hover{
+  scale: 1.1
+}
