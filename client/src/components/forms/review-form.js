@@ -12,15 +12,16 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
 
     const [loadingDevices, setLoadingDevices] = useState()
     const [arrayLength, setArrayLength] = useState()
+    const [reviewedDevices, setReviewedDevices] = useState(false)
 
     const handleReviewSubmit = async (e) => {
         e.preventDefault()
         setUploading(true)
         const completedReview = {
-            owner_rating: rating,
-            owner_review: reviewText
+            owner_review: reviewText,
+            owner_rating: rating
         }
-        const res = await fetch(`/api/devices/${id}`, {
+        const res = await fetch(`/api/devices/review/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(completedReview)
@@ -28,6 +29,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
 
         if (res.ok) {
             var data = await res.json()
+            console.log(data)
             setRating('')
             setReviewText('')
             alert('success in submitting review')
@@ -52,12 +54,12 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                     if (deviceServiced.device_status === "Completed") {
                         setArrayLength(true)
                     }
+
+                    if (deviceServiced.owner_rating) {
+                        setReviewedDevices(true)
+                    }
                 })
-                // if (data.devices.length == 0) {
 
-                // } else {
-
-                // }
                 setLoadingDevices(data.devices)
             } else {
                 console.log(res.statusText)
@@ -67,7 +69,6 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
         fetchDevices()
     }, [uploading])
 
-    var listNumber = 0
 
     return (
         <div>
@@ -119,11 +120,11 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                             onChange={(e) => setRating(e.target.value)}
                                         >
                                             <option disabled value='Select a rating'>Select A Rating</option>
-                                            <option value='5'>5</option>
-                                            <option value='4'>4</option>
-                                            <option value='3'>3</option>
-                                            <option value='2'>2</option>
-                                            <option value='1'>1</option>
+                                            <option value='⭐️⭐️⭐️⭐️⭐️'>5</option>
+                                            <option value='⭐️⭐️⭐️⭐️'>4</option>
+                                            <option value='⭐️⭐️⭐️'>3</option>
+                                            <option value='⭐️⭐️'>2</option>
+                                            <option value='⭐️'>1</option>
                                         </Form.Select>
 
 
@@ -147,39 +148,60 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                     </Button>}
 
                                 </Form>
-                                <br/>
+                                <br />
 
                                 {loadingDevices &&
                                     <ListGroup as="ol" numbered className='form-components'>
-                                        <h4>Your List of Reviewed Devices</h4>
-                                        <br/>
-                                        {loadingDevices.map((reviewedDevice) => {
+                                                 <h4>Your List of Reviewed Devices</h4>
+                                        <br />
 
-                                            if (reviewedDevice.owner_rating && reviewedDevice.owner_review && reviewedDevice.device_status === 'Completed') {
-                                                // listNumber = listNumber + 1
-                                                return (
-                                                    <ListGroup.Item key={reviewedDevice.createdAt}
-                                                        as="li"
-                                                        className="d-flex align-items-start"
-                                                    >
-                                                        <div className="ms-2 fw-bold text-align-left">
-                                                        <div className="fw-bold text-align-left">{reviewedDevice.device_name}</div>
-                              
+                                        {!reviewedDevices ? 
+                                            <div><large> * You have not reviewed any devices yet. *</large>
+                                           <br/> 
+                                           <br/> 
+                                            </div>
 
-                                                            <div className=" fw-normal text-align-left">
-                                                                <br/>
-                                                                <p>Device Year: {reviewedDevice.device_year}</p>
-                                                                <p>Your Service Rating: {reviewedDevice.owner_rating}</p>
-                                                                <p>Your Service Review: {reviewedDevice.owner_review}</p>
+                                        :
+                                            <div>
+                                           
+                                                {loadingDevices.map((reviewedDevice) => {
 
-                                                            </div>
-                                                        </div>
+                                                    if (reviewedDevice.owner_rating && reviewedDevice.owner_review && reviewedDevice.device_status === 'Completed') {
+
+                                                        return (
+                                                            <ListGroup.Item key={reviewedDevice.createdAt}
+                                                                as="li"
+                                                                className="d-flex align-items-start review-block"
+                                                            >
+                                                                <div className="col-9 fw-bold text-align-left review-desc-div">
+                                                                    <div className="fw-bold text-align-left">{reviewedDevice.device_name}</div>
 
 
-                                                    </ListGroup.Item>
-                                                )
-                                            }
-                                        })}
+                                                                    <div className=" fw-normal text-align-left">
+                                                                        <br />
+                                                                        <p>Device Year: {reviewedDevice.device_year}</p>
+                                                                        <p>Your Service Rating: {reviewedDevice.owner_rating}</p>
+                                                                        <p>Your Service Review: {reviewedDevice.owner_review}</p>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className='col-3 review-img-div'>
+                                                                    <img src={reviewedDevice.images[0].image_url} className='review-img' ></img>
+                                                                </div>
+
+
+                                                            </ListGroup.Item>
+                                                        )
+                                                    }
+                                                })}
+                                            </div>
+
+
+                                    
+                                        } 
+                                    
+
                                     </ListGroup>
                                 }
 

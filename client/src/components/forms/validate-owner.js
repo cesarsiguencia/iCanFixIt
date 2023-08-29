@@ -64,8 +64,6 @@ const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm, setCli
                 {uploading &&  <Button disabled className="form-components">
                     Searching Records...
                 </Button>}
-
-
             </Form>
         </div>
     )

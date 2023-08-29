@@ -362,10 +362,27 @@ footer{
   top: 35px;
   right: 45px;
   width: 350px;
-  background-color:rgb(97, 218, 251, 0.8);
+  background-color:rgb(97, 218, 251, 0.9);
   /* border: 3px solid #fd7e14; */
   border-radius: 25px;
   padding: 25px 15px;
   
+}
+
+.review-block{
+  height: 250px
+}
+
+.review-desc-div{
+  margin: auto auto
+}
+
+.review-img-div{
+  margin: auto auto
+}
+
+.review-img{
+  height: 225px;
+  width: 200px;
 }
 

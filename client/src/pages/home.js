@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col}   from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+// import Row  from 'react-bootstrap/Row'
+// import iPad from '../device-library/stock-images/IMG_2550 Medium.png'
+// import iPod from '../device-library/stock-images/93164BD7-A3FB-454A-BE72-E60D81951069.png'
+// import Battery from '../device-library/stock-images/IMG_0131 Medium.png'
+// import Screen from '../device-library/stock-images/IMG_2637 Medium.png'
 
-import iPad from '../device-library/stock-images/IMG_2550 Medium.png'
-import iPod from '../device-library/stock-images/93164BD7-A3FB-454A-BE72-E60D81951069.png'
-import Battery from '../device-library/stock-images/IMG_0131 Medium.png'
-import Screen from '../device-library/stock-images/IMG_2637 Medium.png'
-
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Form'
 const Home = () => {
 
     // const [ image, setImage ] = useState()
@@ -49,9 +48,9 @@ const Home = () => {
 
         if(res.ok){
             const devices = await res.json()
-            console.log(devices)
-            const newArray = devices.slice(0,3)
-            setDbDevices(devices)
+            // console.log(devices)
+            // const newArray = devices.slice(0,3)
+            setDbDevices(devices.slice(0,3))
             console.log(dbDevices)
             // loadCarousel()
         
@@ -165,8 +164,23 @@ const Home = () => {
                         <div className='carousel--div' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                             <img src={device.images[0].image_url} className='home-imgs'></img>
                             <div className='img-desc'>
-                                <p>{device.device_name}</p>
-                                <p>{device.device_year}</p>
+                                <Container>
+                                    <Row>
+                                        <Col className='text-align-left'>
+                                        <strong>{device.device_name}</strong>
+                                        <p>Year: {device.device_year}</p>
+                                        <p>Client Rating: {device.owner_rating}</p> 
+                                        <p className='text-italics'>"{device.owner_review}"</p>
+                                        <p> - Says {device.owner.first_name}</p>
+
+                                        <Link to='/icanfixit/gallery'>
+                                            <large className='no-underline'>Check out more projects here!</large>
+                                        </Link>
+                                        </Col>
+                             
+                                    </Row>
+                                </Container>
+                           
                             </div>
 
                         </div>
