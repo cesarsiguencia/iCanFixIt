@@ -40,10 +40,6 @@ const deviceSchema = new Schema({
         ref: 'Client',
         require: true
     },
-    // owner:{
-    //     type: String,
-    //     require: true
-    // },
     owner_review: {
         type: String,
         maxlength: 500
@@ -56,15 +52,21 @@ const deviceSchema = new Schema({
         type: String,
         maxlength: 500
     },
-    device_photos: {
-        type: Array,
-        validate: {
-            validator: function(val){
-                return val.length < 6;
-            },
-            message:`Do no upload more than 5 pictures`
+    // device_photos: {
+    //     type: Array,
+    //     validate: {
+    //         validator: function(val){
+    //             return val.length < 4;
+    //         },
+    //         message:`Do no upload more than 3 pictures`
+    //     }
+    // },
+    images:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Images'
         }
-    }
+    ]
     
 })
 

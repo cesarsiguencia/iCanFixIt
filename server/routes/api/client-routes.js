@@ -13,4 +13,5 @@ router.route('/:id')
 router.route('/validate')
     .post(getClientByOther)
 
+
 module.exports = router;

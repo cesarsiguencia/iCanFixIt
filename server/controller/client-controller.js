@@ -1,4 +1,4 @@
-const { Client } = require('../models');
+const { Client, Device} = require('../models');
 
 const clientController = {
     getAllClients(req, res) {
@@ -68,14 +68,22 @@ const clientController = {
     },
 
     deletedClient({ params }, res) {
-      Client.findOneAndDelete({ _id: params.id })
+      
+        Client.findOneAndDelete({ _id: params.id })
+        
+      
+     
       .then(deletedClient => {
-          if (!deletedClient) {
+        if (!deletedClient) {
           res.status(404).json({ message: 'No client available!' });
           return;
           }
-          res.json(deletedClient);
-      })
+        Device.deleteMany({owner: params._id})
+
+
+
+          
+      }).then(result=> res.json(result))
       .catch(err => res.status(400).json(err));
   }
 

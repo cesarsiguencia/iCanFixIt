@@ -42,16 +42,20 @@ const Home = () => {
 
     const facts = [
         {
-            fact: Screen
+            fact: Screen,
+            desc: 'hello and I like to write some stuff so that you all know what I am doing'
         },
         {
-            fact: Battery
+            fact: Battery,
+            desc: 'hello and I like to write some stuff so that you all know what I am doing'
         },
         {
-            fact: iPod
+            fact: iPod,
+            desc: 'hello and I like to write some stuff so that you all know what I am doing'
         },
         {
-            fact: iPad
+            fact: iPad,
+            desc: 'hello and I like to write some stuff so that you all know what I am doing'
         }
     ]
 
@@ -75,6 +79,10 @@ const Home = () => {
                     return (
                         <div className='carousel--div' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                             <img src={fact.fact} className='home-imgs'></img>
+                            <div className='img-desc'>
+                                <p>{fact.desc}</p>
+                            </div>
+
                         </div>
                     )
                 })}

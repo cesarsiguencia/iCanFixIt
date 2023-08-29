@@ -79,6 +79,8 @@ const deviceController = {
     .catch(err => res.status(400).json(err));
   },
 
+
+
   deletedDevice({ params }, res) {
       Device.findOneAndDelete({ _id: params.id })
       .then(deletedDevice => {
@@ -89,7 +91,20 @@ const deviceController = {
           res.json(deletedDevice);
       })
       .catch(err => res.status(400).json(err));
-  }
+  },
+
+
+  deletedDevicebyClient({ params }, res) {
+    Device.deleteMany({ owner: params.id })
+    .then(deletedDeviceByClient => {
+
+        res.json(deletedDeviceByClient);
+    })
+    .catch(err => res.status(400).json(err));
+},
+  
+
+
 
 };
 
