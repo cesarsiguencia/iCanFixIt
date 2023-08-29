@@ -5,10 +5,13 @@ const deviceController = {
         Device.find({})
         .populate({
           path: 'images',
-          select: '-__v'
+          select: '-__v',
+        })
+        .populate({
+          path: 'owner',
+          // model: 'Client'
         })
         .select('-__v')
-        .sort({ _id: -1 })
           .then(allDevices => res.json(allDevices))
           
           .catch(err => {
@@ -37,22 +40,6 @@ const deviceController = {
         });
     },
 
-    // createDevice({ params, body }, res) {
-    //     Device.create(body)
-    //     .then(({_id}) => {
-    //       return Client.findOneAndUpdate(
-    //         { _id: params.ownerId },
-    //         { $push: { devices: _id}},
-    //         { 
-    //           new: true,
-    //           runValidators: true
-    //         }
-    //       )
-    //     })
-    //     .then(newDevice => res.json(newDevice))
-    //     .catch(err => res.status(400).json(err));
-    // },
-
     createDevice({ body }, res) {
       Device.create(body)
       .then((selectedDevice) => {
@@ -69,7 +56,7 @@ const deviceController = {
       .catch(err => res.status(400).json(err));
   },
 
-  updateDevice({ params, body }, res) {
+  updateDeviceStatus({ params, body }, res) {
     console.log(body, 'from the device photos')
     Device.findOneAndUpdate(
       { _id: params.id }, 
@@ -87,6 +74,41 @@ const deviceController = {
     .catch(err => res.status(400).json(err));
   },
 
+  updateDeviceReview({ params, body }, res) {
+    Device.findOneAndUpdate(
+      { _id: params.id }, 
+      { owner_review: body.owner_review,
+        owner_rating: body.owner_rating
+      }, 
+      { 
+        new: true, 
+        runValidators: true 
+      }
+    )
+    .then(updatedDevice => {
+      console.log(updatedDevice.device_photos)
+      res.json(updatedDevice)
+    }
+      )
+    .catch(err => res.status(400).json(err));
+  },
+
+  updateDeviceNotes({ params, body }, res) {
+    Device.findOneAndUpdate(
+      { _id: params.id }, 
+      { my_notes: body.my_notes,}, 
+      { 
+        new: true, 
+        runValidators: true 
+      }
+    )
+    .then(updatedDevice => {
+      console.log(updatedDevice.device_photos)
+      res.json(updatedDevice)
+    }
+      )
+    .catch(err => res.status(400).json(err));
+  },
 
 
   deletedDevice({ params }, res) {

@@ -45,22 +45,13 @@ const deviceSchema = new Schema({
         maxlength: 500
     },
     owner_rating: {
-        type: Number,
-        enum: [1, 2, 3, 4, 5],
+        type: String,
+        enum: ['⭐️', '⭐️⭐️', '⭐️⭐️⭐️', '⭐️⭐️⭐️⭐️', '⭐️⭐️⭐️⭐️⭐️'],
     },
     my_notes: {
         type: String,
         maxlength: 500
     },
-    // device_photos: {
-    //     type: Array,
-    //     validate: {
-    //         validator: function(val){
-    //             return val.length < 4;
-    //         },
-    //         message:`Do no upload more than 3 pictures`
-    //     }
-    // },
     images:[
         {
             type: Schema.Types.ObjectId,

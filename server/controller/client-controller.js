@@ -3,10 +3,6 @@ const { Client, Device} = require('../models');
 const clientController = {
     getAllClients(req, res) {
         Client.find({})
-        // .populate({
-        //   path: 'devices',
-        //   select: '-__v'
-        // })
         .select('-__v')
         .sort({ _id: -1 })
           .then(allClients => res.json(allClients))
@@ -17,11 +13,16 @@ const clientController = {
     },
     
     getClientById({ params }, res) {
-      console.log(params.id)
         Client.findOne({ _id: params.id })
         .populate({
             path: 'devices',
-            select: '-__v'
+            model: 'Device',
+            select: '-__v',
+            // options: { sort: { 'created_at': -1 } },
+            populate: { 
+              path: 'images',
+              model: 'Images'
+            }
           })
           .then(clientData => {
             
