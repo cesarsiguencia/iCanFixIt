@@ -40,53 +40,143 @@ const Home = () => {
     //     setLoading(false)
     // }
 
-    const facts = [
-        {
-            fact: Screen,
-            desc: 'hello and I like to write some stuff so that you all know what I am doing'
-        },
-        {
-            fact: Battery,
-            desc: 'hello and I like to write some stuff so that you all know what I am doing'
-        },
-        {
-            fact: iPod,
-            desc: 'hello and I like to write some stuff so that you all know what I am doing'
-        },
-        {
-            fact: iPad,
-            desc: 'hello and I like to write some stuff so that you all know what I am doing'
+    const [dbDevices, setDbDevices] = useState()
+    const [loading, setLoading] = useState(true)
+
+    const fetchDevice = async() => {
+        console.log('fetching....')
+        const res =  await fetch('api/devices')
+
+        if(res.ok){
+            const devices = await res.json()
+            console.log(devices)
+            const newArray = devices.slice(0,3)
+            setDbDevices(devices)
+            console.log(dbDevices)
+            // loadCarousel()
+        
+        } else {
+            console.log(res.statusText)
         }
-    ]
+        console.log(dbDevices)
+        setLoading(false)
+        return
+    }
 
     const [currentIndex, setCurrentIndex] = useState(0)
 
-    useEffect(() => {
-        setInterval(() => {
-            if (currentIndex === facts.length - 1) {
-                return setCurrentIndex(0)
-            }
-            return setCurrentIndex(currentIndex + 1)
-        }, 12000)
+    useEffect(()=>{
+        fetchDevice()
+        // if(dbDevices){
+        //     setInterval(() => {
+        //         if (currentIndex === dbDevices.length - 1) {
+        //             return setCurrentIndex(0)
+        //         }
+        //         return setCurrentIndex(currentIndex + 1)
+        //     }, 12000)
+        // }
+    },[])
+
+    // if(dbDevices){
+    //     useEffect(()=>{
+    //         setInterval(() => {
+    //             if (currentIndex === dbDevices.length - 1) {
+    //                 return setCurrentIndex(0)
+    //             }
+    //             return setCurrentIndex(currentIndex + 1)
+    //         }, 12000)
+    //     }, [dbDevices])
+    // } 
+    
+    useEffect(()=>{
+        if(dbDevices){
+            setInterval(() => {
+                console.log(dbDevices)
+
+                console.log(dbDevices[0].images)
+      
+                if (currentIndex === dbDevices.length - 1) {
+                    return setCurrentIndex(0)
+                }
+                return setCurrentIndex(currentIndex+1)
+            }, 8000)
+        }
+       
     })
+
+
+    
+    
+
+    // const facts = [
+    //     {
+    //         fact: Screen,
+    //         desc: 'hello and I like to write some stuff so that you all know what I am doing'
+    //     },
+    //     {
+    //         fact: Battery,
+    //         desc: 'hello and I like to write some stuff so that you all know what I am doing'
+    //     },
+    //     {
+    //         fact: iPod,
+    //         desc: 'hello and I like to write some stuff so that you all know what I am doing'
+    //     },
+    //     {
+    //         fact: iPad,
+    //         desc: 'hello and I like to write some stuff so that you all know what I am doing'
+    //     }
+    // ]
+
+    
+
+    // const loadCarousel = useEffect(() => {
+    //     fetchDevice()
+    //     setInterval(() => {
+    //         if (currentIndex === dbDevices.length - 1) {
+    //             return setCurrentIndex(0)
+    //         }
+    //         return setCurrentIndex(currentIndex + 1)
+    //     }, 12000)
+    // },[])
 
 
     return (
         <div>
 
-            <div className="carousel-container">
-                {facts.map((fact, i) => {
+            {loading && !dbDevices ? (
+                <div>
+                    <p>Fetching pictures</p>
+                </div>
+            ) : (
+                <div className="carousel-container">
+
+                {/* {dbDevices.map((stuff, i)=>{
+                    return(
+                        <div key={i}>
+                        <p>{stuff.device_name}</p>
+                        <p>{stuff.device_year}</p>
+                    </div>
+                    )
+        
+                })} */}
+
+                {dbDevices.map((device, i) => {
                     return (
                         <div className='carousel--div' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                            <img src={fact.fact} className='home-imgs'></img>
+                            <img src={device.images[0].image_url} className='home-imgs'></img>
                             <div className='img-desc'>
-                                <p>{fact.desc}</p>
+                                <p>{device.device_name}</p>
+                                <p>{device.device_year}</p>
                             </div>
 
                         </div>
                     )
                 })}
             </div>
+
+            )}
+        
+           
 
         </div>
     )

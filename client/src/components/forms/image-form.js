@@ -67,7 +67,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
 
             var imageInfo = {
                 name: `${deviceId}/0.png`,
-                device_tied: deviceId,
+                deviceById: deviceId,
                 image_url: urlsArray[0]
             }
 
@@ -95,7 +95,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
             <Form>
                 <Form.Group className="form-components">
                     <Form.Label>
-                        No more than 3 photos.
+                        No more than 1 photo.
                     </Form.Label>
 
                     <Form.Control type='file' id='photo' name='image' onChange={(e) => (
@@ -119,7 +119,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                                     )
                                 })}
                                 <Button className='small-buttons' type='button' onClick={clearImagesSeletion}>
-                                    Clear Images Selection
+                                    Clear Image Selection
                                 </Button>
 
                             </div>
@@ -128,11 +128,11 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
 
 
                     {!uploading && <Button className="form-components" type='submit' onClick={submitImage}>
-                        Submit Device Info
+                        Submit Image Info
                     </Button>}
 
                     {uploading && <Button disabled className="form-components" onClick={submitImage}>
-                        Adding Your Device...
+                        Adding Image...
                     </Button>}
                 </Form.Group>
 

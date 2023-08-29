@@ -3,6 +3,10 @@ const { Client, Device } = require('../models');
 const deviceController = {
     getAllDevices(req, res) {
         Device.find({})
+        .populate({
+          path: 'images',
+          select: '-__v'
+        })
         .select('-__v')
         .sort({ _id: -1 })
           .then(allDevices => res.json(allDevices))
@@ -15,6 +19,10 @@ const deviceController = {
     
     getDevicesById({ params }, res) {
         Device.findOne({ _id: params.id })
+          .populate({
+          path: 'images',
+          select: '-__v'
+        })
           .then(deviceData => {
             if (!deviceData) {
               res.status(404).json({ message: 'No device available' });
@@ -65,7 +73,7 @@ const deviceController = {
     console.log(body, 'from the device photos')
     Device.findOneAndUpdate(
       { _id: params.id }, 
-      { device_photos: body.imageNames}, 
+      { device_status: body.device_status}, 
       { 
         new: true, 
         runValidators: true 

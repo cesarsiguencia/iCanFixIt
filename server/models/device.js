@@ -27,7 +27,7 @@ const deviceSchema = new Schema({
         type: String,
         required: true,
         minlength: 1,
-        maxlength: 150
+        maxlength: 500
     },
     device_status: {
         type: String,

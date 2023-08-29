@@ -352,7 +352,8 @@ footer{
 .home-imgs{
   width: 100%;
   transform: translate(0,-350px);
-  position: relative
+  position: relative;
+  border: 1px solid white
 
 }
 
@@ -362,7 +363,7 @@ footer{
   right: 45px;
   width: 350px;
   background-color:rgb(97, 218, 251, 0.8);
-  border: 3px solid #fd7e14;
+  /* border: 3px solid #fd7e14; */
   border-radius: 25px;
   padding: 25px 15px;
   

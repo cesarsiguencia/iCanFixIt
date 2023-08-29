@@ -1,4 +1,4 @@
-const { Image } = require('../models');
+const { Image, Device } = require('../models');
 
 // const multer = require('multer')
 
@@ -28,6 +28,15 @@ const imageController = {
         Image.create(body)
         .then((photoInfoUploaded) => {
           res.json(photoInfoUploaded)
+          return Device.findOneAndUpdate(
+            { _id: photoInfoUploaded.deviceById },
+            { $push: { images: photoInfoUploaded._id}},
+            { 
+              new: true,
+              runValidators: true
+            }
+          )
+          
         })
         .catch(err => res.status(400).json(err));
     },

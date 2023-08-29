@@ -6,7 +6,7 @@ const imageSchema = new Schema({
         require: true,
         trim: true
     },
-    device_tied:{
+    deviceById:{
         type: Schema.Types.ObjectId,
         ref: 'Device',
         require: true
@@ -17,6 +17,6 @@ const imageSchema = new Schema({
     },
 })
 
-const Image = model('Image', imageSchema)
+const Image = model('Images', imageSchema)
 
 module.exports = Image;
