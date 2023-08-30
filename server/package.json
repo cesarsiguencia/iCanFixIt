@@ -1,10 +1,11 @@
 {
   "name": "mern-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "server-side",
   "main": "server.js",
-  "engines": {
-    "node": "14.x"
+  "engines" : { 
+    "npm" : ">=8.0.0 <9.0.0",
+    "node" : ">=16.0.0 <17.0.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
