@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
-import test_photo from '../../src/device-library/test.png'
-
-import { Container, Row, Col, Card, Badge, Button } from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
+import Modal from '../components/modal'
 
 const Gallery = () => {
 
@@ -10,7 +11,7 @@ const Gallery = () => {
 
     const [allProjects, setAllProjects] = useState()
 
-    const [colorStatus, setColorStatus] = useState()
+    const [selectedProject, setSelectedProject] = useState()
 
     const fetchDevices = async () => {
         const res = await fetch('/api/devices')
@@ -23,14 +24,21 @@ const Gallery = () => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchDevices()
-    },[])
+    }, [])
 
-
+    const openModal = () => {
+        const modalDiv = document.querySelector('.modal-me')
+        modalDiv.style.height = '100vh'
+    }
 
     return (
         <div className='cesar'>
+            <Modal
+                selectedProject={selectedProject}
+            >
+            </Modal>
 
             {loading ? (
                 <>
@@ -43,37 +51,49 @@ const Gallery = () => {
                         <Col className="mb-5 gallery">
 
                             {allProjects.map((project, i) => {
-                                if(project.device_status== 'Completed'){
-                                    var colorCode = 'green'
-                                }
-                                if(project.device_status== 'In Progress'){
-                                    var colorCode = 'orange'
-                                }
-                                if(project.device_status== 'Service Requested'){
-                                    var colorCode = 'yellow'
+                                let colorCode
+
+                                switch (project.device_status) {
+                                    case 'Completed':
+                                        colorCode = 'green'
+                                        break
+
+                                    case 'In Progress':
+                                        colorCode = 'orange'
+                                        break
+
+                                    case 'Service Requested':
+                                        colorCode = 'yellow'
+                                        break
+
                                 }
 
+                                return (
 
+                                    <Card className='shadow-sm bg-white rounded' style={{ width: '300px', height: '525px' }} key={i}
+                                        onClick={() => {
+                                            setSelectedProject(allProjects[i])
+                                            openModal()
+                                        }
+                                    }
+                                    >
+                                        <Card.Img variant="top" style={{ width: '300px', height: '400px' }} src={project.images[0].image_url}></Card.Img>
+                                        <Card.Body className="d-flex flex-column">
+                                            <div className='d-flex mb-2 justify-content-between'>
+                                                <Card.Title className='mb-0 font-weight-bold text-align-left'>{project.device_name}</Card.Title>
 
-                                return(
-                                    <Card className='shadow-sm bg-white rounded' style={{width:'300px', height: '525px'}} key={i}>
-                                    <Card.Img variant="top" style={{width:'300px', height: '400px'}}src={project.images[0].image_url}></Card.Img>
-                                    <Card.Body className="d-flex flex-column">
-                                        <div className='d-flex mb-2 justify-content-between'>
-                                            <Card.Title className='mb-0 font-weight-bold text-align-left'>{project.device_name}</Card.Title>
-                                
-                                            <strong
-                                               style={{color: colorCode}}
+                                                <strong
+                                                    style={{ color: colorCode }}
                                                 >{project.device_status}</strong>
-                                        </div>
-                                        <div className='text-align-left'>
-                                            <p>Year: {project.device_year}</p>
+                                            </div>
+                                            <div className='text-align-left'>
+                                                <p>Year: {project.device_year}</p>
 
-                                        </div>
-                                    </Card.Body>
-                                </Card>
+                                            </div>
+                                        </Card.Body>
+                                    </Card>
                                 )
-                              
+
                             })}
 
                         </Col>
@@ -82,9 +102,6 @@ const Gallery = () => {
 
             </>)
             }
-
-
-
         </div>
     )
 }

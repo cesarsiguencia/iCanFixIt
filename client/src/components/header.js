@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import { Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Container, Nav} from 'react-bootstrap'
+
 import toolbar from '../device-library/utils/wrench-svgrepo-com.svg'
 
 const Header = ({ redirectClicked }) => {

@@ -3,18 +3,6 @@ import { useState, useEffect } from 'react';
 
 const TestingDom = () =>{
 
-  
-
-    // var myFunction = () =>{
-    //     fetch('api/clients')
-    //     .then(res => res.json())
-    //     .then(fetchedClient => {
-    //         return fetchedClient
-    //     })
-    // }
-
-    // useSomeFetch(myFunction)
-
     const [data, setData] = useState(null);
 
     useEffect(() => {

@@ -304,36 +304,6 @@ footer{
   border: 0px;
 }
 
-
-/* .carousel-container {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-}
-
-.carousel--div{
-  width: 80%;
-  margin: auto auto;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.carousel---block{
-  min-width: 100%;
-  width: 100%;
-  transition: 1s cubic-bezier(0.1, 0.1, 0.1, 1.5);
-  margin: auto;
-}
-
-.carousel-item {
-  width: 100%;
-  margin: auto auto;
-  transition: 1s cubic-bezier(0.1, 0.1, 0.1, 1.5);
-} */
-
-/* style={{transform:`translate(-${currentIndex * 100}%)`}} */
-
 .carousel-container {
   height: 100vh;
   display: flex;
@@ -388,12 +358,6 @@ footer{
 
 
 .gallery{
-  /* display: flex;
-  flex-wrap: wrap;
-  /* flex-direction: row; */
-
-  /* justify-content: space-around */ 
-
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
@@ -405,4 +369,48 @@ footer{
 
 .gallery > *:hover{
   scale: 1.1
+}
+
+.time-bar{
+  height: 5px;
+  width: 100%;
+  background-color: rgb(231, 231, 4)
+
+}
+
+.modal-center{
+
+  position: relative;
+}
+
+.modal-block{
+  position: absolute;
+  justify-content: center;
+  /* top: 40vh; */
+}
+
+.modal-block > *{
+  color: white
+}
+
+.modal-titles{
+  margin: 25px auto
+}
+
+.modal-me{
+  background: rgba(0, 0, 0, 0.8);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  z-index: 1;
+  height: 0
+}
+
+.modal-img{
+  height: 550px;
+  width: 350px;
+  margin: 25px auto
 }

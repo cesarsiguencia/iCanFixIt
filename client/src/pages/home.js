@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col}   from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
-// import iPad from '../device-library/stock-images/IMG_2550 Medium.png'
-// import iPod from '../device-library/stock-images/93164BD7-A3FB-454A-BE72-E60D81951069.png'
-// import Battery from '../device-library/stock-images/IMG_0131 Medium.png'
-// import Screen from '../device-library/stock-images/IMG_2637 Medium.png'
 
 const Home = () => {
 
@@ -34,9 +32,6 @@ const Home = () => {
     useEffect(()=>{
         if(dbDevices){
             setInterval(() => {
-                console.log(dbDevices)
-
-                console.log(dbDevices[0].images)
       
                 if (currentIndex === dbDevices.length - 1) {
                     return setCurrentIndex(0)
@@ -74,6 +69,11 @@ const Home = () => {
                                         <Link to='/icanfixit/gallery'>
                                             <large className='no-underline'>Check out more projects here!</large>
                                         </Link>
+                                        <br/>
+                                        {/* <br/>
+                                        <div className='time-bar'>
+
+                                        </div> */}
                                         </Col>
                              
                                     </Row>
