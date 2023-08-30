@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap'
+import React from 'react';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import ListGroup from 'react-bootstrap/ListGroup'
 import { Link } from 'react-router-dom'
 import HeroComp from '../components/hero'
 import ListItem from '../components/lists/about-how'
@@ -48,7 +53,7 @@ const About = ({setRedirectClicked}) => {
                 <Row className='body-about-row'>
                     <Col xs={5} className='body-about-text'>
 
-                        <img className='test-photo' src={Portrait}>
+                        <img className='test-photo' src={Portrait} alt="Portrait of Cesar">
 
                         </img>
 
@@ -115,7 +120,7 @@ const About = ({setRedirectClicked}) => {
 
                     <Col xs={5} className='body-about-text'>
 
-                        <img className='test-photo' src={Mobile}>
+                        <img className='test-photo' src={Mobile} alt='Smartphone'>
 
                         </img>
 

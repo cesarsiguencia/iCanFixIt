@@ -47,9 +47,12 @@ const Gallery = () => {
             ) : (<>
 
                 <Container>
+                    <br/>
+                <h4>Click on the devices I have serviced!</h4>
+                <br/>
                     <Row>
                         <Col className="mb-5 gallery">
-
+                            
                             {allProjects.map((project, i) => {
                                 let colorCode
 

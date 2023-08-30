@@ -10,15 +10,15 @@ const Modal = ({ selectedProject }) => {
     useEffect(() => {
         if (selectedProject) {
 
-            if (selectedProject.device_status == 'Completed') {
+            if (selectedProject.device_status === 'Completed') {
                 setColorCode('green')
             }
 
-            if (selectedProject.device_status == 'In Progress') {
+            if (selectedProject.device_status === 'In Progress') {
                 setColorCode('orange')
             }
 
-            if (selectedProject.device_status == 'Service Requested') {
+            if (selectedProject.device_status === 'Service Requested') {
                 setColorCode('yellow')
             }
         }
@@ -38,7 +38,7 @@ const Modal = ({ selectedProject }) => {
             </> : <>
                 <Container className='modal-center' >
                     <Row className='modal-block'>
-                        <img className='modal-img' src={selectedProject.images[0].image_url}></img>
+                        <img className='modal-img' src={selectedProject.images[0].image_url} alt={selectedProject.device_name}></img>
                         <div className='modal-titles'>
                             <h4 className='modal-font'>{selectedProject.owner.first_name}'s {selectedProject.device_name}</h4>
                             <p className='modal-font'>{selectedProject.device_year}</p>
@@ -51,7 +51,7 @@ const Modal = ({ selectedProject }) => {
 
                                 <div className='col-6 col-6 text-align-left'>
                                     <strong>Problem reported by {selectedProject.owner.first_name}:</strong>
-                                    <p className='modal-font'>{selectedProject.device_description}</p>
+                                    <p className='modal-font text-italics'>"{selectedProject.device_description}"</p>
                                 </div>
 
                                 <div className='col-6 text-align-left'>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import github from '../device-library/utils/github.svg'
 import linkedIn from '../device-library/utils/linkedin.png'
 
@@ -20,9 +19,9 @@ const Footer = () => {
             <div className="col-md-3 mb-md-0 mb-3">
                 <h5>Links</h5>
                 <ul className="list-unstyled">
-                    <li><a src="https://github.com/cesarsiguencia"><img className='footer-icons' src={github}></img></a></li>
+                    <li><a href="https://github.com/cesarsiguencia"><img className='footer-icons' src={github} alt='github logo'></img></a></li>
 
-                    <li><a src="https://www.linkedin.com/in/cesar-siguencia/"><img className='footer-icons' src={linkedIn}></img></a></li>
+                    <li><a href="https://www.linkedin.com/in/cesar-siguencia/"><img className='footer-icons' src={linkedIn} alt='linkedIn logo'></img></a></li>
                 </ul>
             </div>
 

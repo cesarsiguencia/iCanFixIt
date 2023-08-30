@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 import NoDevices from '../notices/no-completed-services'
+
 const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
     const [id, setId] = useState()
     const [rating, setRating] = useState()
@@ -156,7 +157,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                         <br />
 
                                         {!reviewedDevices ? 
-                                            <div><large> * You have not reviewed any devices yet. *</large>
+                                            <div><strong> * You have not reviewed any devices yet. *</strong>
                                            <br/> 
                                            <br/> 
                                             </div>
@@ -187,7 +188,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                                                 </div>
 
                                                                 <div className='col-3 review-img-div'>
-                                                                    <img src={reviewedDevice.images[0].image_url} className='review-img' ></img>
+                                                                    <img src={reviewedDevice.images[0].image_url} className='review-img' alt={reviewedDevice.device_name}></img>
                                                                 </div>
 
 

@@ -4,7 +4,7 @@ import Workstation from '../device-library/hero.png'
 const Hero = () =>{
     return(
         <div className='hero'>
-        <img className='hero-img' src={Workstation}></img>
+        <img className='hero-img' src={Workstation} alt="Cesar's workstation"></img>
     </div>
 
     )

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import { Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Navbar, Container, Nav} from 'react-bootstrap'
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
 
 import toolbar from '../device-library/utils/wrench-svgrepo-com.svg'
 
@@ -83,7 +84,7 @@ const Header = ({ redirectClicked }) => {
                             setTitleClicked(true)
                             setNavClicked(false)
                         }}>
-                            <div class='text-align-left'>
+                            <div className='text-align-left'>
                                 <p className='nav-links-font header-title'>iCanFixIt</p>
                                 <small className='header-desc'>Repair Your Device With Me!</small>
                             </div>
@@ -114,7 +115,7 @@ const Header = ({ redirectClicked }) => {
                                                     }}
 
                                                     key={i}>
-                                                    <Link className={`nav-links-font links     ${!selectedPage ? (selectedPage == "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
+                                                    <Link className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
                                                     </Link>
                                                 </Nav.Link>
 
@@ -135,7 +136,7 @@ const Header = ({ redirectClicked }) => {
 
                                                         to={`/icanfixit/${page.url}`}>{page.name}
                                                     </Link>
-                                                    <img className='toolbar' src={page.image}>
+                                                    <img className='toolbar' src={page.image} alt='wrench toolbar'>
                                                     </img>
                                                 </Nav.Link>
 

@@ -10,7 +10,6 @@ const Home = () => {
     const [loading, setLoading] = useState(true)
 
     const fetchDevice = async() => {
-        console.log('fetching....')
         const res =  await fetch('api/devices')
 
         if(res.ok){
@@ -55,7 +54,7 @@ const Home = () => {
                 {dbDevices.map((device, i) => {
                     return (
                         <div className='carousel--div' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                            <img src={device.images[0].image_url} className='home-imgs'></img>
+                            <img src={device.images[0].image_url} alt={device.device_name}className='home-imgs'></img>
                             <div className='img-desc'>
                                 <Container>
                                     <Row>
@@ -67,7 +66,7 @@ const Home = () => {
                                         <p> - Says {device.owner.first_name}</p>
 
                                         <Link to='/icanfixit/gallery'>
-                                            <large className='no-underline'>Check out more projects here!</large>
+                                            <strong className='no-underline'>Check out more projects here!</strong>
                                         </Link>
                                         <br/>
                                         {/* <br/>

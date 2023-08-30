@@ -1,22 +1,21 @@
 import React from 'react'
 import Dog from '../../device-library/utils/dog-running.gif'
-import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
-const noFinishedDevices = ({clientName}) =>{
+const noFinishedDevices = ({ clientName }) => {
 
-    return(
+    return (
         <div>
-        <img src={Dog} className='dog-running'></img>
-        <p>You have no devices that have completed receiving service, {clientName}. You may write a review once you receive your device back.</p>
+            <img src={Dog} className='dog-running' alt='Running dog'></img>
+            <p>You have no devices that have completed receiving service, {clientName}. You may write a review once you receive your device back.</p>
 
-        <a>
-        <Button className="form-components" href='mailto:cd.siguencia@gmail.com'>
+            <a href='mailto:cd.siguencia@gmail.com'>
+                <Button className="form-components">
                     Contact César directly for status update
-        </Button>
-        </a>
+                </Button>
+            </a>
 
 
-    </div>
+        </div>
     )
 }
 

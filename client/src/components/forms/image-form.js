@@ -79,6 +79,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
 
             if (res.ok) {
                 const data = await res.json()
+                console.log(data)
                 alert('success in submitting image info')
             } else {
                 console.log(res.statusText)

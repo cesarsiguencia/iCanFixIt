@@ -4,7 +4,7 @@ const ListItem = ({step, i}) =>{
 
     return(
         <div className='about-how-block'>
-        <img className='about' src={step.image}>
+        <img className='about' src={step.image} alt={`${step.image} icon`}>
         </img>
 
         <div className="about-how-text text-align-left">
