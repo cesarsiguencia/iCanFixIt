@@ -1,6 +1,5 @@
 {
   "name": "mern-server",
-
   "description": "server-side",
   "main": "server.js",
   "engines" : { 
