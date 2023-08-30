@@ -1,8 +1,7 @@
 const express = require('express')
 // const cors = require('cors')
-
 const mongoose = require('mongoose')
-
+require('dotenv').config()
 const app = express()
 
 const PORT = process.env.PORT || 4101;
@@ -11,8 +10,8 @@ const PORT = process.env.PORT || 4101;
 
 
 // app.use(cors())
-app.get('/testing', (req, res) => {
-    res.json({message: 'Working server'})
+app.get('/', (req, res) => {
+    res.send({message: 'Working server'})
 })
 
 app.use(express.json())
@@ -22,7 +21,7 @@ app.use(require('./routes'))
 
 
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/i-can-fix-it', {
+mongoose.connect(process.env.MONGO_URI || process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex: true,
