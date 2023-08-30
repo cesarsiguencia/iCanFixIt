@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://icanfixit-by-cs-a17c7a1ff29b.herokuapp.com/",
+  "proxy": "https://icanfixit-by-cs-a17c7a1ff29b.herokuapp.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
