@@ -9,7 +9,7 @@ import ClientForm from '../components/forms/client-form'
 import DeviceForm from '../components/forms/device-form'
 import ImageForm from '../components/forms/image-form'
 import Success from '../components/notices/service-submitted'
-import Button from 'react-bootstrap/button'
+import Button from 'react-bootstrap/Button'
 import HeroComp from '../components/hero'
 
 const FormEntries = () => {
