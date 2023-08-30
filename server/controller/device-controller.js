@@ -75,6 +75,7 @@ const deviceController = {
   },
 
   updateDeviceReview({ params, body }, res) {
+    console.log(body, 'whats hereee')
     Device.findOneAndUpdate(
       { _id: params.id }, 
       { owner_review: body.owner_review,

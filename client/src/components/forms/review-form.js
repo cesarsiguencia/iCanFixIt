@@ -32,7 +32,6 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
         })
 
         if (res.ok) {
-            setRating('')
             setReviewText('')
             alertModal.style.height = '100vh'
             setAlertMessage({server_mes: res.statusText, personal: 'Success in Uploading!', reload: false})
@@ -92,7 +91,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                 <h4>Write Or Update A Review For Me! Thank you, {clientName}!</h4>
                                 <br />
 
-                                <Form onSubmit={handleReviewSubmit}>
+                                <Form onSubmit={handleReviewSubmit} id='review-form'>
                                     <Form.Group className='form-components text-align-left'>
                                         <Form.Label>Select One Of Your Devices with Completed Service</Form.Label>
 
@@ -124,7 +123,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                             value={rating}
                                             onChange={(e) => setRating(e.target.value)}
                                         >
-                                            <option disabled value='Select a rating'>Select A Rating</option>
+                                            <option disabled value='Select a rating'>Pick A Rating</option>
                                             <option value='⭐️⭐️⭐️⭐️⭐️'>5</option>
                                             <option value='⭐️⭐️⭐️⭐️'>4</option>
                                             <option value='⭐️⭐️⭐️'>3</option>
