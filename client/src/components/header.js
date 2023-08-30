@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
+
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 
@@ -100,67 +101,40 @@ const Header = ({ redirectClicked }) => {
                                     setNavClicked(true)
                                     setTitleClicked(false)
                                 }}
-
                             >
+                                {pages.map((page, i) => {
+                                    if (!page.image) {
+                                        return (
+                                            <Link onClick={() => {
+                                                    setSelectedPage(page)
+                                                }}
+                                                key={i} className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
+                                            </Link>
+                                        )
+                                    }
 
-                           
-                                    {pages.map((page, i) => {
-                                        if (!page.image) {
-                                            return (
-
-                                                <Nav.Link
-
+                                    else {
+                                        return (
+                                            <div key={i}
+                                                className='featured-button'>
+                                                <Link
                                                     onClick={() => {
                                                         setSelectedPage(page)
-                                                    }}
-
-                                                    key={i}>
-                                                    <Link className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
-                                                    </Link>
-                                                </Nav.Link>
-
-
-                                            )
-                                        }
-
-                                        else {
-                                            return (
-
-                                                <Nav.Link
-                                                    onClick={() => {
-                                                        setSelectedPage(page)
-                                                    }}
-
-                                                    key={i} className='featured-button'>
-                                                    <Link className='nav-links-font links'
-
-                                                        to={`/icanfixit/${page.url}`}>{page.name}
-                                                    </Link>
-                                                    <img className='toolbar' src={page.image} alt='wrench toolbar'>
-                                                    </img>
-                                                </Nav.Link>
-
-
-
-                                            )
-                                        }
-
-                                    })}
-                         
-
-
+                                                    }} 
+                                                    className='nav-links-font links featured-button' to={`/icanfixit/${page.url}`}>{page.name}
+                                                </Link>
+                                                <img className='toolbar' src={page.image} alt='wrench toolbar'>
+                                                </img>
+                                            </div>
+                                        )
+                                    }
+                                })}
                             </Nav>
                         </Navbar.Collapse>
                     </div>
-
-
                 </Container>
             </Navbar>
-
-
-
         </header>
-
     )
 }
 

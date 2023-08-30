@@ -109,8 +109,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
 
                                                     )
                                                 }
-
-
+                                           
                                             })}
                                         </Form.Select>
 
@@ -200,6 +199,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                                             </ListGroup.Item>
                                                         )
                                                     }
+                                               
                                                 })}
                                             </div>
 

@@ -57,19 +57,16 @@ const Gallery = () => {
                             {allProjects.map((project, i) => {
                                 let colorCode
 
-                                switch (project.device_status) {
-                                    case 'Completed':
-                                        colorCode = 'green'
-                                        break
-
-                                    case 'In Progress':
-                                        colorCode = 'orange'
-                                        break
-
-                                    case 'Service Requested':
-                                        colorCode = 'red'
-                                        break
-
+                                if (project.device_status === 'Completed') {
+                                    colorCode = 'green'
+                                }
+                    
+                                if (project.device_status === 'In Progress') {
+                                    colorCode = 'orange'
+                                }
+                    
+                                if (project.device_status === 'Service Requested') {
+                                    colorCode = 'red'
                                 }
 
                                 return (
