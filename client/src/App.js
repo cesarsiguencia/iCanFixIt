@@ -39,19 +39,19 @@ const App = () => {
 
         <div className="App-body" onLoad={workEaseIn}>
             <Routes>
-              <Route path='/icanfixit' element={<HomePg></HomePg>}>
+              <Route path='/' element={<HomePg></HomePg>}>
               </Route>
 
-              <Route path='/icanfixit/form' element={<FormPg></FormPg>}>
+              <Route path='/form' element={<FormPg></FormPg>}>
               </Route>
 
-              <Route path='/icanfixit/review' element={<ReviewPg></ReviewPg>}>
+              <Route path='/review' element={<ReviewPg></ReviewPg>}>
               </Route>
 
-              <Route setRedirectClicked={setRedirectClicked} path='/icanfixit/gallery' element={<GalleryPg></GalleryPg>}>
+              <Route setRedirectClicked={setRedirectClicked} path='/gallery' element={<GalleryPg></GalleryPg>}>
               </Route>
 
-              <Route setRedirectClicked={setRedirectClicked} path='/icanfixit/about' element={<AboutPg></AboutPg>}>
+              <Route setRedirectClicked={setRedirectClicked} path='/about' element={<AboutPg></AboutPg>}>
               </Route>
             </Routes>
         </div>
