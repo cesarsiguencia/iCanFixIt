@@ -8,9 +8,11 @@
     "scripts": {
         "start": "node server/server.js",
         "watch": "nodemon",
-        "heroku-postbuild": "cd client && npm install && npm run build"
+        "heroku-postbuild": "cd client && npm install && npm run build",
+        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
     },
     "devDependencies": {
+        "concurrently": "^8.2.1",
         "nodemon": "^3.0.1"
     },
     "dependencies": {
