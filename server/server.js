@@ -23,7 +23,7 @@ app.use(require('./routes'))
 app.use(express.static(path.join(__dirname, "public")));
 
 //Put this after all middleware. Otherwise, Heroku will give you 304 page
-app.get("*", function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
