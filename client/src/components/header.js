@@ -81,7 +81,7 @@ const Header = ({ redirectClicked }) => {
                 <Container className='header-components'>
                     <div>
 
-                        <Link to='/icanfixit' className='nav-links-font' onClick={() => {
+                        <Link to='/' className='nav-links-font' onClick={() => {
                             setTitleClicked(true)
                             setNavClicked(false)
                         }}>
@@ -108,7 +108,7 @@ const Header = ({ redirectClicked }) => {
                                             <Link onClick={() => {
                                                     setSelectedPage(page)
                                                 }}
-                                                key={i} className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/icanfixit/${page.url}`}>{page.name}
+                                                key={i} className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/${page.url}`}>{page.name}
                                             </Link>
                                         )
                                     }
@@ -121,7 +121,7 @@ const Header = ({ redirectClicked }) => {
                                                     onClick={() => {
                                                         setSelectedPage(page)
                                                     }} 
-                                                    className='nav-links-font links featured-button' to={`/icanfixit/${page.url}`}>{page.name}
+                                                    className='nav-links-font links featured-button' to={`/${page.url}`}>{page.name}
                                                 </Link>
                                                 <img className='toolbar' src={page.image} alt='wrench toolbar'>
                                                 </img>
