@@ -1,6 +1,5 @@
 const express = require('express')
 // const cors = require('cors')
-const path = require('path')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const app = express()
@@ -8,7 +7,6 @@ const app = express()
 const PORT = process.env.PORT || 4101;
 
 // const routes = require('./routes')
-
 
 // app.use(cors())
 app.get('/', (req, res) => {
@@ -19,7 +17,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 // app.use(express.static('public'))
 app.use(require('./routes'))
-
 
 
 mongoose.connect(process.env.MONGO_URI || process.env.CONNECTION_URL, {
