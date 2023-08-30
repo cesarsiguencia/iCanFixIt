@@ -28,13 +28,15 @@ app.use(require('./routes'))
 // });
 
 
-mongoose.connect(process.env.MONGO_URI || process.env.CONNECTION_URL, {
+mongoose.connect(process.env.MONGO_URI || process.env.LOCALHOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex: true,
     // useFindAndModify: false
-});
+})
+.then(app.listen(PORT, ()=> console.log(`iCanFixIt listening on ${PORT}`)))
+.catch((error => console.log(error)))
 
 mongoose.set('debug', true)
+// mongoose.set('useFindAndModify', false)
 
-app.listen(PORT, ()=> console.log(`iCanFixIt listening on ${PORT}`))
