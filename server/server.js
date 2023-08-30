@@ -27,7 +27,7 @@ app.use(require('./routes'))
 
 
 
-mongoose.connect(process.env.MONGO_URI || process.env.LOCALHOST, {
+mongoose.connect( process.env.LOCALHOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex: true,
