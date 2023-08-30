@@ -1,0 +1,18 @@
+{
+    "name": "icanfixit",
+    "description": "whole-project",
+    "main": "server.js",
+    "engines" : { 
+      "npm" : ">=8.0.0 <9.0.0",
+      "node" : ">=16.0.0 <17.0.0"
+    },
+    "scripts": {
+      "start": "node server/server.js",
+      "watch": "nodemon",
+      "heroku-postbuild": "cd client && npm install && npm run build"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.1"
+    }
+  }
+  
