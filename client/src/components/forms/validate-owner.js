@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
+import AlertComp from '../notices/alert'
 
 const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm, setClientName}) =>{
 
     const [validateEmail, setValidateEmail] = useState()
     const [validateZipcode, setValidateZipcode] = useState()
+    const [alertMessage, setAlertMessage] = useState()
 
     const handleValidateClient = async(e) =>{
         e.preventDefault()
@@ -24,20 +26,21 @@ const GrabOwner = ( {uploading, setUploading, setClientId, setClientForm, setCli
             var returnedClient = await res.json()
             var clientId = returnedClient._id
             var clientName = returnedClient.first_name
-            alert('You have been verified!')
             setClientId(clientId)
             setClientName(clientName)
-           
             setUploading(false)
             setClientForm(false)
             
         } else {
-            console.log(res.statusText)
+            const alertModal = document.querySelector('#alert')
+            alertModal.style.height = '100vh'
+            setAlertMessage({server_mes: res.statusText, personal: 'Incorrect credentials', reload: true})
         }
     }
 
     return(
         <div>
+            <AlertComp alertMessage={alertMessage}></AlertComp>
             <Form onSubmit={handleValidateClient}>
                 <Form.Group className="form-components text-align-left">
                         <Form.Label>

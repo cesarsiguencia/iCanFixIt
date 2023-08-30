@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
+import AlertComp from "../notices/alert"
 
 const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setClientName }) => {
 
@@ -10,7 +11,7 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
     const [address, setAddress] = useState()
     const [state, setState] = useState()
     const [zipcode, setZipcode] = useState()
-
+    const [alertMessage, setAlertMessage] = useState()
 
     const handleClientSubmit = async (e) => {
         setUploading(true)
@@ -33,19 +34,20 @@ const ClientForm = ({ uploading, setUploading, setClientForm, setClientId, setCl
 
         if (response.ok) {
             var data = await response.json()
-            alert('success')
             setClientId(data._id)
             setClientName(firstName)
             setClientForm(false)
         } else {
-            console.log(response.statusText)
+            const alertModal = document.querySelector('#alert')
+            alertModal.style.height = '100vh'
+            setAlertMessage({server_mes: response.statusText, personal: 'Problem uploading your data. Try again later.', reload: true})
         }
         setUploading(false)
     }
 
     return (
         <div>
-
+            <AlertComp alertMessage={alertMessage}></AlertComp>
             <Form onSubmit={handleClientSubmit}>
                 <Form.Group className="form-components text-align-left">
                     <Form.Label>

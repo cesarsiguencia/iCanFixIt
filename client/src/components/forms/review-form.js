@@ -4,17 +4,19 @@ import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 import NoDevices from '../notices/no-completed-services'
 import LoadingComp from '../notices/loading'
+import AlertComp from '../notices/alert'
 
 const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
     const [id, setId] = useState()
     const [rating, setRating] = useState()
     const [reviewText, setReviewText] = useState()
-
     const [loadingReview, setLoadingReview] = useState()
-
     const [loadingDevices, setLoadingDevices] = useState()
     const [arrayLength, setArrayLength] = useState()
     const [reviewedDevices, setReviewedDevices] = useState(false)
+    const [alertMessage, setAlertMessage] = useState()
+
+    const alertModal = document.querySelector('#alert')
 
     const handleReviewSubmit = async (e) => {
         e.preventDefault()
@@ -30,16 +32,16 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
         })
 
         if (res.ok) {
-            var data = await res.json()
-            console.log(data)
             setRating('')
             setReviewText('')
-            alert('success in submitting review')
+            alertModal.style.height = '100vh'
+            setAlertMessage({server_mes: res.statusText, personal: 'Success in Uploading!', reload: false})
             setUploading(false)
-            console.log('updated list of devices', loadingDevices)
-        } else (
-            console.log(res.statusText)
-        )
+            
+        } else {
+            alertModal.style.height = '100vh'
+            setAlertMessage({server_mes: res.statusText, personal: 'Problem uploading your data. Try again later.', reload: true})
+        }
     }
 
 
@@ -64,7 +66,8 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
 
                 setLoadingDevices(data.devices)
             } else {
-                console.log(res.statusText)
+                alertModal.style.height = '100vh'
+                setAlertMessage({server_mes: res.statusText, personal: 'Problem fetching your data. Try again later.', reload: true})
             }
         }
         setLoadingReview(false)
@@ -74,6 +77,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
 
     return (
         <div>
+            <AlertComp alertMessage={alertMessage}></AlertComp>
             {loadingReview ? (
                 <div>
                     <LoadingComp></LoadingComp>
@@ -90,13 +94,13 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
 
                                 <Form onSubmit={handleReviewSubmit}>
                                     <Form.Group className='form-components text-align-left'>
-                                        <Form.Label>Select One Of Your Devices</Form.Label>
+                                        <Form.Label>Select One Of Your Devices with Completed Service</Form.Label>
 
                                         <Form.Select defaultValue={'Your Devices'}
                                             value={id}
                                             onChange={(e) => setId(e.target.value)}
                                         >
-                                            <option disabled value='Your Devices'>List of Serviced Devices</option>
+                                            <option disabled value='Your Devices'>List of Completed Service Devices Appear Here</option>
                                             {loadingDevices.map((device) => {
                                                 if (device.device_status === "Completed") {
                                                     return (

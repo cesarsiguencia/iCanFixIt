@@ -20,7 +20,7 @@ const Modal = ({ selectedProject }) => {
             }
 
             if (selectedProject.device_status === 'Service Requested') {
-                setColorCode('yellow')
+                setColorCode('red')
             }
         }
     })
@@ -55,10 +55,20 @@ const Modal = ({ selectedProject }) => {
                                     <p className='modal-font text-italics'>"{selectedProject.device_description}"</p>
                                 </div>
 
+                                {!selectedProject.owner_rating ? (
                                 <div className='col-6 text-align-left'>
+                                    <strong>No review available</strong>
+                                    <p>{selectedProject.owner.first_name} has not reviewed my services yet. The device may still be receiving service.</p>
+                                </div>
+                                ) : (
+                                    <div className='col-6 text-align-left'>
                                     <strong>{selectedProject.owner.first_name} reviewed this service as {selectedProject.owner_rating}</strong>
                                     <p className='text-italics'>"{selectedProject.owner_review}"</p>
                                 </div>
+                                )
+                                }
+
+
                             </div>
                         </div>
                         <br />

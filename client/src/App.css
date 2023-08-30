@@ -27,9 +27,6 @@
   justify-content: center; */
   /* font-size: calc(15px + 2vmin);*/
 
-
-
-
 }
 
 .header-components{
@@ -378,16 +375,6 @@ footer{
 
 }
 
-.modal-center{
-
-  position: relative;
-}
-
-.modal-block{
-  position: absolute;
-  justify-content: center;
-  /* top: 40vh; */
-}
 
 .modal-block > *{
   color: white
@@ -406,12 +393,18 @@ footer{
   overflow: auto;
   position: fixed;
   z-index: 1;
-  height: 0
+  height: 0;
+  display: grid;
+}
+
+.modal-center{
+  margin: auto auto;
+  color: white
 }
 
 .modal-img{
   height: 550px;
-  width: 350px;
+  width: 400px;
   margin: 25px auto
 }
 

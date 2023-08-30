@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import AlertComp from '../notices/alert'
 
 const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading }) => {
 
     const [image, setImage] = useState()
     const [uploadedVisibleNames, setVisibleImgNames] = useState([])
     const [showUploadDiv, setShowUploadDiv] = useState(false)
+    const [alertMessage, setAlertMessage] = useState()
+
+    const alertModal = document.querySelector('#alert')
 
     const uploadImage = (e) => {
         // if (image.length === 3) {
@@ -48,16 +52,14 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
 
         if (res.ok) {
             const url = await res.json()
-            console.log(url)
             const urlsArray = []
             urlsArray.push(url.secure_url)
             await submitImageInfo(deviceId, urlsArray)
-            alert('success!')
             setUploading(false)
             setImageForm(false)
         } else {
-            alert(res.statusText)
-            console.log(res.statusText)
+            alertModal.style.height = '100vh'
+            setAlertMessage({server_mes: res.statusText, personal: 'Problem submitting image to 3rd party server. Try again later.', reload: true})
         }
     }
 
@@ -77,20 +79,17 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                 body: JSON.stringify(imageInfo)
             })
 
-            if (res.ok) {
-                const data = await res.json()
-                console.log(data)
-                alert('success in submitting image info')
-            } else {
-                console.log(res.statusText)
+            if(!res.ok){
+                alertModal.style.height = '100vh'
+                setAlertMessage({server_mes: res.statusText, personal: 'Problem submitting image info. Try again later.', reload: true})
             }
-            
         // })
         return
     }
 
     return (
         <div>
+            <AlertComp alertMessage={alertMessage}></AlertComp>
             <h3>Add photos indicating damage to your {deviceName}</h3>
 
             <Form>

@@ -1,12 +1,14 @@
 import React, { useState } from "react"
 import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
+import AlertComp from "../notices/alert"
 
 const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDeviceName, setDeviceId, clientId }) => {
 
     const [deviceTitle, setDeviceTitle] = useState()
     const [deviceYear, setDeviceYear] = useState()
     const [deviceDesc, setDeviceDesc] = useState()
+    const [alertMessage, setAlertMessage] = useState()
 
     const handleDeviceSubmit = async (e) => {
         setUploading(true)
@@ -28,21 +30,21 @@ const DeviceForm = ({ uploading, setUploading, setDeviceForm, setDeviceName, set
         if (response.ok) {
             
             var data = await response.json()
-            console.log(data, 'where is the device id/')
-
-            alert('success')
             setDeviceName(deviceTitle)
             setDeviceId(data._id)
             setDeviceForm(false)
 
         } else {
-            console.log(response.statusText)
+            const alertModal = document.querySelector('#alert')
+            alertModal.style.height = '100vh'
+            setAlertMessage({server_mes: response.statusText, personal: 'Problem uploading your device data. Try again later.', reload: true})
         }
         setUploading(false)
     }
 
     return (
         <div>
+            <AlertComp alertMessage={alertMessage}></AlertComp>
             <h4>Enter the device info:</h4>
 
             <Form onSubmit={handleDeviceSubmit}>

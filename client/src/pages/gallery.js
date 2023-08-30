@@ -67,7 +67,7 @@ const Gallery = () => {
                                         break
 
                                     case 'Service Requested':
-                                        colorCode = 'yellow'
+                                        colorCode = 'red'
                                         break
 
                                 }
