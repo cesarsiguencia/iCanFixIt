@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/button'
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 import NoDevices from '../notices/no-completed-services'
+import LoadingComp from '../notices/loading'
 
 const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
     const [id, setId] = useState()
@@ -75,7 +76,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
         <div>
             {loadingReview ? (
                 <div>
-                    <p>Loading devices...</p>
+                    <LoadingComp></LoadingComp>
                 </div>
             ) : <>
                 <div>

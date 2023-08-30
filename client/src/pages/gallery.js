@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Modal from '../components/modal'
+import LoadingComp from '../components/notices/loading'
 
 const Gallery = () => {
 
@@ -42,7 +43,7 @@ const Gallery = () => {
 
             {loading ? (
                 <>
-                    <div><p>Loading...</p></div>
+                    <LoadingComp></LoadingComp>
                 </>
             ) : (<>
 

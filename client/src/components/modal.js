@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import LoadingComp from './notices/loading'
 
 const Modal = ({ selectedProject }) => {
 
@@ -33,7 +34,7 @@ const Modal = ({ selectedProject }) => {
         <div className='modal-me'  >
             {!selectedProject ? <>
                 <div>
-                    <p>Loading...</p>
+                    <LoadingComp></LoadingComp>
                 </div>
             </> : <>
                 <Container className='modal-center' >

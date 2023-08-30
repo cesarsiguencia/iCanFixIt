@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import LoadingComp from '../components/notices/loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
@@ -43,11 +45,8 @@ const Home = () => {
 
     return (
         <div>
-
             {loading && !dbDevices ? (
-                <div>
-                    <p>Fetching pictures</p>
-                </div>
+                 <LoadingComp></LoadingComp>
             ) : (
                 <div className="carousel-container">
 
@@ -66,7 +65,9 @@ const Home = () => {
                                         <p> - Says {device.owner.first_name}</p>
 
                                         <Link to='/icanfixit/gallery'>
-                                            <strong className='no-underline'>Check out more projects here!</strong>
+                                            <Button className='small-buttons' style={{width: '100%'}}>
+                                            Check out more projects here!
+                                            </Button>
                                         </Link>
                                         <br/>
                                         {/* <br/>
