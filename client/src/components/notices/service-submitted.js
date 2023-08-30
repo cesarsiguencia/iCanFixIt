@@ -13,7 +13,7 @@ const ServiceSubmit = ({ clientName, device }) => {
             </div>
 
 
-            <Link to='/icanfixit'>
+            <Link to='/'>
                 <Button type='button' className='form-components'>
                     Go back to homepage
                 </Button>

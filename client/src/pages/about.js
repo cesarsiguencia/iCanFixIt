@@ -73,7 +73,7 @@ const About = ({setRedirectClicked}) => {
 
                                 After being frustrated with the continous problem and expensive servincing, I decided to teach myself on how to swap batteries on my phone. Not long after, I began altering my other devices, such as changing broken screens, upgrading SSDs and RAM on old computers, and much more!
                             </Card.Body>
-                            <Link onClick={()=> setRedirectClicked(true)} to='/icanfixit/review'>
+                            <Link onClick={()=> setRedirectClicked(true)} to='/review'>
                                 <Button className="form-components">
                                     Write a review for me today!
                                 </Button>
@@ -108,7 +108,7 @@ const About = ({setRedirectClicked}) => {
 
                                 <ListGroup.Item>Apple Cinema/Thunderbolt Display - 2011 or earlier models</ListGroup.Item>
                             </ListGroup>
-                            <Link onClick={()=> setRedirectClicked(true)} to='/icanfixit/gallery'>
+                            <Link onClick={()=> setRedirectClicked(true)} to='/gallery'>
                                 <Button className="form-components">
                                     Go to Gallery
                                 </Button>
@@ -151,7 +151,7 @@ const About = ({setRedirectClicked}) => {
                                 }
 
                             </ListGroup>
-                            <Link onClick={()=> setRedirectClicked(true)} to="/icanfixit/form">
+                            <Link onClick={()=> setRedirectClicked(true)} to="/form">
                                 <Button className="form-components">Request a Service Today</Button>
                             </Link>
 
