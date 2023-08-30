@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Button from 'react-bootstrap/button'
+import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import AlertComp from "../notices/alert"
 

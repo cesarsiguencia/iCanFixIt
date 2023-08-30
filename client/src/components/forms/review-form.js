@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Button from 'react-bootstrap/button'
+import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 import NoDevices from '../notices/no-completed-services'
