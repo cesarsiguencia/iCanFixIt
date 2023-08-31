@@ -6,19 +6,19 @@ router.get("/", function (req, res) {
 });
 
 router.get("/about",(req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
+    res.sendFile(path.join(__dirname, "../../public", "index.html"));
   });
 
   router.get("/gallery",(req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
+    res.sendFile(path.join(__dirname, "../../public", "index.html"));
   });
 
   router.get("/form",(req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
+    res.sendFile(path.join(__dirname, "../../public", "index.html"));
   });
 
   router.get("/review",(req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
+    res.sendFile(path.join(__dirname, "../../public", "index.html"));
   });
 
 // router.use("*",(req, res) => {
