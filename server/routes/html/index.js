@@ -4,19 +4,19 @@ router.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
-router.use("/about",(req, res) => {
+router.get("/about",(req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"));
   });
 
-  router.use("/gallery",(req, res) => {
+  router.get("/gallery",(req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"));
   });
 
-  router.use("/form",(req, res) => {
+  router.get("/form",(req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"));
   });
 
-  router.use("/review",(req, res) => {
+  router.get("/review",(req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"));
   });
 
@@ -24,3 +24,5 @@ router.use("/about",(req, res) => {
 //     res.sendFile(path.join(__dirname, "../public", "index.html"));
 //   });
   
+
+module.exports = router
