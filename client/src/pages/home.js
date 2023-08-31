@@ -64,7 +64,7 @@ const Home = () => {
                                         <p className='text-italics'>"{device.owner_review}"</p>
                                         <p> - Says {device.owner.first_name}</p>
 
-                                        <Link to='/icanfixit/gallery'>
+                                        <Link to='/gallery'>
                                             <Button className='small-buttons' style={{width: '100%'}}>
                                             Check out more projects here!
                                             </Button>

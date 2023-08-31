@@ -40,7 +40,7 @@ const Header = ({ redirectClicked }) => {
     const urlsArray = window.location.href.split('/')
     const urlOfSubPage = urlsArray[urlsArray.length - 1]
 
-    if (urlOfSubPage !== 'icanfixit') {
+    if (urlOfSubPage !== '') {
         subUrlObjectAtLoad = {
             urlSub: urlOfSubPage,
             urlSubLoaded: true
@@ -51,7 +51,7 @@ const Header = ({ redirectClicked }) => {
             urlSubLoaded: false
         }
     }
-
+    console.log(urlOfSubPage)
     let currentIndex
     const loadedPage = subUrlObjectAtLoad.urlSub
 
