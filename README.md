@@ -18,8 +18,8 @@ Clients are able to learn more about my services and the devices I have worked o
 - Node
 - React Bootstrap
 - React-Router-Dom
-- Cors
-- Cloudinary API for image upload
+- Cloudinary API for single image upload
+- JavaScript
 
 ### Documents
 - Client
@@ -27,7 +27,7 @@ Clients are able to learn more about my services and the devices I have worked o
 - Image
 
 ### Link to Live App
-Coming soon
+https://icanfixit-by-cs-a17c7a1ff29b.herokuapp.com/ 
 
 ### Installation
 1. After downloading repository directory, run 'npm i'
