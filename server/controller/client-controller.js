@@ -69,22 +69,16 @@ const clientController = {
     },
 
     deletedClient({ params }, res) {
-      
-        Client.findOneAndDelete({ _id: params.id })
         
-      
-     
+        Client.findOneAndDelete({ _id: params.id })
       .then(deletedClient => {
         if (!deletedClient) {
           res.status(404).json({ message: 'No client available!' });
           return;
           }
-        Device.deleteMany({owner: params._id})
-
-
-
+        return Device.deleteMany({owner:{_id: params.id}})
           
-      }).then(result=> res.json(result))
+      }).then(result=> res.json({result, message: 'success deleting'}))
       .catch(err => res.status(400).json(err));
   }
 

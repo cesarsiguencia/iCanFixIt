@@ -12,7 +12,7 @@ const AlertComp = ({ alertMessage }) => {
         
     }
     return (
-        <div className="modal-me" id='alert'>
+        <div className="modal-me" id='alert' style={{padding: '0px 20px'}}>
             {alertMessage &&
                 <div className="modal-center">
                         <h3>{alertMessage.server_mes}, {alertMessage.personal}</h3>

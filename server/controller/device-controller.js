@@ -1,4 +1,4 @@
-const { Client, Device } = require('../models');
+const { Client, Device, Image } = require('../models');
 
 const deviceController = {
     getAllDevices(req, res) {
@@ -116,12 +116,13 @@ const deviceController = {
       Device.findOneAndDelete({ _id: params.id })
       .then(deletedDevice => {
           if (!deletedDevice) {
-          res.status(404).json({ message: 'No device available!' });
-          return;
+            res.status(404).json({ message: 'No device available!' });
+            return;
           }
-          res.json(deletedDevice);
+          return Image.deleteMany({deviceById: params.id})
       })
-      .catch(err => res.status(400).json(err));
+        .then(result=> res.json({result, message: 'success deleting device and associated images'}))
+        .catch(err => res.status(400).json(err));
   },
 
 
@@ -131,7 +132,7 @@ const deviceController = {
 
         res.json(deletedDeviceByClient);
     })
-    .catch(err => res.status(400).json(err));
+      .catch(err => res.status(400).json(err));
 },
   
 

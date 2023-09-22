@@ -145,6 +145,7 @@ const FormEntries = () => {
                             setImageForm={setImageForm}
                             uploading={uploading}
                             setUploading={setUploading}
+                            clientId={clientId}
                         ></ImageForm>
                     }
 

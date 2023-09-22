@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import AlertComp from '../notices/alert'
 
-const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading }) => {
+const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading}) => {
 
     const [image, setImage] = useState('')
     const [uploadedVisibleNames, setVisibleImgNames] = useState([])
@@ -20,6 +20,10 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
 
         if (e) {
             setVisibleImgNames([e.name])
+        } 
+
+        if(!e){
+            setVisibleImgNames([])
         }
 
         console.log(e)
@@ -59,14 +63,24 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
             setUploading(false)
             setImageForm(false)
         } else {
-            alertModal.style.height = '100vh'
-            setAlertMessage({server_mes: res.statusText, personal: 'Problem submitting image to 3rd party server. Try again later.', reload: true})
+            const deleteDeviceOnFetchError = await fetch(`/api/devices/${deviceId}`,{
+                method:'DELETE'
+            })
+
+            if(deleteDeviceOnFetchError.ok){
+                alertModal.style.height = '100vh'
+                setAlertMessage({server_mes: res.statusText, personal: `Problem submitting image to 3rd party server. Try again later. 
+                
+                If you're a new client, try through the "Returning" option as your client information was saved, but not your device information`, reload: true})
+            } else {
+                alertModal.style.height = '100vh'
+                setAlertMessage({server_mes: res.statusText, personal: 'Please submit a new order later.', reload: true})
+            }
         }
     }
 
     const submitImageInfo = async(deviceId, urlsArray) => {
         // urlsArray.map(async (singleImageUrl, i) => {
-
 
             var imageInfo = {
                 name: `${deviceId}/0.png`,
@@ -127,7 +141,6 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                         </>
                     }
 
-
                     {!uploading && <Button className="form-components" type='submit' onClick={submitImage}>
                         Submit Image Info
                     </Button>}
@@ -138,7 +151,6 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                 </Form.Group>
 
             </Form>
-
 
         </div>
     )
