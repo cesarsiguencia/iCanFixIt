@@ -16,6 +16,9 @@ Zipcode: 10001
 
 Instructions are given to the visitor when they visit site!
 
+### Link to Live App
+https://icanfixit-by-cs-a17c7a1ff29b.herokuapp.com/
+
 ### Technologies Used
 - MongoDB
 - Mongoose
@@ -31,9 +34,6 @@ Instructions are given to the visitor when they visit site!
 - Client
 - Device
 - Image
-
-### Link to Live App
-https://icanfixit-by-cs-a17c7a1ff29b.herokuapp.com/
 
 ### Installation
 1. After downloading repository directory, run 'npm i'
