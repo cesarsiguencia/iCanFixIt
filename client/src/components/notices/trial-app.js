@@ -17,12 +17,14 @@ const trialNotice = ({ setNoticeOn }) => {
                                 Welcome to iCanFixIt!
                             </h3>
                             <br />
-                            <p> Before you tour the app, please keep in mind <span className="text-italics" style={{ fontWeight: "bold" }}>credentials are needed to preview ALL the features of the app.</span> </p>
-                            <p>To do so, you can:</p>
+                            <p> Before you tour the app, <span className="text-italics" style={{ fontWeight: "bold" }}>credentials are needed for FULL experience of the app.</span> </p>
+                            <p>Please do one of the following:</p>
                             <div className='text-align-left' style={{fontWeight: 'bold'}}>
                             <p style={{  color: 'yellow' }}>1: Use the SAMPLE CREDENTIALS  provided when needed</p>
                             <p style={{ color: 'yellow' }}>2: Create a NEW CLIENT under the tab "REQUEST SERVICE"</p>
-                            <p className='text-italics'>NOTE: Under "REQUEST SERVICE" tab, be prepared to provide a sample image from your local drive, regardless if using SAMPLE CREDENTIALS or creating NEW CLIENT!</p>
+                            <p className='text-italics'>NOTE: The developer may and has every right to delete any new users or devices added to this site by visitors at random.</p>
+                            <p className='text-italics'>NOTE: One feature asks to upload a sample photo of a 'damaged device', be prepared to do so!</p>
+
 
                            
                             </div>

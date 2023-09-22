@@ -21,7 +21,7 @@ const About = ({setRedirectClicked}) => {
             image: FillOut,
             title: 'Fill Out A Submit Order Form',
             context: 'Please provide your contact information, email, address, along with an in depth description of the problem with your device. I need to know the generation number of the device as well as manufacturing year.',
-            bolded: 'Please provide pictures.'
+            bolded: 'Please provide ONE IMAGE showing proof of damage.'
         },
         {
             image: Email,
@@ -39,7 +39,7 @@ const About = ({setRedirectClicked}) => {
             image: Success,
             title: 'Device Serviced and Returned',
             context: 'Please give me 3 days to service your device. After that time, I will mail your device with the packing slip that you will provide to me.',
-            bolded: 'Please feel kind to revisit this page and leave me a review. It helps a lot!'
+            bolded: 'Please feel kind to revisit this page and leave me a review once your device is returned. It helps a lot!'
         }
     ]
     return (

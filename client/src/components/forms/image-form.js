@@ -96,7 +96,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
             <Form>
                 <Form.Group className="form-components">
                     <Form.Label>
-                        No more than 1 photo. ONLY PNG FILES.
+                        Only 1 photo. Only PNG of JPEG files.
                     </Form.Label>
 
                     <Form.Control type='file' id='photo' name='image' onChange={(e) => (

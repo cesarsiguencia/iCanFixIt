@@ -160,14 +160,14 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                                         <br />
 
                                         {!reviewedDevices ? 
-                                            <div><strong> * You have not reviewed any devices yet. *</strong>
+                                            <div><p>You have not reviewed any devices yet. Start one at the top!</p>
                                            <br/> 
                                            <br/> 
                                             </div>
 
                                         :
                                             <div>
-                                           
+                                                <p>Your review may be featured on my home page!</p>
                                                 {loadingDevices.map((reviewedDevice) => {
 
                                                     if (reviewedDevice.owner_rating && reviewedDevice.owner_review && reviewedDevice.device_status === 'Completed') {

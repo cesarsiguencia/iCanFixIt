@@ -335,6 +335,10 @@ footer{
   border: 0px;
 }
 
+.small-buttons:hover{
+  background-color:#ee9f0e;
+}
+
 .carousel-container {
   height: 100vh;
   display: flex;

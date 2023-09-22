@@ -13,7 +13,7 @@ const ServiceSubmit = ({ clientName, device }) => {
                 <br/>
             </div>
 
-            <Link to='/icanfixit/gallery'>
+            <Link to='/gallery'>
                 <Button type='button' className='form-components'>
                     View your submitted device on 'Gallery'!
                 </Button>

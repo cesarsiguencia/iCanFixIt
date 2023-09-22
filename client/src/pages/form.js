@@ -51,6 +51,7 @@ const FormEntries = () => {
                                         </p>
                                         <img className='credentials-img' src={Credentials}>
                                         </img>
+                                        <p className='nav-links-font'> - - - - -</p>
                                         <p className='nav-links-font'>Or click on "New" to create a new client</p>
 
                                     </div>
@@ -87,6 +88,7 @@ const FormEntries = () => {
                             {returning && !newClient &&
                                 <div>
                                     <h4>Search Your Profile Here</h4>
+                                    <p>Please provide the personal information you provided when you submited your first service request.</p>
                                     <div className='credentials-box'>
                                         <img className='user-icon' src={UserIcon}></img>
                                         <p className='nav-links-font'>

@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -16,7 +16,13 @@ import HeaderComp from './components/header'
 import FooterComp from './components/footer'
 
 const App = () => {
-  const [noticeOn, setNoticeOn] = useState(true)
+  const [noticeOn, setNoticeOn] = useState(false)
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setNoticeOn(true)
+    }, 1000)
+  },[])
 
   const [redirectClicked, setRedirectClicked] = useState(false)
 

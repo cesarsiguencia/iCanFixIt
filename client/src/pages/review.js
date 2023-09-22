@@ -22,8 +22,8 @@ const Review = () => {
                 clientValidateForm &&
                 <div>
                     
-                    <h3>Write A Review For Me!</h3>
-                    <p>In order to write a review for your device, client information must be listed within my records, has previously used my services, and has a device/devices saved with a 'Completed' service status.</p>
+                    <h3>Write A Review Of My Services!</h3>
+                    <p>In order to write a review for your one of your recorded devices, client's information must be in my system, has had their device serviced by me, and has had their device returned back with a 'Completed' status placed on by me in the system.</p>
 
                     <p>Please validate the personal information you provided when you submited a new request, down below:</p>
                     <div className='credentials-box'>
