@@ -20,8 +20,6 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(require('./routes'))
 
-require('./public')
-
 //This middleware will tell the application to use the built react-app
 
 
