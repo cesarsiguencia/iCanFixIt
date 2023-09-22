@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 //PAGES
@@ -12,14 +11,13 @@ import ReviewPg from './pages/review'
 import GalleryPg from './pages/gallery'
 import AboutPg from './pages/about'
 
-
 //COMPONENTS
 import HeaderComp from './components/header'
 import FooterComp from './components/footer'
 
-
-
 const App = () => {
+  const [noticeOn, setNoticeOn] = useState(true)
+
   const [redirectClicked, setRedirectClicked] = useState(false)
 
   const workEaseIn = () => {
@@ -39,7 +37,8 @@ const App = () => {
 
         <div className="App-body" onLoad={workEaseIn}>
             <Routes>
-              <Route path='/' element={<HomePg></HomePg>}>
+              <Route path='/' element={<HomePg setNoticeOn={setNoticeOn} noticeOn={noticeOn}></HomePg>}>
+    
               </Route>
 
               <Route path='/form' element={<FormPg></FormPg>}>

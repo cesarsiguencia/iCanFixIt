@@ -5,8 +5,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import TrialNotice from '../components/notices/trial-app'
 
-const Home = () => {
+const Home = ({setNoticeOn, noticeOn}) => {
 
     const [dbDevices, setDbDevices] = useState()
     const [loading, setLoading] = useState(true)
@@ -23,6 +24,8 @@ const Home = () => {
         setLoading(false)
         return
     }
+
+    
 
     const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -45,6 +48,11 @@ const Home = () => {
 
     return (
         <div>
+            {noticeOn &&
+                 <TrialNotice setNoticeOn={setNoticeOn}></TrialNotice>
+            }
+           
+            <div>
             {loading && !dbDevices ? (
                  <LoadingComp></LoadingComp>
             ) : (
@@ -87,6 +95,10 @@ const Home = () => {
             </div>
 
             )}
+
+
+            </div>
+
         
            
 

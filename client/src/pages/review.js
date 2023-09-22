@@ -3,6 +3,8 @@ import ReviewForm from '../components/forms/review-form'
 import ValidateClient from '../components/forms/validate-owner'
 import HeroComp from '../components/hero'
 import Container from 'react-bootstrap/Container'
+import Credentials from '../device-library/credentials.avif'
+import UserIcon from '../device-library/user.avif'
 
 const Review = () => {
 
@@ -20,10 +22,18 @@ const Review = () => {
                 clientValidateForm &&
                 <div>
                     
-                    <h3>Write A Review for me!</h3>
+                    <h3>Write A Review For Me!</h3>
                     <p>In order to write a review for your device, client information must be listed within my records, has previously used my services, and has a device/devices saved with a 'Completed' service status.</p>
 
                     <p>Please validate the personal information you provided when you submited a new request, down below:</p>
+                    <div className='credentials-box'>
+                        <img className='user-icon' src={UserIcon}></img>
+                        <p className='nav-links-font'>
+                            Use the sample credentials below!
+                        </p>
+                        <img className='credentials-img' src={Credentials}>
+                        </img>
+                    </div>
                     <ValidateClient
                         uploading={uploading}
                         setUploading={setUploading}
