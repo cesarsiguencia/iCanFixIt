@@ -5,7 +5,7 @@ import AlertComp from '../notices/alert'
 
 const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading }) => {
 
-    const [image, setImage] = useState()
+    const [image, setImage] = useState('')
     const [uploadedVisibleNames, setVisibleImgNames] = useState([])
     const [showUploadDiv, setShowUploadDiv] = useState(false)
     const [alertMessage, setAlertMessage] = useState()
@@ -19,7 +19,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
         // }
 
         if (e) {
-            setVisibleImgNames(current => [...current, e.name])
+            setVisibleImgNames([e.name])
         }
 
         console.log(e)
@@ -27,14 +27,15 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
         if (!showUploadDiv) {
             setShowUploadDiv(true)
         }
+        console.log(image)
 
     }
 
-    const clearImagesSeletion = () => {
-        setImage()
-        setVisibleImgNames([])
-        setShowUploadDiv(false)
-    }
+    // const clearImagesSeletion = () => {
+    //     setImage('')
+    //     setVisibleImgNames([])
+    //     setShowUploadDiv(false)
+    // }
 
     const submitImage = async (e) => {
         console.log('for upload:', e)
@@ -95,7 +96,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
             <Form>
                 <Form.Group className="form-components">
                     <Form.Label>
-                        No more than 1 photo.
+                        No more than 1 photo. ONLY PNG FILES.
                     </Form.Label>
 
                     <Form.Control type='file' id='photo' name='image' onChange={(e) => (
@@ -118,9 +119,9 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                                         <p key={i}>{i + 1}: {imageName}</p>
                                     )
                                 })}
-                                <Button className='small-buttons' type='button' onClick={clearImagesSeletion}>
+                                {/* <Button className='small-buttons' type='button' onClick={clearImagesSeletion}>
                                     Clear Image Selection
-                                </Button>
+                                </Button> */}
 
                             </div>
                         </>

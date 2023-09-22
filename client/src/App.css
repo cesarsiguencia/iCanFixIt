@@ -10,6 +10,40 @@
   }
 }
 
+.trial-modal{
+  background: rgba(0, 0, 0, 0.8);
+  padding: 3em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+}
+
+.credentials-box{
+  background-color:#fd7e14;
+  color: white;
+  width: 275px;
+  padding: 10px 10px;
+  margin: 0 auto
+}
+
+.credentials-img{
+  width: 250px;
+  margin: 0 auto;
+  padding: 10px 0
+}
+
+.user-icon{
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+}
+
 .App-body{
   width: 100%;
   min-height: 90vh;

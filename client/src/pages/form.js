@@ -2,15 +2,14 @@ import React, { useState } from "react"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import ValidateClient from "../components/forms/validate-owner"
-
-
-
 import ClientForm from '../components/forms/client-form'
 import DeviceForm from '../components/forms/device-form'
 import ImageForm from '../components/forms/image-form'
 import Success from '../components/notices/service-submitted'
 import Button from 'react-bootstrap/button'
 import HeroComp from '../components/hero'
+import Credentials from '../device-library/credentials.avif'
+import UserIcon from "../device-library/user.avif"
 
 const FormEntries = () => {
 
@@ -20,7 +19,7 @@ const FormEntries = () => {
 
     const [clientForm, setClientForm] = useState(true)
     const [deviceForm, setDeviceForm] = useState(true)
-    const [imageForm, setImageForm ] = useState(true)
+    const [imageForm, setImageForm] = useState(true)
 
     const [clientId, setClientId] = useState()
     const [clientName, setClientName] = useState()
@@ -31,102 +30,130 @@ const FormEntries = () => {
     return (
         <div className="cesar">
             <HeroComp></HeroComp>
-            <br/>
+            <br />
             <Container>
                 <Row>
-           
-                {clientForm && deviceForm && imageForm &&
-                <div>
 
-                    {selectStarter &&
+                    {clientForm && deviceForm && imageForm &&
                         <div>
-                            <h3>Request a service for your device here:</h3>
-                            <p>Are you a new or returning client?</p>
 
-                            <Button onClick={() => {
-                                setReturning(false)
-                                setNewClient(true)
-                                setSelectStarter(false)
+                            {selectStarter &&
+                                <div>
+                                    <h3>Request A Service For Your Device Here:</h3>
+
+                                    <p >Please be prepared to provide PHOTO showing damage to your device!</p>
+
+
+                                    <div className='credentials-box'>
+                                        <img src={UserIcon} className="user-icon"></img>
+                                        <p className='nav-links-font'>
+                                            Click on "Returning" for these credentials:
+                                        </p>
+                                        <img className='credentials-img' src={Credentials}>
+                                        </img>
+                                        <p className='nav-links-font'>Or click on "New" to create a new client</p>
+
+                                    </div>
+                                    <br />
+                                    <p>Are you a new or returning client?</p>
+
+
+
+                                    <Button onClick={() => {
+                                        setReturning(false)
+                                        setNewClient(true)
+                                        setSelectStarter(false)
+                                    }
+                                    }
+
+                                    >
+                                        New
+                                    </Button>
+                                    <br />
+                                    <br />
+                                    <Button onClick={() => {
+                                        setReturning(true)
+                                        setNewClient(false)
+                                        setSelectStarter(false)
+                                    }}>
+                                        Returning
+                                    </Button>
+                                    <br />
+                                    <br />
+
+                                </div>
                             }
+
+                            {returning && !newClient &&
+                                <div>
+                                    <h4>Search Your Profile Here</h4>
+                                    <div className='credentials-box'>
+                                        <img className='user-icon' src={UserIcon}></img>
+                                        <p className='nav-links-font'>
+                                            Use the sample credentials below!
+                                        </p>
+                                        <img className='credentials-img' src={Credentials}>
+                                        </img>
+                                    </div>
+                                    <ValidateClient
+                                        uploading={uploading}
+                                        setUploading={setUploading}
+                                        setClientId={setClientId}
+                                        setClientForm={setClientForm}
+                                        setClientName={setClientName}
+                                    ></ValidateClient>
+                                    <br />
+                                </div>
+
                             }
 
-                            >
-                                New
-                            </Button>
-                            <br />
-                            <br />
-                            <Button onClick={() => {
-                                setReturning(true)
-                                setNewClient(false)
-                                setSelectStarter(false)
-                            }}>
-                                Returning
-                            </Button>
+                            {!returning && newClient &&
+                                <div>
+                                    <h4>If this is your first time, please fill out your information below:</h4>
+
+                                    <ClientForm
+                                        uploading={uploading}
+                                        setUploading={setUploading}
+                                        setClientForm={setClientForm}
+                                        setClientId={setClientId}
+                                        setClientName={setClientName}
+                                    ></ClientForm>
+                                </div>
+                            }
+
                         </div>
                     }
 
-                    {returning && !newClient &&
-                        <div>
-                            <h4>Search your profile here</h4>
-                            <ValidateClient
-                                uploading={uploading}
-                                setUploading={setUploading}
-                                setClientId={setClientId}
-                                setClientForm={setClientForm}
-                                setClientName={setClientName}
-                            ></ValidateClient>
-                            <br />
-                        </div>
-
+                    {!clientForm && deviceForm && imageForm &&
+                        <DeviceForm
+                            uploading={uploading}
+                            setUploading={setUploading}
+                            setDeviceForm={setDeviceForm}
+                            setDeviceName={setDeviceName}
+                            setDeviceId={setDeviceId}
+                            clientId={clientId}
+                        >
+                        </DeviceForm>
                     }
 
-                    {!returning && newClient &&
-                        <div>
-                            <h4>If this is your first time, please fill out your information below:</h4>
-
-                            <ClientForm
-                                uploading={uploading}
-                                setUploading={setUploading}
-                                setClientForm={setClientForm}
-                                setClientId={setClientId}
-                                setClientName={setClientName}
-                            ></ClientForm>
-                        </div>
+                    {!clientForm && !deviceForm && imageForm &&
+                        <ImageForm
+                            deviceId={deviceId}
+                            deviceName={deviceName}
+                            setImageForm={setImageForm}
+                            uploading={uploading}
+                            setUploading={setUploading}
+                        ></ImageForm>
                     }
 
-                </div>
-                }
-
-                {!clientForm && deviceForm && imageForm &&
-                    <DeviceForm
-                        uploading={uploading}
-                        setUploading={setUploading}
-                        setDeviceForm={setDeviceForm}
-                        setDeviceName={setDeviceName}
-                        setDeviceId={setDeviceId}
-                        clientId={clientId}
-                    >
-                    </DeviceForm>
-                }
-
-                {!clientForm && !deviceForm && imageForm &&
-                    <ImageForm
-                        deviceId={deviceId}
-                        deviceName={deviceName}
-                        setImageForm={setImageForm}
-                        uploading= {uploading}
-                        setUploading={setUploading}
-                    ></ImageForm>
-                }
-
-                {!clientForm && !deviceForm && !imageForm &&
-                    <Success
-                        clientName={clientName}
-                        deviceName={deviceName}
-                    ></Success>
-                }
+                    {!clientForm && !deviceForm && !imageForm &&
+                        <Success
+                            clientName={clientName}
+                            deviceName={deviceName}
+                        ></Success>
+                    }
                 </Row>
-            
+
 
             </Container>
 

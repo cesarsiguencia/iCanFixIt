@@ -88,7 +88,7 @@ const WriteReview = ({ uploading, setUploading, clientId, clientName }) => {
                             <NoDevices clientName={clientName}></NoDevices>
                         ) : <>
                             <div>
-                                <h4>Write Or Update A Review For Me! Thank you, {clientName}!</h4>
+                                <h4>Write Or Update A Review For Me! Thank You, {clientName}!</h4>
                                 <br />
 
                                 <Form onSubmit={handleReviewSubmit} id='review-form'>
