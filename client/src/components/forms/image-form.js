@@ -41,42 +41,48 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
     //     setShowUploadDiv(false)
     // }
 
-    const submitImage = async (e) => {
-        console.log('for upload:', e)
-        const data = new FormData()
-
-        data.append('file', image)
-        data.append('upload_preset', 'icanfixit')
-        console.log(data)
-        setUploading(true)
-
-        const res = await fetch('https://api.cloudinary.com/v1_1/dhrztukgj/image/upload', {
-            method: 'post',
-            body: data
-        })
-
-        if (res.ok) {
-            const url = await res.json()
-            const urlsArray = []
-            urlsArray.push(url.secure_url)
-            await submitImageInfo(deviceId, urlsArray)
+    const submitImage = async () => {
+        if(image){
+            const data = new FormData()
+            data.append('file', image)
+            data.append('upload_preset', 'icanfixit')
+    
+            setUploading(true)
+    
+            const res = await fetch('https://api.cloudinary.com/v1_1/dhrztukgj/image/upload', {
+                method: 'post',
+                body: data
+            })
+    
+            if (res.ok) {
+                const url = await res.json()
+                const urlsArray = []
+                urlsArray.push(url.secure_url)
+                await submitImageInfo(deviceId, urlsArray)
+                setUploading(false)
+                setImageForm(false)
+            } else {
+                // if image is unable to be posted through the cloudinary API, then delete the device entirely.
+                const deleteDeviceOnFetchError = await fetch(`/api/devices/${deviceId}`,{
+                    method:'DELETE'
+                })
+    
+                if(deleteDeviceOnFetchError.ok){
+                    alertModal.style.height = '100vh'
+                    setAlertMessage({server_mes: res.statusText, personal: `Problem submitting image to 3rd party server. Try again later. 
+                    
+                    If you're a new client, try through the "Returning" option as your client information was saved, but not your device information`, reload: true})
+                } else {
+                    alertModal.style.height = '100vh'
+                    setAlertMessage({server_mes: res.statusText, personal: 'Please submit a new order later.', reload: true})
+                }
+            }
+        } else {
             setUploading(false)
             setImageForm(false)
-        } else {
-            const deleteDeviceOnFetchError = await fetch(`/api/devices/${deviceId}`,{
-                method:'DELETE'
-            })
-
-            if(deleteDeviceOnFetchError.ok){
-                alertModal.style.height = '100vh'
-                setAlertMessage({server_mes: res.statusText, personal: `Problem submitting image to 3rd party server. Try again later. 
-                
-                If you're a new client, try through the "Returning" option as your client information was saved, but not your device information`, reload: true})
-            } else {
-                alertModal.style.height = '100vh'
-                setAlertMessage({server_mes: res.statusText, personal: 'Please submit a new order later.', reload: true})
-            }
         }
+
+       
     }
 
     const submitImageInfo = async(deviceId, urlsArray) => {
@@ -105,19 +111,31 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
     return (
         <div>
             <AlertComp alertMessage={alertMessage}></AlertComp>
-            <h3>Add photos indicating damage to your {deviceName}</h3>
+            <h3>Add photo {deviceName} (Optional)</h3>
 
             <Form>
                 <Form.Group className="form-components">
                     <Form.Label>
-                        Only 1 photo. Only PNG of JPEG files.
+                        <p>If you have a photo showing proof of damage to device, please upload it now. Otherwise, continue with submission.</p>
+                        <strong> Upload ONE image only. Only PNG of JPEG format</strong>
+                     
                     </Form.Label>
+
+                    {/* {!uploading && <Button className="form-components small-buttons" style={{width: '200px'}}type='submit' onClick={submitImage}>
+                        Skip Image Upload
+                    </Button>}
+
+                    {uploading && <Button disabled className="form-components" style={{width: '200px'}}onClick={submitStaple}>
+                        Finalizing...
+                    </Button>} */}
 
                     <Form.Control type='file' id='photo' name='image' onChange={(e) => (
                         setImage(e.target.files[0]),
                         uploadImage(e.target.files[0])
                     )
-                    }>
+                    }
+                    
+                    >
                     </Form.Control>
                     <br />
 
@@ -142,12 +160,14 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                     }
 
                     {!uploading && <Button className="form-components" type='submit' onClick={submitImage}>
-                        Submit Image Info
+                        Finalizing Submission
                     </Button>}
 
                     {uploading && <Button disabled className="form-components" onClick={submitImage}>
-                        Adding Image...
+                        Loading...
                     </Button>}
+
+
                 </Form.Group>
 
             </Form>

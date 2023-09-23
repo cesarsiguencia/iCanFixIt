@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Modal from '../components/modal'
 import LoadingComp from '../components/notices/loading'
+import mobileImageStaple from '../device-library/mobile.png'
 
 const Gallery = () => {
 
@@ -78,7 +79,19 @@ const Gallery = () => {
                                         }
                                     }
                                     >
-                                        <Card.Img variant="top" style={{ width: '300px', height: '400px' }} src={project.images[0].image_url}></Card.Img>
+                                        <Card.Img variant="top" style={{ width: '300px', height: '400px' }} 
+
+                                        
+                                        src={`
+
+                                            ${project.images[0] ? (
+                                                project.images[0].image_url
+                                                ) : (
+                                                    mobileImageStaple
+                                                )}
+                                        `}
+                                        
+                                        ></Card.Img>
                                         <Card.Body className="d-flex flex-column">
                                             <div className='d-flex mb-2 justify-content-between'>
                                                 <Card.Title className='mb-0 font-weight-bold text-align-left'>{project.device_name}</Card.Title>
