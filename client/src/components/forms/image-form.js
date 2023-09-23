@@ -111,12 +111,12 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
     return (
         <div>
             <AlertComp alertMessage={alertMessage}></AlertComp>
-            <h3>Add photo {deviceName} (Optional)</h3>
+            <h3>Add photo for {deviceName} (Optional)</h3>
 
             <Form>
                 <Form.Group className="form-components">
                     <Form.Label>
-                        <p>If you have a photo showing proof of damage to device, please upload it now. Otherwise, continue with submission.</p>
+                        <p>If you have a photo showing proof of damage to device, please upload it now. Otherwise, continue with submission WITHOUT image.</p>
                         <strong> Upload ONE image only. Only PNG of JPEG format</strong>
                      
                     </Form.Label>
@@ -160,7 +160,7 @@ const ImageForm = ({ deviceId, deviceName, setImageForm, uploading, setUploading
                     }
 
                     {!uploading && <Button className="form-components" type='submit' onClick={submitImage}>
-                        Finalizing Submission
+                        Finish Submission
                     </Button>}
 
                     {uploading && <Button disabled className="form-components" onClick={submitImage}>

@@ -41,9 +41,6 @@ const FormEntries = () => {
                                 <div>
                                     <h3>Request A Service For Your Device Here:</h3>
 
-                                    <p >Please be prepared to provide PHOTO showing damage to your device!</p>
-
-
                                     <div className='credentials-box'>
                                         <img src={UserIcon} className="user-icon"></img>
                                         <p className='nav-links-font'>
