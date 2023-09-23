@@ -17,32 +17,44 @@ const trialNotice = ({ setNoticeOn }) => {
                                 Welcome to iCanFixIt!
                             </h3>
                             <br />
-                            <p> Before you tour the app, <span className="text-italics" style={{ fontWeight: "bold" }}>credentials are needed for FULL experience of the app.</span> </p>
-                            <p>Please do one of the following:</p>
-                            <div className='text-align-left' style={{fontWeight: 'bold'}}>
-                            <p style={{  color: 'yellow' }}>1: Use the SAMPLE CREDENTIALS  provided when needed</p>
-                            <p style={{ color: 'yellow' }}>2: Create a NEW CLIENT under the tab "REQUEST SERVICE"</p>
-                            <p className='text-italics'>NOTE: The developer may and has every right to delete any new users or devices added to this site by visitors at random.</p>
-                            <p className='text-italics'>NOTE: One feature asks to upload a sample photo of a 'damaged device', be prepared to do so!</p>
+                            <p style={{fontWeight: 'bold'}} >Watch the 2 minute demo before previewing app!</p>
+                            <iframe src="https://drive.google.com/file/d/1_0FVgUyds6AZcGe751tFelJHap19wQQb/preview" width="840" height="480" allow="autoplay"></iframe>
+
+                            <br />
+                            <br />
+                            <div className='text-align-left'>
+                            <h5 style={{fontWeight: 'bold'}}>Keep In Mind:</h5>
 
 
-                           
+                                {/* <p style={{ color: 'yellow' }}>2: Create a NEW CLIENT under the tab "REQUEST SERVICE"</p>
+                            <p className='text-italics'>NOTE: The developer may and has every right to delete any new users or devices added to this site by visitors at random.</p> */}
+
+                                <p><span> - Click on the page title 'iCanFixIt' to return to this demo at anytime.</span></p>
+                                <p> - The developer may and has every right to delete any new data added to this site by visitors at random.</p>
+
+                                <div>
+                                    <p><span style={{ fontWeight: "bold" }}> - BE ON THE LOOK OUT FOR THIS ICON, which will give you SAMPLE CREDENTIALS where needed if you do not wish to create an entire new client profile.</span></p>
+
+                                    <div style={{ display: 'flex' }}>
+                                        <img className='user-icon' src={UserIcon}>
+                                        </img>
+                                    </div>
+                                </div>
+
+                                <br />
+
+
+                             
+
                             </div>
 
-                       
-                           
-                           <p>The icon below will guide you when credentials will be provided.</p>
 
-                            <div style={{ display: 'flex' }}>
-                                <img className='user-icon' src={UserIcon}>
-                                </img>
-                            </div>
 
 
 
                             <Button onClick={() => setNoticeOn(false)}>
 
-                                I have read and understood how to use the full app
+                                I have watch the demo and understand how to use the full app
 
 
                             </Button>
