@@ -2,7 +2,7 @@
 
 This is my full stack MERN application by a side business I have at home fixing portable electronics. In particular, I specialize in a range of Apple products. While initially I only fixed or upgraded my own devices, friends began showing interest in my hobby and asked if I could fix their device.
 
-[![Watch the video](./screenshots/1.png)](https://drive.google.com/file/d/1_0FVgUyds6AZcGe751tFelJHap19wQQb/view?usp=sharing)
+[![Watch the video](./screenshots/4.png)](https://drive.google.com/file/d/1_0FVgUyds6AZcGe751tFelJHap19wQQb/view?usp=sharing)
 
 ### How it works
 Clients are able to learn more about my services and the devices I have worked on. 
