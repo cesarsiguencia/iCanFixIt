@@ -33,12 +33,13 @@ const trialNotice = ({ setNoticeOn }) => {
                                 <p> - The developer may and has every right to delete any new data added to this site by visitors at random.</p>
 
                                 <div>
-                                    <p><span style={{ fontWeight: "bold" }}> - BE ON THE LOOK OUT FOR THIS ICON, which will give you SAMPLE CREDENTIALS where needed if you do not wish to create an entire new client profile.</span></p>
-
-                                    <div style={{ display: 'flex' }}>
+                                <div style={{ display: 'flex' }}>
                                         <img className='user-icon' src={UserIcon}>
                                         </img>
                                     </div>
+                                    <p><span style={{ fontWeight: "bold" }}> - BE ON THE LOOK OUT FOR THIS ICON, which will give you SAMPLE CREDENTIALS where needed if you do not wish to create an entire new client profile.</span></p>
+
+
                                 </div>
 
                                 <br />
@@ -54,7 +55,7 @@ const trialNotice = ({ setNoticeOn }) => {
 
                             <Button onClick={() => setNoticeOn(false)}>
 
-                                I have watch the demo and understand how to use the full app
+                                I have watched the demo and understand how to use the full app
 
 
                             </Button>

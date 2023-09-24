@@ -13,8 +13,8 @@ Clients are able to learn more about my services and the devices I have worked o
 
 ### Credentials
 To use ALL features of the app, you need credentials, create a new user or use the sample credentials below:
-Email: cez@gmail.com
-Zipcode: 10001
+- Email: cez@gmail.com
+- Zipcode: 10001
 
 Instructions are given to the visitor when they visit site!
 
