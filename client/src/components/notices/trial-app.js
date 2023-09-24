@@ -18,7 +18,7 @@ const trialNotice = ({ setNoticeOn }) => {
                             </h3>
                             <br />
                             <p style={{fontWeight: 'bold'}} >Watch the 2 minute demo before previewing app!</p>
-                            <iframe src="https://drive.google.com/file/d/1_0FVgUyds6AZcGe751tFelJHap19wQQb/preview" width="840" height="480" allow="autoplay"></iframe>
+                            <iframe src="https://drive.google.com/file/d/1_0FVgUyds6AZcGe751tFelJHap19wQQb/preview" width="1200" height="720" allow="autoplay"></iframe>
 
                             <br />
                             <br />
