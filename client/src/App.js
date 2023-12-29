@@ -16,13 +16,6 @@ import HeaderComp from './components/header'
 import FooterComp from './components/footer'
 
 const App = () => {
-  const [noticeOn, setNoticeOn] = useState(false)
-
-  useEffect(()=>{
-    setTimeout(()=>{
-      setNoticeOn(true)
-    }, 1000)
-  },[])
 
   const [redirectClicked, setRedirectClicked] = useState(false)
 
@@ -43,7 +36,7 @@ const App = () => {
 
         <div className="App-body" onLoad={workEaseIn}>
             <Routes>
-              <Route path='/' element={<HomePg setNoticeOn={setNoticeOn} noticeOn={noticeOn}></HomePg>}>
+              <Route path='/' element={<HomePg ></HomePg>}>
     
               </Route>
 

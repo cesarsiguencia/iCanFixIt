@@ -453,3 +453,26 @@ footer{
 .loadingBlock{
   margin: auto auto;
 }
+
+.demo-button{
+  position: fixed;
+  right: 0px;
+  bottom: 10%;
+  width: 200px;
+  height: auto;
+  scale: 1;
+  z-index: 1
+}
+
+.demo-open{
+  background-color: black;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 3px solid wheat;
+  transition: ease-in-out 0.5s;
+  color: white
+}
+
+.demo-open:hover{
+  background-color: #fd7e14;
+}
