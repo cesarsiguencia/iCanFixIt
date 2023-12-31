@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DemoAppear from "./demo-modal";
 
 const DemoButton = ({ setNoticeOn, setDemoTrigger }) => {
 
