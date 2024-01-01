@@ -15,8 +15,9 @@ const Review = () => {
 
     return (
         <div className='cesar'>
-            <HeroComp></HeroComp>
-            <Container>
+            
+            <Container className='absolute-bg' >
+            
             <br/>
             {        
                 clientValidateForm &&
@@ -55,6 +56,7 @@ const Review = () => {
                 ></ReviewForm>
             }
             </Container>
+            <HeroComp className="relative-bg"></HeroComp>
         </div>
     )
 }

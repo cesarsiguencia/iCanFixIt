@@ -9,8 +9,8 @@ const DemoAppear = ({ setNoticeOn, setDemoTrigger }) => {
     return (
         <div className='trial-modal modal-block body-about-text'>
             <Container >
-                <Row >
-                    <Col>
+                <Row className='modal-flex'>
+                    <Col className='modal-block'> 
                         <h3>
                             Demo: How to Use "iCanFixIt" app
                         </h3>
@@ -24,7 +24,7 @@ const DemoAppear = ({ setNoticeOn, setDemoTrigger }) => {
                         </div>
                     </Col>
 
-                    <Col xs={5}>
+                    <Col className='modal-block'>
                         <div className='text-align-left'>
                             <h5 style={{ fontWeight: 'bold' }}>Keep In Mind:</h5>
 

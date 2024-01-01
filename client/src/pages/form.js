@@ -29,7 +29,6 @@ const FormEntries = () => {
 
     return (
         <div className="cesar">
-            <HeroComp></HeroComp>
             <br />
             <Container>
                 <Row>
@@ -158,7 +157,7 @@ const FormEntries = () => {
 
             </Container>
 
-
+            <HeroComp></HeroComp>
         </div>
     )
 }

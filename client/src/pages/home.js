@@ -54,8 +54,6 @@ const Home = () => {
       }, 5000)
     },[])
 
-    
-
     return (
         <div>
             {noticeOn &&
@@ -102,20 +100,12 @@ const Home = () => {
                                         </Container>
 
                                     </div>
-
                                 </div>
                             )
                         })}
                     </div>
-
                 )}
-
-
             </div>
-
-
-
-
         </div>
     )
 }

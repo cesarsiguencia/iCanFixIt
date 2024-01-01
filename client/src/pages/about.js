@@ -51,7 +51,7 @@ const About = ({setRedirectClicked}) => {
             <Container>
             <h3>Learn About It!</h3>
                 <Row className='body-about-row'>
-                    <Col xs={5} className='body-about-text'>
+                    <Col className='body-about-text'>
 
                         <img className='test-photo' src={Portrait} alt="Portrait of Cesar">
 
@@ -118,7 +118,7 @@ const About = ({setRedirectClicked}) => {
                         </Card>
                     </Col>
 
-                    <Col xs={5} className='body-about-text'>
+                    <Col className='body-about-text'>
 
                         <img className='test-photo' src={Mobile} alt='Smartphone'>
 
