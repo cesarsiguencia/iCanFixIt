@@ -4,6 +4,11 @@
   /* height: 100vh */
 }
 
+html{
+  overflow-x: hidden;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -321,6 +326,7 @@ footer{
 }
 
 .hero-img{
+  /* min-height: 100%; */
   width: 100%;
   transition: ease-in-out 1s;
   transform: translate(0,-75px)
@@ -501,3 +507,16 @@ footer{
    align-items: center;
     justify-content: space-between;
 } */
+
+
+@media screen and (max-width: 1000px) {
+
+  .hero{
+    width: 1000px;;
+  }
+
+  .hero-img{
+    min-height: 100%;
+  } 
+  
+}
