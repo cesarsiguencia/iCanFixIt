@@ -1,9 +1,8 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&family=Poppins:wght@200;400;700&family=Raleway:wght@400;500;600;700&family=Shadows+Into+Light&family=Urbanist&display=swap");
 
 .App {
   text-align: center;
   /* display: flex; */
-  /* height: 100vh */
 }
 
 * {
@@ -15,6 +14,7 @@
 html{
   overflow-x: hidden;
 }
+
 
 
 @media (prefers-reduced-motion: no-preference) {
@@ -59,7 +59,6 @@ html{
 
 .App-body{
   width: 100%;
-  /* min-height: 90vh; */
   /* margin-bottom: 25px */
 }
 
@@ -82,6 +81,11 @@ html{
   justify-content: space-around;
 }
 
+.header-components > div{
+  display: flex;
+  align-items: center;
+}
+
 .me-auto > *{
   color: white; 
 } 
@@ -93,9 +97,10 @@ html{
 .nav-links-font{
   color: white;
   text-decoration-line: none;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 22px;
-  transition: ease-in-out 0.5s
+  transition: ease-in-out 0.5s;
+  margin: 0 auto;
 }
 
 .nav-submit{
@@ -107,8 +112,12 @@ html{
 }
 
 .header-title{
+
   font-size: 35px;
   font-weight: normal;
+  align-items: center;
+  
+  
 }
 
 .header-desc{
@@ -348,6 +357,10 @@ footer{
   background-color:#ee9f0e;
 }
 
+/* .carousel{
+  min-height: 75vh;
+} */
+
 .carousel-container {
   
   display: flex;
@@ -359,41 +372,30 @@ footer{
 
 }
 
-.carousel--div{
-
-
-  /* margin: auto auto; */
+.carousel--slides{
   transition: ease-in-out 1s;
-  display: flex;
   flex: 1 0 100%;
-  /* min-height: 100vh; */
   overflow-y: hidden;
-      /* scroll-snap-align: start; */
-  /* object-fit: contain;
-   */
+}
+
+.carousel--content{
+  height: 750px;
+  overflow: hidden;
+  display: flex;
 }
 
 .home-imgs{
   width: 50%;
-  /* height: auto; */
-  overflow-y: hidden;
-  /* scale: 1; */
-  /* background-size: 100% auto; */
-  
-
-  /* overflow: hidden; */
-  /* transform: translate(0,-350px); */
-  /* position: relative; */
   border: 1px solid white
+}
+
+.home-imgs >img{
+  width: 100%;
+  transform: translate(0,-20%)
 }
 
 .img-desc{
   width: 50%;
-  /* top: 35px;
-  right: 45px;
-  width: 350px; */
-  /* background-color:rgb(97, 218, 251, 0.8); */
-  /* border: 3px solid #fd7e14; */
   border-radius: 25px;
   padding: 25px 15px;
   
@@ -543,6 +545,11 @@ footer{
 }
  */
 
+ p {
+  font-family: 'Raleway', sans-serif;
+}
+
+
 @media screen and (max-width: 1000px) {
 
   .hero{
@@ -588,13 +595,22 @@ footer{
   .test-photo{
     margin: 10px auto;
   }
+  
+  .carousel{
+    min-height: auto;
+  }
 
-  .carousel--div{
+  .carousel--content{
     display: block;
+    height: auto;
   }
 
   .home-imgs, .img-desc{
-    width: 100%
+    width: 100%;
+  }
+
+  .home-imgs>img{
+    transform: translate(0%)
   }
 
   .header-components > div{

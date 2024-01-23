@@ -64,7 +64,7 @@ const Home = () => {
                 <DemoAppear setNoticeOn={setNoticeOn} setDemoTrigger={setDemoTrigger}></DemoAppear>
             }
 
-            <div>
+            <div className='carousel'>
                 {loading && !dbDevices ? (
                     <LoadingComp></LoadingComp>
                 ) : (
@@ -72,8 +72,12 @@ const Home = () => {
 
                         {dbDevices.map((device, i) => {
                             return (
-                                <div className='carousel--div' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                                    <img src={device.images[0].image_url} alt={device.device_name} className='home-imgs'></img>
+                                <div className='carousel--slides' key={i} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                                    <div className='carousel--content'>
+                                        <div className="home-imgs">
+                                            <img src={device.images[0].image_url} alt={device.device_name}></img>
+                                        </div>
+             
                                     <div className='img-desc'>
                                         <Container>
                                             <Row>
@@ -90,16 +94,15 @@ const Home = () => {
                                                         </Button>
                                                     </Link>
                                                     <br />
-                                                    {/* <br/>
-                                        <div className='time-bar'>
-
-                                        </div> */}
                                                 </Col>
 
                                             </Row>
                                         </Container>
 
                                     </div>
+                                        
+                                    </div>
+                                    
                                 </div>
                             )
                         })}

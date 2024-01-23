@@ -5,7 +5,7 @@ const Hero = () =>{
     return(
         <div className='hero'>
         <img className='hero-img' src={Workstation} alt="Cesar's workstation"></img>
-    </div>
+        </div>
 
     )
 

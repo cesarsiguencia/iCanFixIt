@@ -80,18 +80,15 @@ const Header = ({ redirectClicked }) => {
             <Navbar expand="lg">
                 <Container className='header-components'>
                     <div>
-
-                        <Link to='/' className='nav-links-font' onClick={() => {
+           
+                        <Link to='/' className='nav-links-font header-title text-align-left ' onClick={() => {
                             setTitleClicked(true)
                             setNavClicked(false)
                         }}>
-                            <div className='text-align-left'>
-                                <p className='nav-links-font header-title'>iCanFixIt</p>
-                                <small className='header-desc'>Repair Your Device With Me!</small>
-                            </div>
-
+                             iCanFixIt
+                                {/* <small className='header-desc'>Repair Your Device With Me!</small> */}
                         </Link >
-
+                   
                     </div>
                     <div>
                         <Navbar.Toggle className='toggle' aria-controls="basic-navbar-nav" />
@@ -105,11 +102,14 @@ const Header = ({ redirectClicked }) => {
                                 {pages.map((page, i) => {
                                     if (!page.image) {
                                         return (
+
+                                        
                                             <Link onClick={() => {
                                                     setSelectedPage(page)
                                                 }}
                                                 key={i} className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/${page.url}`}>{page.name}
                                             </Link>
+                                        
                                         )
                                     }
 
@@ -117,12 +117,14 @@ const Header = ({ redirectClicked }) => {
                                         return (
                                             <div key={i}
                                                 className='featured-button'>
+                                                  
                                                 <Link
                                                     onClick={() => {
                                                         setSelectedPage(page)
                                                     }} 
-                                                    className='nav-links-font links featured-button' to={`/${page.url}`}>{page.name}
+                                                    className='nav-links-font links ' to={`/${page.url}`}>{page.name}
                                                 </Link>
+                                              
                                                 <img className='toolbar' src={page.image} alt='wrench toolbar'>
                                                 </img>
                                             </div>
