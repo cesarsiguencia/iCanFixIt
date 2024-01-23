@@ -50,7 +50,7 @@ const Gallery = () => {
 
                 <Container>
                     <br/>
-                <h4>Click on the devices I have serviced!</h4>
+                <h3>Click on the devices I have serviced!</h3>
                 <br/>
                     <Row>
                         <Col className="mb-5 gallery">

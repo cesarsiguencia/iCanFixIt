@@ -59,23 +59,25 @@ const About = ({setRedirectClicked}) => {
 
                     </Col>
 
-                    <Col className='body-about-text'>
-                        <Card className='body-about-toast'>
-                            <Card.Header className='w-100 gray-color'>
+                    <Col className='body-about-text'> 
+                        <Card className='body-about-toast gray-color'>
+                            <Card.Header className='about-titles w-100 text-align-left'>
                                 <strong className="mr-auto">About What I Do </strong>
                             </Card.Header>
 
                             <Card.Body>
-                                I began breaking down portable devices from a very young age, having always been fascinated with how everyday objects work, especially electronics. Many years ago, there was a period when I owned several iPhones at a time when iPhones were infamously known for their terrible battery life.
+                                <p className='text-align-left'>I began breaking down portable devices from a very young age, having always been fascinated with how everyday objects work, especially electronics. Many years ago, there was a period when I owned several iPhones at a time when iPhones were infamously known for their terrible battery life.
+                                    </p>
                             </Card.Body>
 
                             <Card.Body>
 
-                                After being frustrated with the continous problem and expensive servincing, I decided to teach myself on how to swap batteries on my phone. Not long after, I began altering my other devices, such as changing broken screens, upgrading SSDs and RAM on old computers, and much more!
+                                <p className='text-align-left'>After being frustrated with the continous problem and expensive servincing, I decided to teach myself on how to swap batteries on my phone. Not long after, I began altering my other devices, such as changing broken screens, upgrading SSDs and RAM on old computers, and much more!
+                                    </p>
                             </Card.Body>
                             <Link onClick={()=> setRedirectClicked(true)} to='/review'>
                                 <Button className="form-components">
-                                    Write a review for me today!
+                                    <p>Write a review for me today!</p>
                                 </Button>
                             </Link>
 
@@ -91,15 +93,15 @@ const About = ({setRedirectClicked}) => {
 
                 <Row className='body-about-row'>
                     <Col>
-                        <Card className='body-about-toast'>
-                            <Card.Header className='gray-color'>
+                        <Card className='body-about-toast gray-color'>
+                            <Card.Header className='about-titles text-align-left'>
                                 <strong className="mr-auto">Available Services </strong>
                             </Card.Header>
 
                             <Card.Body>
-                                View the list of all devices I have serviced previously. My services are not limited to this list and vary per device. I primarily replace batteries and screens on mobile devices. I am also able to provide software support for computers.
+                                <p className='text-align-left'>View the list of all devices I have serviced previously. My services are not limited to this list and vary per device. I primarily replace batteries and screens on mobile devices. I am also able to provide software support for computers.</p>
                             </Card.Body>
-                            <ListGroup>
+                            <ListGroup as="ol">
                                 <ListGroup.Item>
                                     iPhone - All models</ListGroup.Item>
                                 <ListGroup.Item>iPod Classic - Select models</ListGroup.Item>
@@ -110,7 +112,7 @@ const About = ({setRedirectClicked}) => {
                             </ListGroup>
                             <Link onClick={()=> setRedirectClicked(true)} to='/gallery'>
                                 <Button className="form-components">
-                                    Go to Gallery
+                                    <p>Go to Gallery</p>
                                 </Button>
                             </Link>
 
@@ -130,16 +132,16 @@ const About = ({setRedirectClicked}) => {
 
                 <Row className='body-about-row'>
                     <Col>
-                        <Card className='body-about-toast'>
-                            <Card.Header className='gray-color'>
+                        <Card className='body-about-toast gray-color'>
+                            <Card.Header className='about-titles'>
                                 <strong className="mr-auto">How It Works</strong>
                             </Card.Header>
 
-                            <Card.Body>
-                                Interested? The process is easy!
+                            <Card.Body >
+                                <p>Interested? The process is easy!</p>
                             </Card.Body>
 
-                            <ListGroup as="ol">
+                            <div as="ol">
                                 {steps.map((step, i) => {
           
                                     return (
@@ -147,12 +149,12 @@ const About = ({setRedirectClicked}) => {
                                         </ListItem>
                                     )
                                 })
-
                                 }
-
-                            </ListGroup>
+                            </div>
                             <Link onClick={()=> setRedirectClicked(true)} to="/form">
-                                <Button className="form-components">Request a Service Today</Button>
+                                <Button className="form-components">
+                                    <p>Request a Service Today
+                                    </p></Button>
                             </Link>
 
                         </Card>

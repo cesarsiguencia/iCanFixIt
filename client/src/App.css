@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&family=Poppins:wght@200;400;700&family=Raleway:wght@400;500;600;700&family=Shadows+Into+Light&family=Urbanist&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&family=Poppins:wght@200;400;700&family=Julius+Sans+One&family=Overlock+SC&family=Raleway:wght@400;500;600;700&family=Urbanist&display=swap");
 
 .App {
   text-align: center;
@@ -15,7 +15,30 @@ html{
   overflow-x: hidden;
 }
 
+/* ----------- font ----------- */
 
+h3{
+  font-family: 'urbanist';
+  font-size: 2rem
+}
+
+.mr-auto{
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1.5rem;
+}
+
+.text-align-left{
+  text-align: left;
+}
+
+.text-align-right{
+  text-align: right;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -203,7 +226,8 @@ form{
 }
 
 .body-about-toast{
-  width:100%
+  width:100%;
+  padding: 20px 20px;
 }
 
 .container{
@@ -215,15 +239,16 @@ form{
   place-items: center;
 }
 
+.about-titles{
 
-
-.text-align-left{
-  text-align: left;
+  background-color: rgba(0, 0, 0, 0.0)
 }
 
-.text-align-right{
-  text-align: right;
+.no-border{
+  border: none;
 }
+
+
 
 .cesar{
   opacity: 0.5;
@@ -241,12 +266,6 @@ form{
   height: 500px;
 }
 
-.about{
-  width: 150px;
-  height: 150px;
-  margin: 10px 40px;
-  border-radius: 500px;
-}
 
 .center-hor{
 display: grid;
@@ -262,6 +281,8 @@ place-items: center;
 .about-how-block{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  padding: 25px 0px;
 }
 
 .about-how-text{
@@ -271,6 +292,15 @@ place-items: center;
   margin: 15px auto;
   padding: 0 15px;
 }
+
+.about{
+
+  width: 150px;
+  height: 150px;
+  margin: 10px 40px;
+  border-radius: 500px;
+}
+
 
 footer{
   background-color: gainsboro
@@ -304,7 +334,7 @@ footer{
 
 
 .gray-color{
-  background-color: gainsboro;
+  background-color: rgb(250, 249, 249)
 }
 
 
