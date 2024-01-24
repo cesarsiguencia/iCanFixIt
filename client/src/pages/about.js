@@ -15,7 +15,14 @@ import Success from '../device-library/utils/success.gif'
 import Portrait from '../device-library/portrait.png'
 import Mobile from '../device-library/utils/mobile.gif'
 
-const About = ({setRedirectClicked}) => {
+import iphone from '../device-library/accepted-devices/iphone.png'
+import ipad from '../device-library/accepted-devices/ipad.png'
+import ipod from '../device-library/accepted-devices/ipod.png'
+import laptop from '../device-library/accepted-devices/laptop.png'
+import thunderbolt from '../device-library/accepted-devices/thunderbolt.png'
+import extras from '../device-library/accepted-devices/extras.png'
+
+const About = ({ setRedirectClicked }) => {
     const steps = [
         {
             image: FillOut,
@@ -42,14 +49,48 @@ const About = ({setRedirectClicked}) => {
             bolded: 'Please feel kind to revisit this page and leave me a review once your device is returned. It helps a lot!'
         }
     ]
+
+    const devices = [
+        {
+            name: 'iPhone',
+            info: ' - All models',
+            image: iphone
+        },
+        {
+            name: 'iPod Classic',
+            info: ' - Select models',
+            image: ipod
+        },
+        {
+            name: 'iPad',
+            info: ' - Select models',
+            image: ipad
+        },
+        {
+            name: 'Macbook Air/Pro',
+            info: '- ONLY battery / RAM / SSD upgrades',
+            image: laptop
+        },
+        {
+            name: 'Apple Thunderbolt/Cinema Display',
+            info: '- ONLY glass, lcd, and power supply',
+            image: thunderbolt
+        },
+        {
+            name: 'and MUCH MORE!',
+            info: '- including gaming consoles, keyboards, mice, etc',
+            image: extras
+        },
+
+    ]
     return (
         <div className='cesar'>
             <HeroComp></HeroComp>
-            <br/>
-            
+            <br />
+
 
             <Container>
-            <h3>Learn About It!</h3>
+                <h3>Learn About It!</h3>
                 <Row className='body-about-row'>
                     <Col className='body-about-text'>
 
@@ -59,7 +100,7 @@ const About = ({setRedirectClicked}) => {
 
                     </Col>
 
-                    <Col className='body-about-text'> 
+                    <Col className='body-about-text'>
                         <Card className='body-about-toast gray-color'>
                             <Card.Header className='about-titles w-100 text-align-left'>
                                 <strong className="mr-auto">About What I Do </strong>
@@ -67,15 +108,15 @@ const About = ({setRedirectClicked}) => {
 
                             <Card.Body>
                                 <p className='text-align-left'>I began breaking down portable devices from a very young age, having always been fascinated with how everyday objects work, especially electronics. Many years ago, there was a period when I owned several iPhones at a time when iPhones were infamously known for their terrible battery life.
-                                    </p>
+                                </p>
                             </Card.Body>
 
                             <Card.Body>
 
                                 <p className='text-align-left'>After being frustrated with the continous problem and expensive servincing, I decided to teach myself on how to swap batteries on my phone. Not long after, I began altering my other devices, such as changing broken screens, upgrading SSDs and RAM on old computers, and much more!
-                                    </p>
+                                </p>
                             </Card.Body>
-                            <Link onClick={()=> setRedirectClicked(true)} to='/review'>
+                            <Link onClick={() => setRedirectClicked(true)} to='/review'>
                                 <Button className="form-components">
                                     <p>Write a review for me today!</p>
                                 </Button>
@@ -99,18 +140,24 @@ const About = ({setRedirectClicked}) => {
                             </Card.Header>
 
                             <Card.Body>
-                                <p className='text-align-left'>View the list of all devices I have serviced previously. My services are not limited to this list and vary per device. I primarily replace batteries and screens on mobile devices. I am also able to provide software support for computers.</p>
+                                <p className='text-align-left'> I primarily replace batteries and screens on mobile devices. I am also able to provide software support for computers. I have experience servicing the following devices:</p>
                             </Card.Body>
-                            <ListGroup as="ol">
-                                <ListGroup.Item>
-                                    iPhone - All models</ListGroup.Item>
-                                <ListGroup.Item>iPod Classic - Select models</ListGroup.Item>
-                                <ListGroup.Item>iPad - Select models</ListGroup.Item>
-                                <ListGroup.Item>Macbook Pro - ONLY battery / RAM / SSD upgrades</ListGroup.Item>
+                            <div className='accepted-devices-flex'>
+                                {
+                                    devices.map((acceptedDevice) => {
+                                        return(
+                                            <div >
+                                            <p className='sub-titles'> <strong>{acceptedDevice.name}</strong> {acceptedDevice.info}</p>
+                                            <div className='accepted-devices-image-holder'>
+                                                <img src={acceptedDevice.image} alt="Screenshot of a electronic device displayed"></img>
+                                            </div>
 
-                                <ListGroup.Item>Apple Cinema/Thunderbolt Display - 2011 or earlier models</ListGroup.Item>
-                            </ListGroup>
-                            <Link onClick={()=> setRedirectClicked(true)} to='/gallery'>
+                                        </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <Link onClick={() => setRedirectClicked(true)} to='/gallery'>
                                 <Button className="form-components">
                                     <p>Go to Gallery</p>
                                 </Button>
@@ -120,13 +167,13 @@ const About = ({setRedirectClicked}) => {
                         </Card>
                     </Col>
 
-                    <Col className='body-about-text'>
+                    {/* <Col className='body-about-text'>
 
                         <img className='test-photo' src={Mobile} alt='Smartphone'>
 
                         </img>
 
-                    </Col>
+                    </Col> */}
 
                 </Row>
 
@@ -143,7 +190,7 @@ const About = ({setRedirectClicked}) => {
 
                             <div as="ol">
                                 {steps.map((step, i) => {
-          
+
                                     return (
                                         <ListItem step={step} key={i} i={i}>
                                         </ListItem>
@@ -151,7 +198,7 @@ const About = ({setRedirectClicked}) => {
                                 })
                                 }
                             </div>
-                            <Link onClick={()=> setRedirectClicked(true)} to="/form">
+                            <Link onClick={() => setRedirectClicked(true)} to="/form">
                                 <Button className="form-components">
                                     <p>Request a Service Today
                                     </p></Button>

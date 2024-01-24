@@ -107,7 +107,8 @@ const Header = ({ redirectClicked }) => {
                                             <Link onClick={() => {
                                                     setSelectedPage(page)
                                                 }}
-                                                key={i} className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/${page.url}`}>{page.name}
+                                                key={i} className={`nav-links-font links     ${!selectedPage ? (selectedPage === "") : (selectedPage.name === page.name && !titleClicked && navClicked && 'links-selected')}`} to={`/${page.url}`}>
+                                                    <p className="nav-titles">{page.name}</p>
                                             </Link>
                                         
                                         )
@@ -122,7 +123,10 @@ const Header = ({ redirectClicked }) => {
                                                     onClick={() => {
                                                         setSelectedPage(page)
                                                     }} 
-                                                    className='nav-links-font links ' to={`/${page.url}`}>{page.name}
+                                                    className='nav-links-font links ' to={`/${page.url}`}>
+                                                        <p className="nav-titles">
+                                                        {page.name}
+                                                        </p>
                                                 </Link>
                                               
                                                 <img className='toolbar' src={page.image} alt='wrench toolbar'>
